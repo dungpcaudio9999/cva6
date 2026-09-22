@@ -1,0 +1,40 @@
+{
+  "baseline": "BASE-01",
+  "configuration": "CFG-01",
+  "timestamp_utc": "2026-09-08T06:52:11.764776+00:00",
+  "head": "f591a3972e65c22ff1b79c9aab955784e6916151",
+  "host": "Linux x86_64",
+  "tools_on_path": {
+    "make": "/usr/bin/make",
+    "python3": "/usr/bin/python3",
+    "gcc": "/usr/bin/gcc",
+    "g++": "/usr/bin/g++",
+    "verilator": null,
+    "iverilog": null,
+    "vvp": null,
+    "yosys": null,
+    "sby": null,
+    "slang": null,
+    "bender": null,
+    "spike": null,
+    "riscv64-unknown-elf-gcc": null,
+    "vcs": null,
+    "vsim": "/home/dungpc9/ndmoney4porche/questasim/bin/vsim",
+    "xrun": null
+  },
+  "selected_environment": {
+    "CVA6_REPO_DIR": "<UNSET>",
+    "TARGET_CFG": "<UNSET>",
+    "RISCV": "<UNSET>",
+    "VERILATOR_INSTALL_DIR": "<UNSET>",
+    "HPDCACHE_DIR": "<UNSET>",
+    "SPIKE_TANDEM": "<UNSET>"
+  },
+  "tracked_regular_files_excluding_analysis": 1764,
+  "source_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "source_manifest_sha256": "c9574ee895b71cc170fc3a5c3f14afe11009d3fb568ad1c81b4215ba5593cb2a",
+  "flist_sources": 182,
+  "flist_missing_sources": 63,
+  "make_dry_run_exit": 2,
+  "limits": "Textual preflight only; no preprocessing, elaboration, HDL simulation or sign-off."
+}

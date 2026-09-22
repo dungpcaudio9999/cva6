@@ -1,0 +1,1130 @@
+[
+  {
+    "line": 29,
+    "kind": "source",
+    "path": "vendor/pulp-platform/fpga-support/rtl/SyncDpRam.sv",
+    "exists": true
+  },
+  {
+    "line": 30,
+    "kind": "source",
+    "path": "vendor/pulp-platform/fpga-support/rtl/AsyncDpRam.sv",
+    "exists": true
+  },
+  {
+    "line": 31,
+    "kind": "source",
+    "path": "vendor/pulp-platform/fpga-support/rtl/AsyncThreePortRam.sv",
+    "exists": true
+  },
+  {
+    "line": 32,
+    "kind": "source",
+    "path": "vendor/pulp-platform/fpga-support/rtl/SyncThreePortRam.sv",
+    "exists": true
+  },
+  {
+    "line": 33,
+    "kind": "source",
+    "path": "vendor/pulp-platform/fpga-support/rtl/SyncDpRam_ind_r_w.sv",
+    "exists": true
+  },
+  {
+    "line": 35,
+    "kind": "include",
+    "path": "core/include",
+    "exists": true
+  },
+  {
+    "line": 36,
+    "kind": "include",
+    "path": "vendor/pulp-platform/common_cells/include",
+    "exists": true
+  },
+  {
+    "line": 37,
+    "kind": "include",
+    "path": "vendor/pulp-platform/common_cells/src",
+    "exists": true
+  },
+  {
+    "line": 38,
+    "kind": "include",
+    "path": "vendor/pulp-platform/axi/include",
+    "exists": true
+  },
+  {
+    "line": 39,
+    "kind": "include",
+    "path": "common/local/util",
+    "exists": true
+  },
+  {
+    "line": 40,
+    "kind": "include",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/utils/ecc",
+    "exists": false
+  },
+  {
+    "line": 43,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpnew_pkg.sv",
+    "exists": false
+  },
+  {
+    "line": 44,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpnew_cast_multi.sv",
+    "exists": false
+  },
+  {
+    "line": 45,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpnew_classifier.sv",
+    "exists": false
+  },
+  {
+    "line": 46,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/clk/rtl/gated_clk_cell.v",
+    "exists": false
+  },
+  {
+    "line": 47,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_ctrl.v",
+    "exists": false
+  },
+  {
+    "line": 48,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_ff1.v",
+    "exists": false
+  },
+  {
+    "line": 49,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_pack_single.v",
+    "exists": false
+  },
+  {
+    "line": 50,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_prepare.v",
+    "exists": false
+  },
+  {
+    "line": 51,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_round_single.v",
+    "exists": false
+  },
+  {
+    "line": 52,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_special.v",
+    "exists": false
+  },
+  {
+    "line": 53,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_srt_single.v",
+    "exists": false
+  },
+  {
+    "line": 54,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_top.v",
+    "exists": false
+  },
+  {
+    "line": 55,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fpu/rtl/pa_fpu_dp.v",
+    "exists": false
+  },
+  {
+    "line": 56,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fpu/rtl/pa_fpu_frbus.v",
+    "exists": false
+  },
+  {
+    "line": 57,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fpu/rtl/pa_fpu_src_type.v",
+    "exists": false
+  },
+  {
+    "line": 58,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_ctrl.v",
+    "exists": false
+  },
+  {
+    "line": 59,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_double.v",
+    "exists": false
+  },
+  {
+    "line": 60,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_ff1.v",
+    "exists": false
+  },
+  {
+    "line": 61,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_pack.v",
+    "exists": false
+  },
+  {
+    "line": 62,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_prepare.v",
+    "exists": false
+  },
+  {
+    "line": 63,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_round.v",
+    "exists": false
+  },
+  {
+    "line": 64,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_scalar_dp.v",
+    "exists": false
+  },
+  {
+    "line": 65,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_srt_radix16_bound_table.v",
+    "exists": false
+  },
+  {
+    "line": 66,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_srt_radix16_with_sqrt.v",
+    "exists": false
+  },
+  {
+    "line": 67,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_srt.v",
+    "exists": false
+  },
+  {
+    "line": 68,
+    "kind": "source",
+    "path": "core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_top.v",
+    "exists": false
+  },
+  {
+    "line": 69,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpnew_divsqrt_th_32.sv",
+    "exists": false
+  },
+  {
+    "line": 70,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpnew_divsqrt_th_64_multi.sv",
+    "exists": false
+  },
+  {
+    "line": 71,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpnew_divsqrt_multi.sv",
+    "exists": false
+  },
+  {
+    "line": 72,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpnew_fma_multi.sv",
+    "exists": false
+  },
+  {
+    "line": 73,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpnew_fma.sv",
+    "exists": false
+  },
+  {
+    "line": 74,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpnew_noncomp.sv",
+    "exists": false
+  },
+  {
+    "line": 75,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpnew_opgroup_block.sv",
+    "exists": false
+  },
+  {
+    "line": 76,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpnew_opgroup_fmt_slice.sv",
+    "exists": false
+  },
+  {
+    "line": 77,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpnew_opgroup_multifmt_slice.sv",
+    "exists": false
+  },
+  {
+    "line": 78,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpnew_rounding.sv",
+    "exists": false
+  },
+  {
+    "line": 79,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpnew_top.sv",
+    "exists": false
+  },
+  {
+    "line": 80,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpu_div_sqrt_mvp/hdl/defs_div_sqrt_mvp.sv",
+    "exists": false
+  },
+  {
+    "line": 81,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv",
+    "exists": false
+  },
+  {
+    "line": 82,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpu_div_sqrt_mvp/hdl/div_sqrt_top_mvp.sv",
+    "exists": false
+  },
+  {
+    "line": 83,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpu_div_sqrt_mvp/hdl/iteration_div_sqrt_mvp.sv",
+    "exists": false
+  },
+  {
+    "line": 84,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpu_div_sqrt_mvp/hdl/norm_div_sqrt_mvp.sv",
+    "exists": false
+  },
+  {
+    "line": 85,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpu_div_sqrt_mvp/hdl/nrbd_nrsc_mvp.sv",
+    "exists": false
+  },
+  {
+    "line": 86,
+    "kind": "source",
+    "path": "core/cvfpu/src/fpu_div_sqrt_mvp/hdl/preprocess_mvp.sv",
+    "exists": false
+  },
+  {
+    "line": 88,
+    "kind": "source",
+    "path": "core/include/config_pkg.sv",
+    "exists": true
+  },
+  {
+    "line": 89,
+    "kind": "source",
+    "path": "core/include/cv64a6_imafdc_sv39_config_pkg.sv",
+    "exists": true
+  },
+  {
+    "line": 90,
+    "kind": "source",
+    "path": "core/include/riscv_pkg.sv",
+    "exists": true
+  },
+  {
+    "line": 92,
+    "kind": "source",
+    "path": "core/include/ariane_pkg.sv",
+    "exists": true
+  },
+  {
+    "line": 93,
+    "kind": "source",
+    "path": "vendor/pulp-platform/axi/src/axi_pkg.sv",
+    "exists": true
+  },
+  {
+    "line": 96,
+    "kind": "source",
+    "path": "core/include/wt_cache_pkg.sv",
+    "exists": true
+  },
+  {
+    "line": 97,
+    "kind": "source",
+    "path": "core/include/std_cache_pkg.sv",
+    "exists": true
+  },
+  {
+    "line": 98,
+    "kind": "source",
+    "path": "core/include/instr_tracer_pkg.sv",
+    "exists": true
+  },
+  {
+    "line": 99,
+    "kind": "source",
+    "path": "core/include/build_config_pkg.sv",
+    "exists": true
+  },
+  {
+    "line": 100,
+    "kind": "source",
+    "path": "core/include/aes_pkg.sv",
+    "exists": true
+  },
+  {
+    "line": 101,
+    "kind": "source",
+    "path": "core/include/triggers_pkg.sv",
+    "exists": true
+  },
+  {
+    "line": 104,
+    "kind": "source",
+    "path": "core/cvxif_compressed_if_driver.sv",
+    "exists": true
+  },
+  {
+    "line": 105,
+    "kind": "source",
+    "path": "core/cvxif_issue_register_commit_if_driver.sv",
+    "exists": true
+  },
+  {
+    "line": 106,
+    "kind": "source",
+    "path": "core/cvxif_example/include/cvxif_instr_pkg.sv",
+    "exists": true
+  },
+  {
+    "line": 107,
+    "kind": "source",
+    "path": "core/cvxif_fu.sv",
+    "exists": true
+  },
+  {
+    "line": 108,
+    "kind": "source",
+    "path": "core/cvxif_example/cvxif_example_coprocessor.sv",
+    "exists": true
+  },
+  {
+    "line": 109,
+    "kind": "source",
+    "path": "core/cvxif_example/instr_decoder.sv",
+    "exists": true
+  },
+  {
+    "line": 110,
+    "kind": "source",
+    "path": "core/cvxif_example/compressed_instr_decoder.sv",
+    "exists": true
+  },
+  {
+    "line": 111,
+    "kind": "source",
+    "path": "core/cvxif_example/copro_alu.sv",
+    "exists": true
+  },
+  {
+    "line": 114,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/cf_math_pkg.sv",
+    "exists": true
+  },
+  {
+    "line": 115,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/fifo_v3.sv",
+    "exists": true
+  },
+  {
+    "line": 116,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/lfsr.sv",
+    "exists": true
+  },
+  {
+    "line": 117,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/lfsr_8bit.sv",
+    "exists": true
+  },
+  {
+    "line": 118,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/stream_arbiter.sv",
+    "exists": true
+  },
+  {
+    "line": 119,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/stream_arbiter_flushable.sv",
+    "exists": true
+  },
+  {
+    "line": 120,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/stream_mux.sv",
+    "exists": true
+  },
+  {
+    "line": 121,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/stream_demux.sv",
+    "exists": true
+  },
+  {
+    "line": 122,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/lzc.sv",
+    "exists": true
+  },
+  {
+    "line": 123,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/rr_arb_tree.sv",
+    "exists": true
+  },
+  {
+    "line": 124,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/shift_reg.sv",
+    "exists": true
+  },
+  {
+    "line": 125,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/unread.sv",
+    "exists": true
+  },
+  {
+    "line": 126,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/popcount.sv",
+    "exists": true
+  },
+  {
+    "line": 127,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/exp_backoff.sv",
+    "exists": true
+  },
+  {
+    "line": 130,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/counter.sv",
+    "exists": true
+  },
+  {
+    "line": 131,
+    "kind": "source",
+    "path": "vendor/pulp-platform/common_cells/src/delta_counter.sv",
+    "exists": true
+  },
+  {
+    "line": 134,
+    "kind": "source",
+    "path": "core/cva6.sv",
+    "exists": true
+  },
+  {
+    "line": 135,
+    "kind": "source",
+    "path": "core/cva6_rvfi_probes.sv",
+    "exists": true
+  },
+  {
+    "line": 136,
+    "kind": "source",
+    "path": "core/alu.sv",
+    "exists": true
+  },
+  {
+    "line": 137,
+    "kind": "source",
+    "path": "core/alu_wrapper.sv",
+    "exists": true
+  },
+  {
+    "line": 138,
+    "kind": "source",
+    "path": "core/aes.sv",
+    "exists": true
+  },
+  {
+    "line": 140,
+    "kind": "source",
+    "path": "core/fpu_wrap.sv",
+    "exists": true
+  },
+  {
+    "line": 141,
+    "kind": "source",
+    "path": "core/branch_unit.sv",
+    "exists": true
+  },
+  {
+    "line": 142,
+    "kind": "source",
+    "path": "core/compressed_decoder.sv",
+    "exists": true
+  },
+  {
+    "line": 143,
+    "kind": "source",
+    "path": "core/macro_decoder.sv",
+    "exists": true
+  },
+  {
+    "line": 144,
+    "kind": "source",
+    "path": "core/controller.sv",
+    "exists": true
+  },
+  {
+    "line": 145,
+    "kind": "source",
+    "path": "core/zcmt_decoder.sv",
+    "exists": true
+  },
+  {
+    "line": 146,
+    "kind": "source",
+    "path": "core/csr_buffer.sv",
+    "exists": true
+  },
+  {
+    "line": 147,
+    "kind": "source",
+    "path": "core/csr_regfile.sv",
+    "exists": true
+  },
+  {
+    "line": 148,
+    "kind": "source",
+    "path": "core/trigger_module.sv",
+    "exists": true
+  },
+  {
+    "line": 149,
+    "kind": "source",
+    "path": "core/decoder.sv",
+    "exists": true
+  },
+  {
+    "line": 150,
+    "kind": "source",
+    "path": "core/ex_stage.sv",
+    "exists": true
+  },
+  {
+    "line": 151,
+    "kind": "source",
+    "path": "core/instr_realign.sv",
+    "exists": true
+  },
+  {
+    "line": 152,
+    "kind": "source",
+    "path": "core/id_stage.sv",
+    "exists": true
+  },
+  {
+    "line": 153,
+    "kind": "source",
+    "path": "core/issue_read_operands.sv",
+    "exists": true
+  },
+  {
+    "line": 154,
+    "kind": "source",
+    "path": "core/issue_stage.sv",
+    "exists": true
+  },
+  {
+    "line": 155,
+    "kind": "source",
+    "path": "core/load_unit.sv",
+    "exists": true
+  },
+  {
+    "line": 156,
+    "kind": "source",
+    "path": "core/load_store_unit.sv",
+    "exists": true
+  },
+  {
+    "line": 157,
+    "kind": "source",
+    "path": "core/lsu_bypass.sv",
+    "exists": true
+  },
+  {
+    "line": 158,
+    "kind": "source",
+    "path": "core/mult.sv",
+    "exists": true
+  },
+  {
+    "line": 159,
+    "kind": "source",
+    "path": "core/multiplier.sv",
+    "exists": true
+  },
+  {
+    "line": 160,
+    "kind": "source",
+    "path": "core/serdiv.sv",
+    "exists": true
+  },
+  {
+    "line": 161,
+    "kind": "source",
+    "path": "core/perf_counters.sv",
+    "exists": true
+  },
+  {
+    "line": 162,
+    "kind": "source",
+    "path": "core/ariane_regfile_ff.sv",
+    "exists": true
+  },
+  {
+    "line": 163,
+    "kind": "source",
+    "path": "core/ariane_regfile_fpga.sv",
+    "exists": true
+  },
+  {
+    "line": 165,
+    "kind": "source",
+    "path": "core/scoreboard.sv",
+    "exists": true
+  },
+  {
+    "line": 166,
+    "kind": "source",
+    "path": "core/raw_checker.sv",
+    "exists": true
+  },
+  {
+    "line": 167,
+    "kind": "source",
+    "path": "core/store_buffer.sv",
+    "exists": true
+  },
+  {
+    "line": 168,
+    "kind": "source",
+    "path": "core/amo_buffer.sv",
+    "exists": true
+  },
+  {
+    "line": 169,
+    "kind": "source",
+    "path": "core/store_unit.sv",
+    "exists": true
+  },
+  {
+    "line": 170,
+    "kind": "source",
+    "path": "core/commit_stage.sv",
+    "exists": true
+  },
+  {
+    "line": 171,
+    "kind": "source",
+    "path": "core/axi_shim.sv",
+    "exists": true
+  },
+  {
+    "line": 172,
+    "kind": "source",
+    "path": "core/cva6_accel_first_pass_decoder_stub.sv",
+    "exists": true
+  },
+  {
+    "line": 173,
+    "kind": "source",
+    "path": "core/acc_dispatcher.sv",
+    "exists": true
+  },
+  {
+    "line": 174,
+    "kind": "source",
+    "path": "core/cva6_fifo_v3.sv",
+    "exists": true
+  },
+  {
+    "line": 177,
+    "kind": "source",
+    "path": "core/frontend/btb.sv",
+    "exists": true
+  },
+  {
+    "line": 178,
+    "kind": "source",
+    "path": "core/frontend/bht.sv",
+    "exists": true
+  },
+  {
+    "line": 179,
+    "kind": "source",
+    "path": "core/frontend/bht2lvl.sv",
+    "exists": true
+  },
+  {
+    "line": 180,
+    "kind": "source",
+    "path": "core/frontend/ras.sv",
+    "exists": true
+  },
+  {
+    "line": 181,
+    "kind": "source",
+    "path": "core/frontend/instr_scan.sv",
+    "exists": true
+  },
+  {
+    "line": 182,
+    "kind": "source",
+    "path": "core/frontend/instr_queue.sv",
+    "exists": true
+  },
+  {
+    "line": 183,
+    "kind": "source",
+    "path": "core/frontend/frontend.sv",
+    "exists": true
+  },
+  {
+    "line": 186,
+    "kind": "source",
+    "path": "core/cache_subsystem/wt_dcache_ctrl.sv",
+    "exists": true
+  },
+  {
+    "line": 187,
+    "kind": "source",
+    "path": "core/cache_subsystem/wt_dcache_mem.sv",
+    "exists": true
+  },
+  {
+    "line": 188,
+    "kind": "source",
+    "path": "core/cache_subsystem/wt_dcache_missunit.sv",
+    "exists": true
+  },
+  {
+    "line": 189,
+    "kind": "source",
+    "path": "core/cache_subsystem/wt_dcache_wbuffer.sv",
+    "exists": true
+  },
+  {
+    "line": 190,
+    "kind": "source",
+    "path": "core/cache_subsystem/wt_dcache.sv",
+    "exists": true
+  },
+  {
+    "line": 191,
+    "kind": "source",
+    "path": "core/cache_subsystem/cva6_icache.sv",
+    "exists": true
+  },
+  {
+    "line": 192,
+    "kind": "source",
+    "path": "core/cache_subsystem/wt_cache_subsystem.sv",
+    "exists": true
+  },
+  {
+    "line": 193,
+    "kind": "source",
+    "path": "core/cache_subsystem/wt_axi_adapter.sv",
+    "exists": true
+  },
+  {
+    "line": 194,
+    "kind": "source",
+    "path": "core/cache_subsystem/tag_cmp.sv",
+    "exists": true
+  },
+  {
+    "line": 195,
+    "kind": "source",
+    "path": "core/cache_subsystem/axi_adapter.sv",
+    "exists": true
+  },
+  {
+    "line": 196,
+    "kind": "source",
+    "path": "core/cache_subsystem/miss_handler.sv",
+    "exists": true
+  },
+  {
+    "line": 197,
+    "kind": "source",
+    "path": "core/cache_subsystem/cache_ctrl.sv",
+    "exists": true
+  },
+  {
+    "line": 198,
+    "kind": "source",
+    "path": "core/cache_subsystem/cva6_icache_axi_wrapper.sv",
+    "exists": true
+  },
+  {
+    "line": 199,
+    "kind": "source",
+    "path": "core/cache_subsystem/std_cache_subsystem.sv",
+    "exists": true
+  },
+  {
+    "line": 200,
+    "kind": "source",
+    "path": "core/cache_subsystem/std_nbdcache.sv",
+    "exists": true
+  },
+  {
+    "line": 201,
+    "kind": "source",
+    "path": "-F /home/dungpc9/ndmoney4porche/projects/cva6/core/cache_subsystem/hpdcache/rtl/hpdcache.Flist",
+    "exists": false
+  },
+  {
+    "line": 202,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/utils/ecc/prim_secded_36_29_dec.sv",
+    "exists": false
+  },
+  {
+    "line": 203,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/utils/ecc/prim_secded_36_29_enc.sv",
+    "exists": false
+  },
+  {
+    "line": 204,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/utils/ecc/prim_secded_39_32_dec.sv",
+    "exists": false
+  },
+  {
+    "line": 205,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/utils/ecc/prim_secded_39_32_enc.sv",
+    "exists": false
+  },
+  {
+    "line": 206,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/utils/ecc/prim_secded_55_48_dec.sv",
+    "exists": false
+  },
+  {
+    "line": 207,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/utils/ecc/prim_secded_55_48_enc.sv",
+    "exists": false
+  },
+  {
+    "line": 208,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/utils/ecc/prim_secded_72_64_dec.sv",
+    "exists": false
+  },
+  {
+    "line": 209,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/utils/ecc/prim_secded_72_64_enc.sv",
+    "exists": false
+  },
+  {
+    "line": 210,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/utils/ecc/prim_secded_pkg.sv",
+    "exists": false
+  },
+  {
+    "line": 211,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/utils/hpdcache_mem_resp_demux.sv",
+    "exists": false
+  },
+  {
+    "line": 212,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/utils/hpdcache_mem_to_axi_read.sv",
+    "exists": false
+  },
+  {
+    "line": 213,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/utils/hpdcache_mem_to_axi_write.sv",
+    "exists": false
+  },
+  {
+    "line": 214,
+    "kind": "source",
+    "path": "core/include/dummy_l15_pkg.sv",
+    "exists": true
+  },
+  {
+    "line": 215,
+    "kind": "source",
+    "path": "core/cache_subsystem/cva6_hpdcache_subsystem.sv",
+    "exists": true
+  },
+  {
+    "line": 216,
+    "kind": "source",
+    "path": "core/cache_subsystem/cva6_hpdcache_subsystem_axi_arbiter.sv",
+    "exists": true
+  },
+  {
+    "line": 217,
+    "kind": "source",
+    "path": "core/cache_subsystem/cva6_hpdcache_if_adapter.sv",
+    "exists": true
+  },
+  {
+    "line": 218,
+    "kind": "source",
+    "path": "core/cache_subsystem/cva6_hpdcache_wrapper.sv",
+    "exists": true
+  },
+  {
+    "line": 219,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/common/macros/behav/hpdcache_sram_1rw.sv",
+    "exists": false
+  },
+  {
+    "line": 220,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/common/macros/behav/hpdcache_sram_wbyteenable_1rw.sv",
+    "exists": false
+  },
+  {
+    "line": 221,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/common/macros/behav/hpdcache_sram_wmask_1rw.sv",
+    "exists": false
+  },
+  {
+    "line": 222,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/common/macros/behav/hpdcache_sram_ecc_1rw.sv",
+    "exists": false
+  },
+  {
+    "line": 223,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/common/macros/behav/hpdcache_sram_wbyteenable_ecc_1rw.sv",
+    "exists": false
+  },
+  {
+    "line": 224,
+    "kind": "source",
+    "path": "core/cache_subsystem/hpdcache/rtl/src/common/macros/behav/hpdcache_sram_wmask_ecc_1rw.sv",
+    "exists": false
+  },
+  {
+    "line": 228,
+    "kind": "source",
+    "path": "core/pmp/src/pmp.sv",
+    "exists": true
+  },
+  {
+    "line": 229,
+    "kind": "source",
+    "path": "core/pmp/src/pmp_entry.sv",
+    "exists": true
+  },
+  {
+    "line": 230,
+    "kind": "source",
+    "path": "core/pmp/src/pmp_data_if.sv",
+    "exists": true
+  },
+  {
+    "line": 233,
+    "kind": "source",
+    "path": "common/local/util/instr_tracer.sv",
+    "exists": true
+  },
+  {
+    "line": 234,
+    "kind": "source",
+    "path": "common/local/util/tc_sram_wrapper.sv",
+    "exists": true
+  },
+  {
+    "line": 235,
+    "kind": "source",
+    "path": "common/local/util/tc_sram_wrapper_cache_techno.sv",
+    "exists": true
+  },
+  {
+    "line": 236,
+    "kind": "source",
+    "path": "vendor/pulp-platform/tech_cells_generic/src/rtl/tc_sram.sv",
+    "exists": true
+  },
+  {
+    "line": 237,
+    "kind": "source",
+    "path": "common/local/util/sram.sv",
+    "exists": true
+  },
+  {
+    "line": 238,
+    "kind": "source",
+    "path": "common/local/util/sram_cache.sv",
+    "exists": true
+  },
+  {
+    "line": 241,
+    "kind": "source",
+    "path": "core/cva6_mmu/cva6_mmu.sv",
+    "exists": true
+  },
+  {
+    "line": 242,
+    "kind": "source",
+    "path": "core/cva6_mmu/cva6_ptw.sv",
+    "exists": true
+  },
+  {
+    "line": 243,
+    "kind": "source",
+    "path": "core/cva6_mmu/cva6_tlb.sv",
+    "exists": true
+  },
+  {
+    "line": 244,
+    "kind": "source",
+    "path": "core/cva6_mmu/cva6_shared_tlb.sv",
+    "exists": true
+  }
+]

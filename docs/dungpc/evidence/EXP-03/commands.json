@@ -1,0 +1,45 @@
+[
+  {
+    "label": "version",
+    "command": [
+      "vsim",
+      "-version"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "library",
+    "command": [
+      "vlib",
+      "work"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "compile",
+    "command": [
+      "vlog",
+      "-sv",
+      "-work",
+      "work",
+      "/home/dungpc9/ndmoney4porche/projects/cva6/core/include/config_pkg.sv",
+      "/home/dungpc9/ndmoney4porche/projects/cva6/core/include/cv64a6_imafdc_sv39_config_pkg.sv",
+      "/home/dungpc9/ndmoney4porche/projects/cva6/core/include/build_config_pkg.sv",
+      "/home/dungpc9/ndmoney4porche/projects/cva6/docs/dungpc/evidence/tb_config.sv"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "positive",
+    "command": [
+      "vsim",
+      "-c",
+      "-onfinish",
+      "stop",
+      "work.tb_config",
+      "-do",
+      "onerror {quit -code 1}; run -all; quit -code 0"
+    ],
+    "exit": 4
+  }
+]

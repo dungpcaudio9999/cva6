@@ -1,0 +1,852 @@
+[
+  {
+    "directory": ".editorconfig",
+    "extension": "",
+    "count": 1
+  },
+  {
+    "directory": ".github",
+    "extension": ".html",
+    "count": 1
+  },
+  {
+    "directory": ".github",
+    "extension": ".md",
+    "count": 1
+  },
+  {
+    "directory": ".github",
+    "extension": ".py",
+    "count": 3
+  },
+  {
+    "directory": ".github",
+    "extension": ".sh",
+    "count": 1
+  },
+  {
+    "directory": ".github",
+    "extension": ".svg",
+    "count": 1
+  },
+  {
+    "directory": ".github",
+    "extension": ".yaml",
+    "count": 3
+  },
+  {
+    "directory": ".github",
+    "extension": ".yml",
+    "count": 11
+  },
+  {
+    "directory": ".gitignore",
+    "extension": "",
+    "count": 1
+  },
+  {
+    "directory": ".gitlab-ci",
+    "extension": ".md",
+    "count": 1
+  },
+  {
+    "directory": ".gitlab-ci",
+    "extension": ".py",
+    "count": 14
+  },
+  {
+    "directory": ".gitlab-ci",
+    "extension": ".yml",
+    "count": 2
+  },
+  {
+    "directory": ".gitlab-ci.yml",
+    "extension": ".yml",
+    "count": 1
+  },
+  {
+    "directory": ".gitmodules",
+    "extension": "",
+    "count": 1
+  },
+  {
+    "directory": ".readthedocs.yaml",
+    "extension": ".yaml",
+    "count": 1
+  },
+  {
+    "directory": "ACKNOWLEDGEMENTS.md",
+    "extension": ".md",
+    "count": 1
+  },
+  {
+    "directory": "Bender.yml",
+    "extension": ".yml",
+    "count": 1
+  },
+  {
+    "directory": "CHANGELOG.md",
+    "extension": ".md",
+    "count": 1
+  },
+  {
+    "directory": "CITATION.cff",
+    "extension": ".cff",
+    "count": 1
+  },
+  {
+    "directory": "CODEOWNERS",
+    "extension": "",
+    "count": 1
+  },
+  {
+    "directory": "CONTRIBUTING.md",
+    "extension": ".md",
+    "count": 1
+  },
+  {
+    "directory": "Flist.ariane",
+    "extension": ".ariane",
+    "count": 1
+  },
+  {
+    "directory": "LICENSE",
+    "extension": "",
+    "count": 1
+  },
+  {
+    "directory": "LICENSE.Berkeley",
+    "extension": ".Berkeley",
+    "count": 1
+  },
+  {
+    "directory": "LICENSE.SiFive",
+    "extension": ".SiFive",
+    "count": 1
+  },
+  {
+    "directory": "Makefile",
+    "extension": "",
+    "count": 1
+  },
+  {
+    "directory": "README.md",
+    "extension": ".md",
+    "count": 1
+  },
+  {
+    "directory": "RESOURCES.md",
+    "extension": ".md",
+    "count": 1
+  },
+  {
+    "directory": "SECURITY.md",
+    "extension": ".md",
+    "count": 1
+  },
+  {
+    "directory": "ariane.core",
+    "extension": ".core",
+    "count": 1
+  },
+  {
+    "directory": "ci",
+    "extension": ".config",
+    "count": 2
+  },
+  {
+    "directory": "ci",
+    "extension": ".list",
+    "count": 5
+  },
+  {
+    "directory": "ci",
+    "extension": ".patch",
+    "count": 1
+  },
+  {
+    "directory": "ci",
+    "extension": ".sh",
+    "count": 16
+  },
+  {
+    "directory": "common",
+    "extension": ".sv",
+    "count": 9
+  },
+  {
+    "directory": "common",
+    "extension": ".svh",
+    "count": 2
+  },
+  {
+    "directory": "config",
+    "extension": "",
+    "count": 1
+  },
+  {
+    "directory": "config",
+    "extension": ".adoc",
+    "count": 2
+  },
+  {
+    "directory": "config",
+    "extension": ".ld",
+    "count": 3
+  },
+  {
+    "directory": "config",
+    "extension": ".mako",
+    "count": 1
+  },
+  {
+    "directory": "config",
+    "extension": ".md",
+    "count": 2
+  },
+  {
+    "directory": "config",
+    "extension": ".py",
+    "count": 6
+  },
+  {
+    "directory": "config",
+    "extension": ".rst",
+    "count": 2
+  },
+  {
+    "directory": "config",
+    "extension": ".txt",
+    "count": 1
+  },
+  {
+    "directory": "config",
+    "extension": ".yaml",
+    "count": 16
+  },
+  {
+    "directory": "core",
+    "extension": "",
+    "count": 2
+  },
+  {
+    "directory": "core",
+    "extension": ".cva6",
+    "count": 1
+  },
+  {
+    "directory": "core",
+    "extension": ".cva6_gate",
+    "count": 1
+  },
+  {
+    "directory": "core",
+    "extension": ".md",
+    "count": 1
+  },
+  {
+    "directory": "core",
+    "extension": ".rlx",
+    "count": 1
+  },
+  {
+    "directory": "core",
+    "extension": ".sby",
+    "count": 1
+  },
+  {
+    "directory": "core",
+    "extension": ".sv",
+    "count": 116
+  },
+  {
+    "directory": "core",
+    "extension": ".svh",
+    "count": 2
+  },
+  {
+    "directory": "core",
+    "extension": ".yml",
+    "count": 1
+  },
+  {
+    "directory": "corev_apu",
+    "extension": "",
+    "count": 38
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".PNG",
+    "count": 1
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".S",
+    "count": 4
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".c",
+    "count": 12
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".cc",
+    "count": 5
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".cfg",
+    "count": 5
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".cpp",
+    "count": 3
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".csv",
+    "count": 5
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".do",
+    "count": 5
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".dts",
+    "count": 1
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".h",
+    "count": 28
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".hex",
+    "count": 1
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".in",
+    "count": 4
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".ld",
+    "count": 2
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".lds",
+    "count": 2
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".licence",
+    "count": 1
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".list",
+    "count": 5
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".md",
+    "count": 6
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".mk",
+    "count": 1
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".png",
+    "count": 5
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".prj",
+    "count": 4
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".py",
+    "count": 8
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".sdc",
+    "count": 1
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".sh",
+    "count": 7
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".sv",
+    "count": 66
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".svg",
+    "count": 30
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".svh",
+    "count": 10
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".tcl",
+    "count": 27
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".v",
+    "count": 3
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".vhd",
+    "count": 1
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".xdc",
+    "count": 6
+  },
+  {
+    "directory": "corev_apu",
+    "extension": ".yml",
+    "count": 1
+  },
+  {
+    "directory": "docs",
+    "extension": "",
+    "count": 8
+  },
+  {
+    "directory": "docs",
+    "extension": ".adoc",
+    "count": 84
+  },
+  {
+    "directory": "docs",
+    "extension": ".ai",
+    "count": 1
+  },
+  {
+    "directory": "docs",
+    "extension": ".css",
+    "count": 1
+  },
+  {
+    "directory": "docs",
+    "extension": ".jpg",
+    "count": 1
+  },
+  {
+    "directory": "docs",
+    "extension": ".md",
+    "count": 10
+  },
+  {
+    "directory": "docs",
+    "extension": ".mk",
+    "count": 2
+  },
+  {
+    "directory": "docs",
+    "extension": ".pdf",
+    "count": 6
+  },
+  {
+    "directory": "docs",
+    "extension": ".png",
+    "count": 132
+  },
+  {
+    "directory": "docs",
+    "extension": ".py",
+    "count": 5
+  },
+  {
+    "directory": "docs",
+    "extension": ".rst",
+    "count": 67
+  },
+  {
+    "directory": "docs",
+    "extension": ".svg",
+    "count": 8
+  },
+  {
+    "directory": "docs",
+    "extension": ".txt",
+    "count": 1
+  },
+  {
+    "directory": "docs",
+    "extension": ".wave",
+    "count": 1
+  },
+  {
+    "directory": "docs",
+    "extension": ".xml",
+    "count": 2
+  },
+  {
+    "directory": "docs",
+    "extension": ".yaml",
+    "count": 2
+  },
+  {
+    "directory": "docs",
+    "extension": ".yml",
+    "count": 1
+  },
+  {
+    "directory": "pd",
+    "extension": "",
+    "count": 2
+  },
+  {
+    "directory": "pd",
+    "extension": ".py",
+    "count": 1
+  },
+  {
+    "directory": "pd",
+    "extension": ".sv",
+    "count": 3
+  },
+  {
+    "directory": "pd",
+    "extension": ".tcl",
+    "count": 4
+  },
+  {
+    "directory": "perf-model",
+    "extension": ".md",
+    "count": 1
+  },
+  {
+    "directory": "perf-model",
+    "extension": ".py",
+    "count": 4
+  },
+  {
+    "directory": "spyglass",
+    "extension": "",
+    "count": 1
+  },
+  {
+    "directory": "spyglass",
+    "extension": ".awl",
+    "count": 1
+  },
+  {
+    "directory": "spyglass",
+    "extension": ".rpt",
+    "count": 1
+  },
+  {
+    "directory": "spyglass",
+    "extension": ".sgdc",
+    "count": 1
+  },
+  {
+    "directory": "spyglass",
+    "extension": ".tcl",
+    "count": 2
+  },
+  {
+    "directory": "src_files.yml",
+    "extension": ".yml",
+    "count": 1
+  },
+  {
+    "directory": "tutorials",
+    "extension": ".md",
+    "count": 3
+  },
+  {
+    "directory": "util",
+    "extension": "",
+    "count": 2
+  },
+  {
+    "directory": "util",
+    "extension": ".do",
+    "count": 2
+  },
+  {
+    "directory": "util",
+    "extension": ".md",
+    "count": 3
+  },
+  {
+    "directory": "util",
+    "extension": ".patch",
+    "count": 1
+  },
+  {
+    "directory": "util",
+    "extension": ".py",
+    "count": 4
+  },
+  {
+    "directory": "util",
+    "extension": ".sh",
+    "count": 10
+  },
+  {
+    "directory": "vendor",
+    "extension": "",
+    "count": 23
+  },
+  {
+    "directory": "vendor",
+    "extension": ".cfg",
+    "count": 1
+  },
+  {
+    "directory": "vendor",
+    "extension": ".css",
+    "count": 2
+  },
+  {
+    "directory": "vendor",
+    "extension": ".hjson",
+    "count": 12
+  },
+  {
+    "directory": "vendor",
+    "extension": ".html",
+    "count": 3
+  },
+  {
+    "directory": "vendor",
+    "extension": ".in",
+    "count": 1
+  },
+  {
+    "directory": "vendor",
+    "extension": ".md",
+    "count": 17
+  },
+  {
+    "directory": "vendor",
+    "extension": ".patch",
+    "count": 6
+  },
+  {
+    "directory": "vendor",
+    "extension": ".png",
+    "count": 2
+  },
+  {
+    "directory": "vendor",
+    "extension": ".py",
+    "count": 11
+  },
+  {
+    "directory": "vendor",
+    "extension": ".rst",
+    "count": 12
+  },
+  {
+    "directory": "vendor",
+    "extension": ".sh",
+    "count": 1
+  },
+  {
+    "directory": "vendor",
+    "extension": ".sv",
+    "count": 153
+  },
+  {
+    "directory": "vendor",
+    "extension": ".svh",
+    "count": 4
+  },
+  {
+    "directory": "vendor",
+    "extension": ".tcl",
+    "count": 7
+  },
+  {
+    "directory": "vendor",
+    "extension": ".txt",
+    "count": 4
+  },
+  {
+    "directory": "vendor",
+    "extension": ".yaml",
+    "count": 16
+  },
+  {
+    "directory": "verif",
+    "extension": "",
+    "count": 13
+  },
+  {
+    "directory": "verif",
+    "extension": ".S",
+    "count": 155
+  },
+  {
+    "directory": "verif",
+    "extension": ".adoc",
+    "count": 1
+  },
+  {
+    "directory": "verif",
+    "extension": ".bat",
+    "count": 1
+  },
+  {
+    "directory": "verif",
+    "extension": ".c",
+    "count": 18
+  },
+  {
+    "directory": "verif",
+    "extension": ".cpp",
+    "count": 1
+  },
+  {
+    "directory": "verif",
+    "extension": ".cva6_tb",
+    "count": 1
+  },
+  {
+    "directory": "verif",
+    "extension": ".do",
+    "count": 3
+  },
+  {
+    "directory": "verif",
+    "extension": ".dts",
+    "count": 1
+  },
+  {
+    "directory": "verif",
+    "extension": ".f",
+    "count": 1
+  },
+  {
+    "directory": "verif",
+    "extension": ".flist",
+    "count": 3
+  },
+  {
+    "directory": "verif",
+    "extension": ".h",
+    "count": 16
+  },
+  {
+    "directory": "verif",
+    "extension": ".hvp",
+    "count": 1
+  },
+  {
+    "directory": "verif",
+    "extension": ".ld",
+    "count": 5
+  },
+  {
+    "directory": "verif",
+    "extension": ".lst",
+    "count": 1
+  },
+  {
+    "directory": "verif",
+    "extension": ".md",
+    "count": 24
+  },
+  {
+    "directory": "verif",
+    "extension": ".o",
+    "count": 1
+  },
+  {
+    "directory": "verif",
+    "extension": ".patch",
+    "count": 5
+  },
+  {
+    "directory": "verif",
+    "extension": ".png",
+    "count": 1
+  },
+  {
+    "directory": "verif",
+    "extension": ".py",
+    "count": 6
+  },
+  {
+    "directory": "verif",
+    "extension": ".rst",
+    "count": 9
+  },
+  {
+    "directory": "verif",
+    "extension": ".sh",
+    "count": 49
+  },
+  {
+    "directory": "verif",
+    "extension": ".sv",
+    "count": 100
+  },
+  {
+    "directory": "verif",
+    "extension": ".svg",
+    "count": 2
+  },
+  {
+    "directory": "verif",
+    "extension": ".svh",
+    "count": 2
+  },
+  {
+    "directory": "verif",
+    "extension": ".txt",
+    "count": 5
+  },
+  {
+    "directory": "verif",
+    "extension": ".wave",
+    "count": 1
+  },
+  {
+    "directory": "verif",
+    "extension": ".xlsx",
+    "count": 1
+  },
+  {
+    "directory": "verif",
+    "extension": ".yaml",
+    "count": 40
+  },
+  {
+    "directory": "verif",
+    "extension": ".yml",
+    "count": 91
+  },
+  {
+    "directory": "verilator_config.vlt",
+    "extension": ".vlt",
+    "count": 1
+  }
+]

@@ -1,0 +1,599 @@
+#x HLBEGIN S.1
+#x {{COLOR=>1;}}
+#x 358 { @@n 3 a 0 @@p 3 a 0 }
+#x HLEND
+#x HLBEGIN S.2
+#x {{COLOR=>1;}}
+#x 358 { @@n 36 a 0 @@p 36 a 0 }
+#x HLEND
+#x HLBEGIN S.3
+#x {{COLOR=>1;}}
+#x 358 { @@n 69 a 0 @@p 69 a 0 }
+#x HLEND
+#x HLBEGIN S.4
+#x {{COLOR=>1;}}
+#x 358 { @@n 73 a 0 @@p 73 a 0 }
+#x HLEND
+#x HLBEGIN S.5
+#x {{COLOR=>1;}}
+#x 358 { @@n 75 a 0 @@p 75 a 0 }
+#x HLEND
+#x HLBEGIN S.6
+#x {{COLOR=>1;}}
+#x 358 { @@n 77 a 0 @@p 77 a 0 }
+#x HLEND
+#x HLBEGIN S.7
+#x {{COLOR=>1;}}
+#x 358 { @@n 109 a 0 @@p 109 a 0 }
+#x HLEND
+#x HLBEGIN S.8
+#x {{COLOR=>1;}}
+#x 358 { @@n 111 a 0 @@p 111 a 0 }
+#x HLEND
+#x HLBEGIN S.9
+#x {{COLOR=>1;}}
+#x 358 { @@n 144 a 0 @@p 144 a 0 }
+#x HLEND
+#x HLBEGIN S.10
+#x {{COLOR=>1;}}
+#x 358 { @@n 178 a 0 @@p 178 a 0 }
+#x HLEND
+#x HLBEGIN S.11
+#x {{COLOR=>1;}}
+#x 358 { @@n 179 a 0 @@p 179 a 0 }
+#x HLEND
+#x HLBEGIN S.12
+#x {{COLOR=>1;}}
+#x 358 { @@n 275 a 0 @@p 275 a 0 }
+#x HLEND
+#x HLBEGIN S.13
+#x {{COLOR=>1;}}
+#x 358 { @@n 307 a 0 @@p 307 a 0 }
+#x HLEND
+#x HLBEGIN S.14
+#x {{COLOR=>1;}}
+#x 358 { @@n 309 a 0 @@p 309 a 0 }
+#x HLEND
+#x HLBEGIN S.15
+#x {{COLOR=>1;}}
+#x 358 { @@n 313 a 0 @@p 313 a 0 }
+#x HLEND
+#x HLBEGIN S.16
+#x {{COLOR=>1;}}
+#x 358 { @@n 317 a 0 @@p 317 a 0 }
+#x HLEND
+#x HLBEGIN S.17
+#x {{COLOR=>1;}}
+#x 358 { @@n 349 a 0 @@p 349 a 0 }
+#x HLEND
+#x HLBEGIN S.18
+#x {{COLOR=>1;}}
+#x 358 { @@n 351 a 0 @@p 351 a 0 }
+#x HLEND
+#x HLBEGIN S.19
+#x {{COLOR=>1;}}
+#x 358 { @@n 352 a 0 @@p 352 a 0 }
+#x HLEND
+#x HLBEGIN S.20
+#x {{COLOR=>1;}}
+#x 358 { @@n 384 a 0 @@p 384 a 0 }
+#x HLEND
+#x HLBEGIN S.21
+#x {{COLOR=>1;}}
+#x 358 { @@n 385 a 0 @@p 385 a 0 }
+#x HLEND
+#x HLBEGIN S.22
+#x {{COLOR=>1;}}
+#x 358 { @@n 386 a 0 @@p 386 a 0 }
+#x HLEND
+#x HLBEGIN S.23
+#x {{COLOR=>1;}}
+#x 358 { @@n 418 a 0 @@p 418 a 0 }
+#x HLEND
+#x HLBEGIN S.24
+#x {{COLOR=>1;}}
+#x 358 { @@n 423 a 0 @@p 423 a 0 }
+#x HLEND
+#x HLBEGIN S.25
+#x {{COLOR=>1;}}
+#x 358 { @@n 428 a 0 @@p 428 a 0 }
+#x HLEND
+#x HLBEGIN S.26
+#x {{COLOR=>1;}}
+#x 358 { @@n 433 a 0 @@p 433 a 0 }
+#x HLEND
+#x HLBEGIN S.27
+#x {{COLOR=>1;}}
+#x 358 { @@n 441 a 0 @@p 441 a 0 }
+#x HLEND
+#x HLBEGIN S.28
+#x {{COLOR=>1;}}
+#x 358 { @@n 473 a 0 @@p 473 a 0 }
+#x HLEND
+#x HLBEGIN S.29
+#x {{COLOR=>1;}}
+#x 358 { @@n 505 a 0 @@p 505 a 0 }
+#x HLEND
+#x HLBEGIN S.30
+#x {{COLOR=>1;}}
+#x 358 { @@n 537 a 0 @@p 537 a 0 }
+#x HLEND
+#x HLBEGIN S.31
+#x {{COLOR=>1;}}
+#x 358 { @@n 538 a 0 @@p 538 a 0 }
+#x HLEND
+#x HLBEGIN S.32
+#x {{COLOR=>1;}}
+#x 358 { @@n 570 a 0 @@p 570 a 0 }
+#x HLEND
+#x HLBEGIN S.33
+#x {{COLOR=>1;}}
+#x 358 { @@n 571 a 0 @@p 571 a 0 }
+#x HLEND
+#x HLBEGIN S.34
+#x {{COLOR=>1;}}
+#x 358 { @@n 572 a 0 @@p 572 a 0 }
+#x HLEND
+#x HLBEGIN S.35
+#x {{COLOR=>1;}}
+#x 358 { @@n 573 a 0 @@p 573 a 0 }
+#x HLEND
+#x HLBEGIN S.36
+#x {{COLOR=>1;}}
+#x 358 { @@n 575 a 0 @@p 575 a 0 }
+#x HLEND
+#x HLBEGIN S.37
+#x {{COLOR=>1;}}
+#x 358 { @@n 3140 a 0 @@p 3140 a 0 }
+#x HLEND
+#x HLBEGIN S.38
+#x {{COLOR=>1;}}
+#x 358 { @@n 3374 a 0 @@p 3374 a 0 }
+#x HLEND
+#x HLBEGIN S.39
+#x {{COLOR=>1;}}
+#x 358 { @@n 3566 a 0 @@p 3566 a 0 }
+#x HLEND
+#x HLBEGIN S.40
+#x {{COLOR=>1;}}
+#x 358 { @@n 3598 a 0 @@p 3598 a 0 }
+#x HLEND
+#x HLBEGIN S.41
+#x {{COLOR=>1;}}
+#x 358 { @@n 3662 a 0 @@p 3662 a 0 }
+#x HLEND
+#x HLBEGIN S.42
+#x {{COLOR=>1;}}
+#x 358 { @@n 3694 a 0 @@p 3694 a 0 }
+#x HLEND
+#x HLBEGIN S.43
+#x {{COLOR=>1;}}
+#x 358 { @@n 3726 a 0 @@p 3726 a 0 }
+#x HLEND
+#x HLBEGIN S.44
+#x {{COLOR=>1;}}
+#x 358 { @@n 3758 a 0 @@p 3758 a 0 }
+#x HLEND
+#x HLBEGIN S.45
+#x {{COLOR=>1;}}
+#x 358 { @@n 3790 a 0 @@p 3790 a 0 }
+#x HLEND
+#x HLBEGIN S.46
+#x {{COLOR=>1;}}
+#x 358 { @@n 3822 a 0 @@p 3822 a 0 }
+#x HLEND
+#x HLBEGIN S.47
+#x {{COLOR=>1;}}
+#x 358 { @@n 3854 a 0 @@p 3854 a 0 }
+#x HLEND
+#x HLBEGIN S.48
+#x {{COLOR=>1;}}
+#x 358 { @@n 4046 a 0 @@p 4046 a 0 }
+#x HLEND
+#x HLBEGIN S.49
+#x {{COLOR=>1;}}
+#x 358 { @@n 4110 a 0 @@p 4110 a 0 }
+#x HLEND
+#x HLBEGIN S.50
+#x {{COLOR=>1;}}
+#x 358 { @@n 4115 a 0 @@p 4115 a 0 }
+#x HLEND
+#x HLBEGIN S.51
+#x {{COLOR=>1;}}
+#x 358 { @@n 4118 a 0 @@p 4118 a 0 }
+#x HLEND
+#x HLBEGIN S.52
+#x {{COLOR=>1;}}
+#x 358 { @@n 4125 a 0 @@p 4125 a 0 }
+#x HLEND
+#x HLBEGIN S.53
+#x {{COLOR=>1;}}
+#x 358 { @@n 4143 a 0 @@p 4143 a 0 }
+#x HLEND
+#x HLBEGIN S.54
+#x {{COLOR=>1;}}
+#x 358 { @@n 4144 a 0 @@p 4144 a 0 }
+#x HLEND
+#x HLBEGIN S.55
+#x {{COLOR=>1;}}
+#x 358 { @@n 4145 a 0 @@p 4145 a 0 }
+#x HLEND
+#x HLBEGIN S.56
+#x {{COLOR=>1;}}
+#x 358 { @@n 4147 a 0 @@p 4147 a 0 }
+#x HLEND
+#x HLBEGIN S.57
+#x {{COLOR=>1;}}
+#x 358 { @@n 4179 a 0 @@p 4179 a 0 }
+#x HLEND
+#x HLBEGIN S.58
+#x {{COLOR=>1;}}
+#x 358 { @@n 4180 a 0 @@p 4180 a 0 }
+#x HLEND
+#x HLBEGIN S.59
+#x {{COLOR=>1;}}
+#x 358 { @@n 4182 a 0 @@p 4182 a 0 }
+#x HLEND
+#x HLBEGIN S.60
+#x {{COLOR=>1;}}
+#x 358 { @@n 4214 a 0 @@p 4214 a 0 }
+#x HLEND
+#x HLBEGIN S.61
+#x {{COLOR=>1;}}
+#x 358 { @@n 4246 a 0 @@p 4246 a 0 }
+#x HLEND
+#x HLBEGIN S.62
+#x {{COLOR=>1;}}
+#x 358 { @@n 4248 a 0 @@p 4248 a 0 }
+#x HLEND
+#x HLBEGIN S.63
+#x {{COLOR=>1;}}
+#x 358 { @@n 4280 a 0 @@p 4280 a 0 }
+#x HLEND
+#x HLBEGIN S.64
+#x {{COLOR=>1;}}
+#x 358 { @@n 4281 a 0 @@p 4281 a 0 }
+#x HLEND
+#x HLBEGIN S.65
+#x {{COLOR=>1;}}
+#x 358 { @@n 4283 a 0 @@p 4283 a 0 }
+#x HLEND
+#x HLBEGIN S.66
+#x {{COLOR=>1;}}
+#x 358 { @@n 4315 a 0 @@p 4315 a 0 }
+#x HLEND
+#x HLBEGIN S.67
+#x {{COLOR=>1;}}
+#x 358 { @@n 4347 a 0 @@p 4347 a 0 }
+#x HLEND
+#x HLBEGIN S.68
+#x {{COLOR=>1;}}
+#x 358 { @@n 4348 a 0 @@p 4348 a 0 }
+#x HLEND
+#x HLBEGIN S.69
+#x {{COLOR=>1;}}
+#x 358 { @@n 4380 a 0 @@p 4380 a 0 }
+#x HLEND
+#x HLBEGIN S.70
+#x {{COLOR=>1;}}
+#x 358 { @@n 4396 a 0 @@p 4396 a 0 }
+#x HLEND
+#x HLBEGIN S.71
+#x {{COLOR=>1;}}
+#x 358 { @@n 4398 a 0 @@p 4398 a 0 }
+#x HLEND
+#x HLBEGIN S.72
+#x {{COLOR=>1;}}
+#x 358 { @@n 4399 a 0 @@p 4399 a 0 }
+#x HLEND
+#x HLBEGIN S.73
+#x {{COLOR=>1;}}
+#x 358 { @@n 4404 a 0 @@p 4404 a 0 }
+#x HLEND
+#x HLBEGIN S.74
+#x {{COLOR=>1;}}
+#x 358 { @@n 4436 a 0 @@p 4436 a 0 }
+#x HLEND
+#x HLBEGIN S.75
+#x {{COLOR=>1;}}
+#x 358 { @@n 4438 a 0 @@p 4438 a 0 }
+#x HLEND
+#x HLBEGIN S.76
+#x {{COLOR=>1;}}
+#x 358 { @@n 4470 a 0 @@p 4470 a 0 }
+#x HLEND
+#x HLBEGIN S.77
+#x {{COLOR=>1;}}
+#x 358 { @@n 4471 a 0 @@p 4471 a 0 }
+#x HLEND
+#x HLBEGIN S.78
+#x {{COLOR=>1;}}
+#x 358 { @@n 4472 a 0 @@p 4472 a 0 }
+#x HLEND
+#x HLBEGIN S.79
+#x {{COLOR=>1;}}
+#x 358 { @@n 4474 a 0 @@p 4474 a 0 }
+#x HLEND
+#x HLBEGIN S.80
+#x {{COLOR=>1;}}
+#x 358 { @@n 4475 a 0 @@p 4475 a 0 }
+#x HLEND
+#x HLBEGIN S.81
+#x {{COLOR=>1;}}
+#x 358 { @@n 4476 a 0 @@p 4476 a 0 }
+#x HLEND
+#x HLBEGIN S.82
+#x {{COLOR=>1;}}
+#x 358 { @@n 4477 a 0 @@p 4477 a 0 }
+#x HLEND
+#x HLBEGIN S.83
+#x {{COLOR=>1;}}
+#x 358 { @@n 4478 a 0 @@p 4478 a 0 }
+#x HLEND
+#x HLBEGIN S.84
+#x {{COLOR=>1;}}
+#x 358 { @@n 4510 a 0 @@p 4510 a 0 }
+#x HLEND
+#x HLBEGIN S.85
+#x {{COLOR=>1;}}
+#x 358 { @@n 4512 a 0 @@p 4512 a 0 }
+#x HLEND
+#x HLBEGIN S.86
+#x {{COLOR=>1;}}
+#x 358 { @@n 4513 a 0 @@p 4513 a 0 }
+#x HLEND
+#x HLBEGIN S.87
+#x {{COLOR=>1;}}
+#x 358 { @@n 4514 a 0 @@p 4514 a 0 }
+#x HLEND
+#x HLBEGIN S.88
+#x {{COLOR=>1;}}
+#x 358 { @@n 4546 a 0 @@p 4546 a 0 }
+#x HLEND
+#x HLBEGIN S.89
+#x {{COLOR=>1;}}
+#x 358 { @@n 4550 a 0 @@p 4550 a 0 }
+#x HLEND
+#x HLBEGIN S.90
+#x {{COLOR=>1;}}
+#x 358 { @@n 4554 a 0 @@p 4554 a 0 }
+#x HLEND
+#x HLBEGIN S.91
+#x {{COLOR=>1;}}
+#x 358 { @@n 4557 a 0 @@p 4557 a 0 }
+#x HLEND
+#x HLBEGIN S.92
+#x {{COLOR=>1;}}
+#x 358 { @@n 4561 a 0 @@p 4561 a 0 }
+#x HLEND
+#x HLBEGIN S.93
+#x {{COLOR=>1;}}
+#x 358 { @@n 4562 a 0 @@p 4562 a 0 }
+#x HLEND
+#x HLBEGIN S.94
+#x {{COLOR=>1;}}
+#x 358 { @@n 4564 a 0 @@p 4564 a 0 }
+#x HLEND
+#x HLBEGIN S.95
+#x {{COLOR=>1;}}
+#x 358 { @@n 4567 a 0 @@p 4567 a 0 }
+#x HLEND
+#x HLBEGIN S.96
+#x {{COLOR=>1;}}
+#x 358 { @@n 4575 a 0 @@p 4575 a 0 }
+#x HLEND
+#x HLBEGIN S.97
+#x {{COLOR=>1;}}
+#x 358 { @@n 4607 a 0 @@p 4607 a 0 }
+#x HLEND
+#x HLBEGIN S.98
+#x {{COLOR=>1;}}
+#x 358 { @@n 4609 a 0 @@p 4609 a 0 }
+#x HLEND
+#x HLBEGIN S.99
+#x {{COLOR=>1;}}
+#x 358 { @@n 4610 a 0 @@p 4610 a 0 }
+#x HLEND
+#x HLBEGIN S.100
+#x {{COLOR=>1;}}
+#x 358 { @@n 4611 a 0 @@p 4611 a 0 }
+#x HLEND
+#x HLBEGIN S.101
+#x {{COLOR=>1;}}
+#x 358 { @@n 4643 a 0 @@p 4643 a 0 }
+#x HLEND
+#x HLBEGIN S.102
+#x {{COLOR=>1;}}
+#x 358 { @@n 4644 a 0 @@p 4644 a 0 }
+#x HLEND
+#x HLBEGIN S.103
+#x {{COLOR=>1;}}
+#x 358 { @@n 4648 a 0 @@p 4648 a 0 }
+#x HLEND
+#x HLBEGIN S.104
+#x {{COLOR=>1;}}
+#x 358 { @@n 4680 a 0 @@p 4680 a 0 }
+#x HLEND
+#x HLBEGIN S.105
+#x {{COLOR=>1;}}
+#x 358 { @@n 4681 a 0 @@p 4681 a 0 }
+#x HLEND
+#x HLBEGIN S.106
+#x {{COLOR=>1;}}
+#x 358 { @@n 4713 a 0 @@p 4713 a 0 }
+#x HLEND
+#x HLBEGIN S.107
+#x {{COLOR=>1;}}
+#x 358 { @@n 4719 a 0 @@p 4719 a 0 }
+#x HLEND
+#x HLBEGIN S.108
+#x {{COLOR=>1;}}
+#x 358 { @@n 4723 a 0 @@p 4723 a 0 }
+#x HLEND
+#x HLBEGIN S.109
+#x {{COLOR=>1;}}
+#x 358 { @@n 4727 a 0 @@p 4727 a 0 }
+#x HLEND
+#x HLBEGIN S.110
+#x {{COLOR=>1;}}
+#x 358 { @@n 4730 a 0 @@p 4730 a 0 }
+#x HLEND
+#x HLBEGIN S.111
+#x {{COLOR=>1;}}
+#x 358 { @@n 4734 a 0 @@p 4734 a 0 }
+#x HLEND
+#x HLBEGIN S.112
+#x {{COLOR=>1;}}
+#x 358 { @@n 4735 a 0 @@p 4735 a 0 }
+#x HLEND
+#x HLBEGIN S.113
+#x {{COLOR=>1;}}
+#x 358 { @@n 4737 a 0 @@p 4737 a 0 }
+#x HLEND
+#x HLBEGIN S.114
+#x {{COLOR=>1;}}
+#x 358 { @@n 4740 a 0 @@p 4740 a 0 }
+#x HLEND
+#x HLBEGIN S.115
+#x {{COLOR=>1;}}
+#x 358 { @@n 4748 a 0 @@p 4748 a 0 }
+#x HLEND
+#x HLBEGIN S.116
+#x {{COLOR=>1;}}
+#x 358 { @@n 4780 a 0 @@p 4780 a 0 }
+#x HLEND
+#x HLBEGIN S.117
+#x {{COLOR=>1;}}
+#x 358 { @@n 4783 a 0 @@p 4783 a 0 }
+#x HLEND
+#x HLBEGIN S.118
+#x {{COLOR=>1;}}
+#x 358 { @@n 4815 a 0 @@p 4815 a 0 }
+#x HLEND
+#x HLBEGIN S.119
+#x {{COLOR=>1;}}
+#x 358 { @@n 4816 a 0 @@p 4816 a 0 }
+#x HLEND
+#x HLBEGIN S.120
+#x {{COLOR=>1;}}
+#x 358 { @@n 4818 a 0 @@p 4818 a 0 }
+#x HLEND
+#x HLBEGIN S.121
+#x {{COLOR=>1;}}
+#x 358 { @@n 4850 a 0 @@p 4850 a 0 }
+#x HLEND
+#x HLBEGIN S.122
+#x {{COLOR=>1;}}
+#x 358 { @@n 4852 a 0 @@p 4852 a 0 }
+#x HLEND
+#x HLBEGIN S.123
+#x {{COLOR=>1;}}
+#x 358 { @@n 4853 a 0 @@p 4853 a 0 }
+#x HLEND
+#x HLBEGIN S.124
+#x {{COLOR=>1;}}
+#x 358 { @@n 4885 a 0 @@p 4885 a 0 }
+#x HLEND
+#x HLBEGIN S.125
+#x {{COLOR=>1;}}
+#x 358 { @@n 4887 a 0 @@p 4887 a 0 }
+#x HLEND
+#x HLBEGIN S.126
+#x {{COLOR=>1;}}
+#x 358 { @@n 4889 a 0 @@p 4889 a 0 }
+#x HLEND
+#x HLBEGIN S.127
+#x {{COLOR=>1;}}
+#x 358 { @@n 4890 a 0 @@p 4890 a 0 }
+#x HLEND
+#x HLBEGIN S.128
+#x {{COLOR=>1;}}
+#x 358 { @@n 4891 a 0 @@p 4891 a 0 }
+#x HLEND
+#x HLBEGIN S.129
+#x {{COLOR=>1;}}
+#x 358 { @@n 4892 a 0 @@p 4892 a 0 }
+#x HLEND
+#x HLBEGIN S.130
+#x {{COLOR=>1;}{COLOR=>2;}{COLOR=>3;}{COLOR=>4;}}
+#x !{-8 0 0 -4 1 0}
+#x 358 { @@p0 7 1 @@p1 3 1 @@d 0 { @@d 1 { @@d 0 { @@d 52 { @@d 0 { @@i 614 a 0
+#x @@i 613 a 0 @@i 611 a 0 @@i 8327 a 3 @@t0 0 8327 3 @@t0 1 614 0 @@t0 2 614 1
+#x @@t0 3 613 0 @@t0 4 613 1 @@t0 5 611 0 @@t0 6 611 1 } } } } @@d 2 { @@d 5 {
+#x @@d 2 { @@d 4 { @@d 6 { @@d 0 { @@d 0 { @@i 16 a 1 @@i 49 a 2 @@t1 0 49 3
+#x @@t1 1 16 0 @@t1 2 16 1 } } } } } } } } }
+#x HLEND
+#x HLBEGIN S.131
+#x {{COLOR=>3;}{COLOR=>1;}{COLOR=>1;TEXT=>1;}}
+#x !{4 1 0}
+#x 358 { @@d 1 { @@d 1 { @@i 1152 a 0 @@i 547 a 1 @@t 1152 4 a 2 @@t0 0 547 1
+#x @@t0 1 547 1 @@t0 2 547 0 @@t0 3 1152 4 } } }
+#x HLEND
+#x HLBEGIN S.132
+#x {{COLOR=>3;}{COLOR=>1;}{COLOR=>1;TEXT=>0;}}
+#x !{2 1 0}
+#x 358 { @@d 0 { @@d 2 { @@d 4 { @@d 17 { @@i 2474 a 0 @@t 2474 4 a 2
+#x @@t0 0 2474 4 @@t0 1 2474 4 } } } } }
+#x HLEND
+#x HLBEGIN S.133
+#x {{COLOR=>3;}{COLOR=>1;}{COLOR=>1;TEXT=>0;}}
+#x !{2 1 0}
+#x 358 { @@d 0 { @@d 2 { @@d 4 { @@d 17 { @@i 2506 a 0 @@t 2506 4 a 2
+#x @@t0 0 2506 4 @@t0 1 2506 4 } } } } }
+#x HLEND
+#x HLBEGIN S.134
+#x {{COLOR=>3;}{COLOR=>1;}{COLOR=>1;TEXT=>0;}}
+#x !{2 1 0}
+#x 358 { @@d 0 { @@d 2 { @@d 4 { @@d 49 { @@i 2474 a 0 @@t 2474 4 a 2
+#x @@t0 0 2474 4 @@t0 1 2474 4 } } } } }
+#x HLEND
+#x HLBEGIN S.135
+#x {{COLOR=>3;}{COLOR=>1;}{COLOR=>1;TEXT=>0;}}
+#x !{2 1 0}
+#x 358 { @@d 0 { @@d 2 { @@d 4 { @@d 49 { @@i 2506 a 0 @@t 2506 4 a 2
+#x @@t0 0 2506 4 @@t0 1 2506 4 } } } } }
+#x HLEND
+#x HLBEGIN S.136
+#x {{COLOR=>3;}{COLOR=>1;}{COLOR=>1;TEXT=>0;}}
+#x !{2 1 0}
+#x 358 { @@d 0 { @@d 2 { @@d 4 { @@d 67 { @@i 2474 a 0 @@t 2474 4 a 2
+#x @@t0 0 2474 4 @@t0 1 2474 4 } } } } }
+#x HLEND
+#x HLBEGIN S.137
+#x {{COLOR=>3;}{COLOR=>1;}{COLOR=>1;TEXT=>0;}}
+#x !{2 1 0}
+#x 358 { @@d 0 { @@d 2 { @@d 4 { @@d 67 { @@i 2506 a 0 @@t 2506 4 a 2
+#x @@t0 0 2506 4 @@t0 1 2506 4 } } } } }
+#x HLEND
+#x HLBEGIN S.138
+#x {{COLOR=>3;}{COLOR=>1;}{COLOR=>1;TEXT=>0;}}
+#x !{2 1 0}
+#x 358 { @@d 0 { @@d 2 { @@d 4 { @@d 85 { @@i 2474 a 0 @@t 2474 4 a 2
+#x @@t0 0 2474 4 @@t0 1 2474 4 } } } } }
+#x HLEND
+#x HLBEGIN S.139
+#x {{COLOR=>3;}{COLOR=>1;}{COLOR=>1;TEXT=>0;}}
+#x !{2 1 0}
+#x 358 { @@d 0 { @@d 2 { @@d 4 { @@d 85 { @@i 2506 a 0 @@t 2506 4 a 2
+#x @@t0 0 2506 4 @@t0 1 2506 4 } } } } }
+#x HLEND
+#x HLBEGIN S.140
+#x {{COLOR=>3;}{COLOR=>1;}{COLOR=>1;TEXT=>0;}}
+#x !{4 1 0}
+#x 358.0.2.5 { @@i 27 a 1 @@t0 0 27 1 @@t0 1 27 1 @@t0 2 27 0 @@d 2 { @@d 4 {
+#x @@i 1102 a 0 @@t 1102 4 a 2 @@t0 3 1102 4 } } }
+#x HLEND
+#x HLBEGIN S.141
+#x {{COLOR=>3;}{COLOR=>1;}{COLOR=>1;TEXT=>0;}}
+#x !{8 1 0}
+#x 358.0.2 { @@i 813 a 1 @@t0 5 813 1 @@t0 6 813 0 @@d 1 { @@i 31 a 1
+#x @@i 186 a 1 @@t0 0 31 1 @@t0 1 31 1 @@t0 2 31 0 @@t0 3 186 1 @@t0 4 186 0 }
+#x @@d 4 { @@i 575 a 0 @@t 575 4 a 2 @@t0 7 575 4 } }
+#x HLEND
+#x HLBEGIN S.142
+#x {{COLOR=>3;}{COLOR=>1;}{COLOR=>1;TEXT=>0;}}
+#x !{8 1 0}
+#x 358.0.1.1.136.0 { @@i 21327 a 0 @@i 17158 a 1 @@i 773 a 1 @@i 774 a 1
+#x @@t 21327 3 a 2 @@t0 0 17158 1 @@t0 1 17158 1 @@t0 2 17158 0 @@t0 3 773 2
+#x @@t0 4 773 0 @@t0 5 774 1 @@t0 6 774 0 @@t0 7 21327 3 }
+#x HLEND

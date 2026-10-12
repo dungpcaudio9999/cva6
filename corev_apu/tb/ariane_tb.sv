@@ -22,6 +22,13 @@ import uvm_pkg::*;
 
 `define MAIN_MEM(P) dut.i_sram.gen_cut[0].i_tc_sram_wrapper.i_tc_sram.init_val[(``P``)]
 `define USER_MEM(P) dut.i_sram.gen_cut[0].gen_mem_user.i_tc_sram_wrapper_user.i_tc_sram.init_val[(``P``)]
+`ifdef CVA6_RTOS_MEM_MAP
+// FU3 cv32a6_rtos: ROM (=ISRAM) and DSRAM are separate writable sram
+// instances in ariane_testharness.sv (see `ifdef CVA6_RTOS_MEM_MAP` there),
+// distinct from the DRAM array MAIN_MEM/USER_MEM above.
+`define ROM_MEM(P) dut.i_rom_sram.gen_cut[0].i_tc_sram_wrapper.i_tc_sram.init_val[(``P``)]
+`define DSRAM_MEM(P) dut.i_dsram.gen_cut[0].i_tc_sram_wrapper.i_tc_sram.init_val[(``P``)]
+`endif
 
 `ifndef READ_ELF_T
 `define READ_ELF_T
@@ -53,6 +60,8 @@ module ariane_tb;
     localparam int unsigned CLOCK_PERIOD = 20ns;
     // toggle with RTC period
     localparam int unsigned RTC_CLOCK_PERIOD = 30.517us;
+    localparam int unsigned TB_AXI_DATA_WIDTH = 64;
+    localparam int unsigned AXI_BYTES = TB_AXI_DATA_WIDTH / 8;
 
     localparam NUM_WORDS = 2**18;
     logic clk_i;
@@ -68,6 +77,7 @@ module ariane_tb;
 
     ariane_testharness #(
         .CVA6Cfg ( CVA6Cfg ),
+        .AXI_DATA_WIDTH   ( TB_AXI_DATA_WIDTH ),
         //
         .NUM_WORDS         ( NUM_WORDS ),
         .InclSimDTM        ( 1'b1      ),
@@ -91,12 +101,30 @@ module ariane_tb;
             #(CLOCK_PERIOD/2) clk_i = 1'b1;
             #(CLOCK_PERIOD/2) clk_i = 1'b0;
 
-            //if (cycles > max_cycles)
-            //    $fatal(1, "Simulation reached maximum cycle count of %d", max_cycles);
+            if (cycles > max_cycles)
+                $fatal(1, "Simulation reached maximum cycle count of %d", max_cycles);
 
             cycles++;
         end
     end
+
+    initial if (!$value$plusargs("max_cycles=%d", max_cycles)) max_cycles = 64'hFFFF_FFFF_FFFF_FFFF;
+
+`ifdef WAVE_DUMP
+    // [dungpc] Scoped VPD dump (DVE): only the core (+ ISRAM), stops at +wave_stop=<ns> (default 20000).
+    // Enable with +define+WAVE_DUMP and DEBUG=1 (-debug_access+all).
+    longint unsigned wave_stop_ns;
+    initial begin
+        if (!$value$plusargs("wave_stop=%d", wave_stop_ns)) wave_stop_ns = 20000;
+        $vcdplusfile("boot_smoke.vpd");
+        $vcdpluson(0, ariane_tb.dut.i_ariane.i_cva6);
+`ifdef CVA6_RTOS_MEM_MAP
+        $vcdpluson(0, ariane_tb.dut.i_rom_sram);
+`endif
+        #(wave_stop_ns);
+        $vcdplusoff;
+    end
+`endif
 
     initial begin
         forever begin
@@ -124,7 +152,7 @@ module ariane_tb;
     // for faster simulation we can directly preload the ELF
     // Note that we are loosing the capabilities to use risc-fesvr though
     initial begin
-        automatic logic [7:0][7:0] mem_row;
+        automatic logic [AXI_BYTES-1:0][7:0] mem_row;
         longint address, load_address, last_load_address, len;
         byte buffer[];
         void'(uvcl.get_arg_value("+elf_file=", binary));
@@ -139,18 +167,39 @@ module ariane_tb;
             last_load_address = 'hFFFFFFFF;
             // while there are more sections to process
             while (get_section(address, len)) begin
-                automatic int num_words = (len+7)/8;
+                automatic int num_words = (len + AXI_BYTES - 1) / AXI_BYTES;
                 `uvm_info( "Core Test", $sformatf("Loading Address: %x, Length: %x", address, len), UVM_NONE)
-                buffer = new [num_words*8];
+                buffer = new [num_words * AXI_BYTES];
                 read_section_sv(address, buffer);
                 // preload memories
-                // 64-bit
                 for (int i = 0; i < num_words; i++) begin
                     mem_row = '0;
-                    for (int j = 0; j < 8; j++) begin
-                        mem_row[j] = buffer[i*8 + j];
+                    for (int j = 0; j < AXI_BYTES; j++) begin
+                        mem_row[j] = buffer[i * AXI_BYTES + j];
                     end
-                    load_address = (address[23:0] >> 3) + i;
+                    load_address = (address[23:0] / AXI_BYTES) + i;
+`ifdef CVA6_RTOS_MEM_MAP
+                    if (address >= ariane_soc::ROMBase && address < (ariane_soc::ROMBase + ariane_soc::ROMLength)) begin
+                        load_address = ((address - ariane_soc::ROMBase) / AXI_BYTES) + i;
+                        if (load_address != last_load_address) begin
+                            `ROM_MEM(load_address) = mem_row;
+                            last_load_address = load_address;
+                        end
+                    end else if (address >= ariane_soc::DSRAMBase && address < (ariane_soc::DSRAMBase + ariane_soc::DSRAMLength)) begin
+                        load_address = ((address - ariane_soc::DSRAMBase) / AXI_BYTES) + i;
+                        if (load_address != last_load_address) begin
+                            `DSRAM_MEM(load_address) = mem_row;
+                            last_load_address = load_address;
+                        end
+                    end else if (load_address != last_load_address) begin
+                        if (address[31:0] < 'h84000000) begin
+                            `MAIN_MEM(load_address) = mem_row;
+                        end else begin
+                             `USER_MEM(load_address) = mem_row;
+                        end
+                        last_load_address = load_address;
+                    end
+`else
                     if (load_address != last_load_address) begin
                         if (address[31:0] < 'h84000000) begin
                             `MAIN_MEM(load_address) = mem_row;
@@ -161,6 +210,7 @@ module ariane_tb;
                     end else begin
                         `uvm_info( "Debug info", $sformatf(" Address: %x Already Loaded! ELF file might have less than 64 bits granularity on segments.", load_address), UVM_NONE)
                     end
+`endif
 
                 end
             end

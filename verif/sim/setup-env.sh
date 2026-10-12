@@ -17,8 +17,18 @@ export TESTS_PATH="$ROOT_PROJECT/verif/tests"
 export RISCV_DV_ROOT="$ROOT_PROJECT/verif/sim/dv"
 export CVA6_DV_ROOT="$ROOT_PROJECT/verif/env/corev-dv"
 
+# [dungpc] Original: bail out when RISCV is not set.
+#if [ -z "$RISCV" ]; then
+#  echo "Error: RISCV variable undefined."
+#  return
+#fi
+# [dungpc] Default to the xPack GCC 14.2.0 toolchain on hw-station-4
+# (GCC >= 11 is required by cva6.py; the lowRISC toolchain is only GCC 10.2).
 if [ -z "$RISCV" ]; then
-  echo "Error: RISCV variable undefined."
+  export RISCV=/home/dungpc/riscv-tools/xpack-riscv-none-elf-gcc-14.2.0-3
+fi
+if [ ! -d "$RISCV/bin" ]; then
+  echo "Error: RISCV=$RISCV has no bin/ directory."
   return
 fi
 # Set RISCV toolchain-related variables
@@ -32,13 +42,18 @@ if [ -z "$CV_SW_PREFIX" ]; then
     export CV_SW_PREFIX="$(ls -1 $RISCV/bin/riscv* | head -n 1 | rev | cut -d '/' -f 1 | cut -d '-' -f 2- | rev)-"
 fi
 # Default to auto-detected CC name if not explicitly given.
-if [ -z "$RISCV_CC" ]; then
-    export RISCV_CC="$RISCV/bin/${CV_SW_PREFIX}gcc"
-fi
+# [dungpc] Original (kept a stale RISCV_CC left in the shell, e.g. the lowRISC GCC 10.2):
+#if [ -z "$RISCV_CC" ]; then
+#    export RISCV_CC="$RISCV/bin/${CV_SW_PREFIX}gcc"
+#fi
+# [dungpc] Always derive CC/OBJCOPY from $RISCV so they match the toolchain above.
+export RISCV_CC="$RISCV/bin/${CV_SW_PREFIX}gcc"
+export RISCV_GCC="$RISCV_CC"
 # Default to auto-detected OBJCOPY name if not explicitly given.
-if [ -z "$RISCV_OBJCOPY" ]; then
-    export RISCV_OBJCOPY="$RISCV/bin/${CV_SW_PREFIX}objcopy"
-fi
+#if [ -z "$RISCV_OBJCOPY" ]; then
+#    export RISCV_OBJCOPY="$RISCV/bin/${CV_SW_PREFIX}objcopy"
+#fi
+export RISCV_OBJCOPY="$RISCV/bin/${CV_SW_PREFIX}objcopy"
 
 # Set verilator and spike related variables
 if [ -z "$VERILATOR_INSTALL_DIR" ]; then
@@ -49,6 +64,8 @@ if [ -z "$SPIKE_SRC_DIR" -o "$SPIKE_INSTALL_DIR" = "__local__" ]; then
   export SPIKE_SRC_DIR="$ROOT_PROJECT"/verif/core-v-verif/vendor/riscv/riscv-isa-sim
 fi
 
+# [dungpc] Keep the original: the repo-local spike (tools/spike) has the libriscv.so/libfesvr.so
+# that VCS needs via -sv_lib. ~/tools/spike-cosim only has libriscv.a, which fails to load.
 if [ -z "$SPIKE_INSTALL_DIR" -o "$SPIKE_INSTALL_DIR" = "__local__" ]; then
     export SPIKE_INSTALL_DIR="$ROOT_PROJECT"/tools/spike
 fi

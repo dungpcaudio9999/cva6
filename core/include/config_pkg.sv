@@ -32,7 +32,8 @@ package config_pkg;
     WT = 1,
     HPDCACHE_WT = 2,
     HPDCACHE_WB = 3,
-    HPDCACHE_WT_WB = 4
+    HPDCACHE_WT_WB = 4,
+    NOCACHE = 5
   } cache_type_t;
 
   /// Branch predictor parameter

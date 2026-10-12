@@ -99,11 +99,18 @@ module cva6_hpdcache_subsystem_axi_arbiter
 
   //  Adapt the I$ interface to the HPDcache memory interface
   //  {{{
-  localparam int ICACHE_UC_WORD_INDEX = CVA6Cfg.AxiDataWidth > 64 ? $clog2(
-      CVA6Cfg.AxiDataWidth / 64
-  ) : 1;
+  // A non-cacheable instruction read transfers one naturally aligned word.
+  // Older logic hardcoded that word to 64 bits. Clamp it to both the AXI data
+  // width and the configured I-cache line width so narrow RTOS configurations
+  // generate legal AXI requests and legal response part-selects.
+  localparam int ICACHE_UC_WORD_WIDTH =
+      (CVA6Cfg.AxiDataWidth < 64) ? CVA6Cfg.AxiDataWidth :
+      ((CVA6Cfg.ICACHE_LINE_WIDTH < 64) ? CVA6Cfg.ICACHE_LINE_WIDTH : 64);
+  localparam int ICACHE_UC_WORD_INDEX =
+      CVA6Cfg.AxiDataWidth > ICACHE_UC_WORD_WIDTH ?
+      $clog2(CVA6Cfg.AxiDataWidth / ICACHE_UC_WORD_WIDTH) : 1;
   localparam int ICACHE_CL_SIZE = $clog2(CVA6Cfg.ICACHE_LINE_WIDTH / 8);
-  localparam int ICACHE_WORD_SIZE = 3;
+  localparam int ICACHE_WORD_SIZE = $clog2(ICACHE_UC_WORD_WIDTH / 8);
   localparam int ICACHE_MEM_REQ_CL_LEN =
     (CVA6Cfg.ICACHE_LINE_WIDTH + CVA6Cfg.AxiDataWidth - 1)/CVA6Cfg.AxiDataWidth;
   localparam int ICACHE_MEM_REQ_CL_SIZE =
@@ -144,9 +151,17 @@ module cva6_hpdcache_subsystem_axi_arbiter
 
   assign icache_miss_req_w = icache_miss_valid_i, icache_miss_ready_o = icache_miss_req_wok;
 
-  assign icache_miss_req_wdata.mem_req_addr = icache_miss_i.paddr;
-  assign icache_miss_req_wdata.mem_req_len = icache_miss_i.nc ? 0 : ICACHE_MEM_REQ_CL_LEN - 1;
-  assign icache_miss_req_wdata.mem_req_size = icache_miss_i.nc ? ICACHE_WORD_SIZE : ICACHE_MEM_REQ_CL_SIZE;
+  // PLEN is 34 for the RV32 core internally, while FU3 deliberately exposes a
+  // 32-bit AXI address bus. RV32/Sv0 requests are 32-bit, so make the intended
+  // interface truncation explicit instead of relying on an implicit cast.
+  assign icache_miss_req_wdata.mem_req_addr =
+      icache_miss_i.paddr[CVA6Cfg.AxiAddrWidth-1:0];
+  assign icache_miss_req_wdata.mem_req_len = hpdcache_pkg::hpdcache_mem_len_t'(
+      icache_miss_i.nc ? 0 : ICACHE_MEM_REQ_CL_LEN - 1
+  );
+  assign icache_miss_req_wdata.mem_req_size = hpdcache_pkg::hpdcache_mem_size_t'(
+      icache_miss_i.nc ? ICACHE_WORD_SIZE : ICACHE_MEM_REQ_CL_SIZE
+  );
   assign icache_miss_req_wdata.mem_req_id = icache_miss_i.tid;
   assign icache_miss_req_wdata.mem_req_command = hpdcache_pkg::HPDCACHE_MEM_READ;
   assign icache_miss_req_wdata.mem_req_atomic = hpdcache_pkg::hpdcache_mem_atomic_e'(0);
@@ -225,14 +240,16 @@ module cva6_hpdcache_subsystem_axi_arbiter
   always_comb begin : icache_miss_resp_data_comb
     if (!icache_miss_req_rdata.mem_req_cacheable) begin
       automatic logic [ICACHE_UC_WORD_INDEX - 1:0] icache_miss_word_index;
-      automatic logic [63:0] icache_miss_word;
-      if (CVA6Cfg.AxiDataWidth > 64) begin
-        icache_miss_word_index = icache_miss_req_rdata.mem_req_addr[3+:ICACHE_UC_WORD_INDEX];
+      // Width was hardcoded to 64; see ICACHE_UC_WORD_WIDTH definition above
+      // for why it must be clamped to ICACHE_LINE_WIDTH when that is < 64.
+      automatic logic [ICACHE_UC_WORD_WIDTH-1:0] icache_miss_word;
+      if (CVA6Cfg.AxiDataWidth > ICACHE_UC_WORD_WIDTH) begin
+        icache_miss_word_index = icache_miss_req_rdata.mem_req_addr[ICACHE_WORD_SIZE+:ICACHE_UC_WORD_INDEX];
       end else begin
-        icache_miss_word_index = 0;
+        icache_miss_word_index = '0;
       end
-      icache_miss_word  = icache_miss_resp_data_rdata[icache_miss_word_index*64+:64];
-      icache_miss_rdata = {{CVA6Cfg.ICACHE_LINE_WIDTH - 64{1'b0}}, icache_miss_word};
+      icache_miss_word  = icache_miss_resp_data_rdata[icache_miss_word_index*ICACHE_UC_WORD_WIDTH+:ICACHE_UC_WORD_WIDTH];
+      icache_miss_rdata = {{CVA6Cfg.ICACHE_LINE_WIDTH - ICACHE_UC_WORD_WIDTH{1'b0}}, icache_miss_word};
     end else begin
       icache_miss_rdata = icache_miss_resp_data_rdata;
     end

@@ -177,8 +177,13 @@ int puts(const char *s)
 int putchar(int ch)
 {
 #if !NOPRINT
+#ifdef SINGLE_HART
+  static char buf[64] __attribute__((aligned(64)));
+  static int buflen = 0;
+#else
   static __thread char buf[64] __attribute__((aligned(64)));
   static __thread int buflen = 0;
+#endif
 
   buf[buflen++] = ch;
 

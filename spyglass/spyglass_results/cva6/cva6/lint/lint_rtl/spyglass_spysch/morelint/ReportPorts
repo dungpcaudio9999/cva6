@@ -1,0 +1,14 @@
+SCHEMA@@PName@@Dir@@Msb@@Lsb@@Desc@@DU@@DU_BBOX
+VALUE@@clk_i@@INPUT@@0@@0@@Subsystem Clock - SUBSYSTEM@@cva6@@No
+VALUE@@rst_ni@@INPUT@@0@@0@@Asynchronous reset active low - ...@@cva6@@No
+VALUE@@boot_addr_i@@INPUT@@31@@0@@Reset boot address - SUBSYSTEM@@cva6@@No
+VALUE@@hart_id_i@@INPUT@@31@@0@@Hard ID reflected as CSR - SUBSY...@@cva6@@No
+VALUE@@irq_i@@INPUT@@1@@0@@Level sensitive (async) interrup...@@cva6@@No
+VALUE@@ipi_i@@INPUT@@0@@0@@Inter-processor (async) interrup...@@cva6@@No
+VALUE@@time_irq_i@@INPUT@@0@@0@@Timer (async) interrupt - SUBSYS...@@cva6@@No
+VALUE@@debug_req_i@@INPUT@@0@@0@@Debug (async) request - SUBSYSTEM@@cva6@@No
+VALUE@@rvfi_probes_o@@OUTPUT@@0@@0@@Probes to build RVFI, can be lef...@@cva6@@No
+VALUE@@cvxif_req_o@@OUTPUT@@0@@0@@CVXIF request - SUBSYSTEM@@cva6@@No
+VALUE@@cvxif_resp_i@@INPUT@@0@@0@@CVXIF response - SUBSYSTEM@@cva6@@No
+VALUE@@noc_req_o@@OUTPUT@@0@@0@@noc request, can be AXI or OpenP...@@cva6@@No
+VALUE@@noc_resp_i@@INPUT@@0@@0@@noc response, can be AXI or Open...@@cva6@@No

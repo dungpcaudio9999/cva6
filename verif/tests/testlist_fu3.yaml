@@ -1,0 +1,68 @@
+# FU3 cv32a6_rtos / cv32a6_rtos_v1 directed test list.
+#
+# Companion to verif/tests/custom/fu3/ (kept separate from the upstream
+# verif/tests/custom/* trees so it doesn't collide with upstream updates).
+# See doc_dungpc/flow_test/custom_test_flow_architecture.md for the
+# "self-contained test target" convention this follows, and
+# doc_dungpc/flow_test/boot_test_fu3_memmap.md for the boot-test checklist.
+#
+# Run with, e.g.:
+#   python3 cva6.py --target cv32a6_rtos --iss=vcs-testharness \
+#     --testlist ../tests/testlist_fu3.yaml --test boot_smoke \
+#     --isscomp_opts '+define+CVA6_RTOS_MEM_MAP'
+# Replace the target with cv32a6_rtos_v1 to verify the cacheless variant.
+#
+# --isscomp_opts is required: it enables the writable ISRAM/DSRAM memory
+# model added to corev_apu/tb/ariane_testharness.sv and the matching ELF
+# preload logic in corev_apu/tb/ariane_tb.sv (both gated behind
+# `ifdef CVA6_RTOS_MEM_MAP so every other target keeps its original
+# behavior). Without this flag the test will hang/fault: ISRAM would be
+# the normal read-only bootrom and DSRAM would hit an AXI error slave.
+
+common_test_config: &common_test_config
+  path_var: TESTS_PATH
+  gcc_opts: "-static -mcmodel=medany -fvisibility=hidden -nostdlib -nostartfiles -DSTKSHIFT=14 -DSINGLE_HART=1 ../tests/custom/common/syscalls.c ../tests/custom/common/crt.S -I../tests/custom/env -I../tests/custom/common -lgcc"
+
+testlist:
+  - test: boot_smoke
+    iterations: 1
+    <<: *common_test_config
+    c_tests: <path_var>/custom/fu3/boot/boot_smoke_src.c
+
+  - test: nocache_mem_smoke
+    iterations: 1
+    <<: *common_test_config
+    c_tests: <path_var>/custom/fu3/boot/nocache_mem_smoke_src.c
+
+  # Upstream directed tests reused on the FU3 memory map.
+  - test: lsu_false_4k_alias
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/custom/lsu/false_4k_alias.S
+
+  - test: interrupt_jump_to_zero
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/custom/interrupt/jump_to_zero.S
+
+  # Named *_fu3 because cva6.py copies <src>.c to <test>.c in the same dir.
+  - test: hello_world_fu3
+    iterations: 1
+    <<: *common_test_config
+    c_tests: <path_var>/custom/hello_world/hello_world.c
+
+  # FU3 spec v2.0 CVA6 memory-map checks (debug entry, PMA execute/device).
+  - test: fu3_fetch_fault
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/custom/fu3/pma/fetch_fault.S
+
+  - test: fu3_device_load
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/custom/fu3/pma/device_load.S
+
+  - test: fu3_debug_entry
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/custom/fu3/debug/debug_entry.S

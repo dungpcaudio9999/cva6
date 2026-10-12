@@ -93,7 +93,10 @@ module uvmt_cva6_tb;
 
    //bind assertion module for axi interface
    bind uvmt_cva6_dut_wrap
-      uvmt_axi_assert #(CVA6Cfg.DCacheType)           axi_assert(.axi_assert_if(axi_if));
+      uvmt_axi_assert #(
+        .HPDCache      (CVA6Cfg.DCacheType),
+        .AXI_DATA_WIDTH(CVA6Cfg.AxiDataWidth)
+      ) axi_assert(.axi_assert_if(axi_if));
 
    // DUT Wrapper Interfaces
    uvmt_rvfi_if #(

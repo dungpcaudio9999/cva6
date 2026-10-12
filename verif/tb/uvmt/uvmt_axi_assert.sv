@@ -7,12 +7,16 @@
 //
 // Original Author: Alae Eddine EZ ZEJJARI (alae-eddine.ez-zejjari@external.thalesgroup.com) – sub-contractor MU-Electronics for Thales group
 
-module  uvmt_axi_assert#(int HPDCache=2)
+module  uvmt_axi_assert#(
+  int HPDCache=2,
+  int AXI_DATA_WIDTH=64
+)
   (uvma_axi_intf axi_assert_if);
 
    import uvm_pkg::*;
 
-   uvma_axi_assert            axi_mix_assert(.axi_assert(axi_assert_if));
+   uvma_axi_assert #(.AXI_DATA_WIDTH(AXI_DATA_WIDTH))
+                              axi_mix_assert(.axi_assert(axi_assert_if));
 
    uvma_axi_aw_assert         axi_aw_assert(.axi_assert(axi_assert_if));
 

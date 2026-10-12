@@ -114,7 +114,7 @@ class uvme_cva6_cfg_c extends uvma_core_cntrl_cfg_c;
       ext_zihpm_supported    == 0;
       ext_zicond_supported   == RTLCVA6Cfg.RVZiCond;
 
-      nr_pmp_entries         == 64;
+      nr_pmp_entries         == RTLCVA6Cfg.NrPMPEntries;
 
       unaligned_access_supported     == 0;
       unaligned_access_amo_supported == 0;
@@ -145,7 +145,7 @@ class uvme_cva6_cfg_c extends uvma_core_cntrl_cfg_c;
          nr_pmp_entries == 0;
       }
       else {
-         nr_pmp_entries inside {0, 16, 64};
+         nr_pmp_entries inside {0, 8, 16, 64};
       }
    }
 
@@ -250,6 +250,12 @@ function uvme_cva6_cfg_c::new(string name="uvme_cva6_cfg");
 
    clknrst_cfg  = uvma_clknrst_cfg_c::type_id::create("clknrst_cfg");
    axi_cfg      = uvma_axi_cfg_c::type_id::create("axi_cfg");
+   // The AXI agent interface is declared at its maximum supported width, but
+   // transactions must follow the width selected by the RTL configuration.
+   // Leaving the transaction defaults at 64 bits makes a 32-bit CVA6 target
+   // align accesses to eight-byte boundaries and return the wrong data lane.
+   axi_cfg.txn_config.set_addr_width(RTLCVA6Cfg.AxiAddrWidth);
+   axi_cfg.txn_config.set_data_width(RTLCVA6Cfg.AxiDataWidth);
    rvfi_cfg     = uvma_rvfi_cfg_c#(ILEN,XLEN)::type_id::create("rvfi_cfg");
    isacov_cfg   = uvma_isacov_cfg_c::type_id::create("isacov_cfg");
    interrupt_cfg   = uvma_interrupt_cfg_c::type_id::create("interrupt_cfg");
@@ -348,6 +354,10 @@ function void uvme_cva6_cfg_c::set_unsupported_csr_mask();
    if (nr_pmp_entries == 0) begin
        unsupported_csr_mask[uvma_core_cntrl_pkg::PMPCFG0+:16]  = 16'hffff;
        unsupported_csr_mask[uvma_core_cntrl_pkg::PMPADDR0+:64] = 64'hffffffffffffffff;
+   end
+   else if (nr_pmp_entries == 8) begin
+       unsupported_csr_mask[uvma_core_cntrl_pkg::PMPCFG2+:14]   = 14'h3fff;
+       unsupported_csr_mask[uvma_core_cntrl_pkg::PMPADDR8+:56]  = 56'hffffffffffffff;
    end
    else if (nr_pmp_entries == 16) begin
        unsupported_csr_mask[uvma_core_cntrl_pkg::PMPCFG4+:12]   = 12'hfff;

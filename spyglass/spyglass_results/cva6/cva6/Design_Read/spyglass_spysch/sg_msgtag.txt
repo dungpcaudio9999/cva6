@@ -1,0 +1,260 @@
+0 "" 1
+"INCR"
+"1"
+1 "" 1
+"INCR"
+"1"
+2 "" 1
+"INCR"
+"1"
+3 "" 1
+"INCR"
+"1"
+4 "" 1
+"INCR"
+"1"
+5 "" 1
+"INCR"
+"1"
+6 "" 1
+"INCR"
+"1"
+7 "" 1
+"INCR"
+"1"
+8 "" 1
+"INCR"
+"1"
+9 "" 1
+"INCR"
+"1"
+10 "" 1
+"INCR"
+"1"
+11 "" 1
+"INCR"
+"1"
+12 "" 1
+"INCR"
+"1"
+13 "" 1
+"INCR"
+"1"
+14 "" 1
+"INCR"
+"1"
+15 "" 1
+"INCR"
+"1"
+16 "" 1
+"INCR"
+"1"
+17 "" 1
+"INCR"
+"1"
+18 "" 1
+"INCR"
+"1"
+19 "" 1
+"INCR"
+"1"
+20 "" 1
+"INCR"
+"1"
+21 "" 1
+"INCR"
+"1"
+22 "" 1
+"INCR"
+"1"
+23 "" 1
+"INCR"
+"1"
+24 "" 1
+"INCR"
+"1"
+25 "" 1
+"INCR"
+"1"
+26 "" 1
+"INCR"
+"1"
+27 "" 1
+"INCR"
+"1"
+28 "" 1
+"INCR"
+"1"
+29 "" 1
+"INCR"
+"1"
+30 "" 1
+"INCR"
+"1"
+31 "" 1
+"INCR"
+"1"
+32 "" 1
+"INCR"
+"1"
+33 "" 1
+"INCR"
+"1"
+34 "" 1
+"INCR"
+"1"
+35 "" 1
+"INCR"
+"1"
+36 "" 1
+"INCR"
+"1"
+37 "" 1
+"INCR"
+"1"
+38 "" 1
+"INCR"
+"1"
+39 "" 1
+"INCR"
+"1"
+40 "" 1
+"INCR"
+"1"
+41 "" 1
+"INCR"
+"1"
+42 "" 1
+"INCR"
+"1"
+43 "" 1
+"INCR"
+"1"
+44 "" 1
+"INCR"
+"1"
+45 "" 1
+"INCR"
+"1"
+46 "" 1
+"INCR"
+"1"
+47 "" 1
+"INCR"
+"1"
+48 "" 1
+"INCR"
+"1"
+49 "" 1
+"INCR"
+"1"
+50 "" 1
+"INCR"
+"1"
+51 "" 1
+"INCR"
+"1"
+52 "" 1
+"INCR"
+"1"
+53 "" 1
+"INCR"
+"1"
+54 "" 1
+"INCR"
+"1"
+55 "" 1
+"INCR"
+"1"
+56 "" 1
+"INCR"
+"1"
+57 "" 1
+"INCR"
+"1"
+58 "" 1
+"INCR"
+"1"
+59 "" 1
+"INCR"
+"1"
+60 "" 1
+"INCR"
+"1"
+61 "" 1
+"INCR"
+"1"
+62 "" 1
+"INCR"
+"1"
+63 "" 1
+"INCR"
+"1"
+64 "" 1
+"INCR"
+"1"
+65 "" 1
+"INCR"
+"1"
+66 "" 1
+"INCR"
+"1"
+67 "" 1
+"INCR"
+"1"
+68 "" 1
+"INCR"
+"1"
+69 "" 1
+"INCR"
+"1"
+70 "" 1
+"INCR"
+"1"
+71 "" 3
+"INCR"
+"1"
+"BBoxEng"
+["unread","BB_EMPTY_DEF"]
+"BBoxEngAuxiInfo"
+["(null)","(null)","(null)"]
+-1 SYNTH_89 2
+"RULEGROUP"
+["Design Read"]
+"BUILTIN"
+"1"
+-1 SYNTH_12605 2
+"RULEGROUP"
+["Design Read"]
+"BUILTIN"
+"1"
+-1 SYNTH_12611 2
+"RULEGROUP"
+["Design Read"]
+"BUILTIN"
+"1"
+-1 DetectTopDesignUnits 2
+"RULEGROUP"
+["Design Read"]
+"BUILTIN"
+"1"
+-1 SYNTH_5143 2
+"RULEGROUP"
+["Design Read"]
+"BUILTIN"
+"1"
+-1 SYNTH_5064 2
+"RULEGROUP"
+["Design Read"]
+"BUILTIN"
+"1"
+-1 WarnAnalyzeBBox 2
+"RULEGROUP"
+["Blackbox Resolution"]
+"BUILTIN"
+"1"
+-1 ElabSummary 2
+"RULEGROUP"
+["Design Read"]
+"BUILTIN"
+"1"

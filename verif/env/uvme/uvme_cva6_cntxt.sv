@@ -27,7 +27,10 @@
  */
 class uvme_cva6_cntxt_c extends uvm_object;
 
-  typedef uvml_mem_c#(cva6_config_pkg::CVA6ConfigAxiAddrWidth)   uvml_mem_cva6;
+  // The AXI and interrupt agents store addresses in their protocol-wide
+  // maximum-width memory model. Keep this backing store type-compatible even
+  // when the DUT exposes a narrower AXI address bus (32 bits for cv32a6_rtos).
+  typedef uvml_mem_c#(uvma_axi_pkg::MAX_ADDR_WIDTH) uvml_mem_cva6;
 
    // Agent context handles
    uvma_clknrst_cntxt_c          clknrst_cntxt;

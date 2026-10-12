@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<goal_summary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:noNamespaceSchemaLocation="file://Dashboard/goal_xml.xsd">
+<!-- This file schema is internal to Atrenta DashBoard and subject to change in future without notice --> 
+<goal name="Design_Read"/>
+<top name="cva6"/>
+<dir name="/home/dungpc/FU/shot1/cva6/spyglass/spyglass_results/cva6/consolidated_reports/cva6_Design_Read/"/>
+<log name="/home/dungpc/FU/shot1/cva6/spyglass/spyglass_results/cva6/cva6/Design_Read/spyglass.log" link="data_files/cva6_Design_Read_spyglass.log"/>
+  <std_reports> 
+<report name="Waiver" link="data_files/cva6_Design_Read_waiver.rpt" tooltip="waiver.rpt" />
+<report name="moresimple" link="data_files/cva6_Design_Read_moresimple.rpt" tooltip="moresimple.rpt" />
+<report name="no_msg_reporting_rules" link="data_files/cva6_Design_Read_no_msg_reporting_rules.rpt" tooltip="no_msg_reporting_rules.rpt" />
+  </std_reports> 
+<tech_reports> 
+   <technology name="(Not Available)"> 
+   </technology> 
+</tech_reports> 
+<statistics fatal="0" error="0" warning="19" info="2" waived_error="0" waived_warning="51" waived_info="0" /> 
+<tech_summary> 
+</tech_summary> 
+</goal_summary> 

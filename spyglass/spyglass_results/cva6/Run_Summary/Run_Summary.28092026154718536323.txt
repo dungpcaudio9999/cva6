@@ -1,0 +1,14 @@
+Date Created     : 28-09-2026 15:47:18
+SpyGlass Version : SpyGlass_vX-2025.06-SP2
+Project Name     : cva6
+Goal Name        : Design_Read
+Scenario Name    : default_scenario
+Top              : cva6
+
+Message Summary
+Severity   Non-Waived  Waived
+FATAL           0         0
+ERROR           2         4
+WARNING        17        51
+INFO            3         0
+

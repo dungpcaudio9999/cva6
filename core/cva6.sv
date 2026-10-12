@@ -1466,7 +1466,48 @@ module cva6
     dcache_req_ports_cache_acc[1].data_gnt &= !dcache_req_ports_ex_cache[2].data_req;
   end
 
-  if (CVA6Cfg.DCacheType == config_pkg::WT) begin : gen_cache_wt
+  if (CVA6Cfg.DCacheType == config_pkg::NOCACHE) begin : gen_nocache
+    cva6_nocache_subsystem #(
+        .CVA6Cfg          (CVA6Cfg),
+        .icache_areq_t    (icache_areq_t),
+        .icache_arsp_t    (icache_arsp_t),
+        .icache_dreq_t    (icache_dreq_t),
+        .icache_drsp_t    (icache_drsp_t),
+        .dcache_req_i_t   (dcache_req_i_t),
+        .dcache_req_o_t   (dcache_req_o_t),
+        .NumPorts         (NumPorts),
+        .noc_req_t        (noc_req_t),
+        .noc_resp_t       (noc_resp_t)
+    ) i_nocache_subsystem (
+        .clk_i,
+        .rst_ni,
+        .icache_flush_i     (icache_flush_ctrl_cache),
+        .icache_miss_o      (icache_miss_cache_perf),
+        .icache_areq_i      (icache_areq_ex_cache),
+        .icache_areq_o      (icache_areq_cache_ex),
+        .icache_dreq_i      (icache_dreq_if_cache),
+        .icache_dreq_o      (icache_dreq_cache_if),
+        .dcache_flush_i     (dcache_flush_ctrl_cache),
+        .dcache_flush_ack_o (dcache_flush_ack_cache_ctrl),
+        .dcache_miss_o      (dcache_miss_cache_perf),
+        .dcache_amo_req_i   (amo_req),
+        .dcache_amo_resp_o  (amo_resp),
+        .dcache_req_ports_i (dcache_req_to_cache),
+        .dcache_req_ports_o (dcache_req_from_cache),
+        .wbuffer_empty_o    (dcache_commit_wbuffer_empty),
+        .wbuffer_not_ni_o   (dcache_commit_wbuffer_not_ni),
+        .noc_req_o,
+        .noc_resp_i
+    );
+
+    assign miss_vld_bits        = '0;
+    assign inval_ready          = 1'b1;
+    assign dcache_scrub_cycle_csr = 1'b0;
+    assign dcache_dat_cor_err_csr = 1'b0;
+    assign dcache_dat_unc_err_csr = 1'b0;
+    assign dcache_dir_cor_err_csr = 1'b0;
+    assign dcache_dir_unc_err_csr = 1'b0;
+  end else if (CVA6Cfg.DCacheType == config_pkg::WT) begin : gen_cache_wt
     // this is a cache subsystem that is compatible with OpenPiton
     wt_cache_subsystem #(
         .CVA6Cfg   (CVA6Cfg),

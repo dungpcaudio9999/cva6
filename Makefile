@@ -181,9 +181,13 @@ src :=  $(if $(spike-tandem),verif/tb/core/uvma_core_cntrl_pkg.sv)              
         vendor/pulp-platform/common_cells/src/rstgen.sv                              \
         vendor/pulp-platform/common_cells/src/addr_decode.sv                         \
         vendor/pulp-platform/common_cells/src/stream_register.sv                     \
+        vendor/pulp-platform/common_cells/src/onehot_to_bin.sv                       \
         vendor/pulp-platform/axi/src/axi_cut.sv                                      \
         vendor/pulp-platform/axi/src/axi_join.sv                                     \
         vendor/pulp-platform/axi/src/axi_delayer.sv                                  \
+        vendor/pulp-platform/axi/src/axi_dw_upsizer.sv                               \
+        vendor/pulp-platform/axi/src/axi_dw_downsizer.sv                             \
+        vendor/pulp-platform/axi/src/axi_dw_converter.sv                             \
         vendor/pulp-platform/axi/src/axi_to_axi_lite.sv                              \
         vendor/pulp-platform/axi/src/axi_id_prepend.sv                               \
         vendor/pulp-platform/axi/src/axi_atop_filter.sv                              \
@@ -229,6 +233,10 @@ src :=  $(if $(spike-tandem),verif/tb/core/uvma_core_cntrl_pkg.sv)              
         vendor/pulp-platform/common_cells/src/fifo_v3.sv                             \
         corev_apu/instr_tracing/DPTI/slicer_DPTI.sv                                  \
         corev_apu/instr_tracing/rv_encapsulator-main/src/rtl/encapsulator.sv
+# The APU testbench debug master reuses this legacy generic AXI adapter.  It is
+# testbench-only for the cacheless target and is not part of the v1 core RTL
+# manifest or FU3 delivery.
+src += $(if $(filter cv32a6_rtos_v1,$(target)),core/cache_subsystem/axi_adapter.sv)
 src := $(addprefix $(root-dir), $(src))
 
 copro_src := core/cvxif_example/include/cvxif_instr_pkg.sv \
@@ -393,7 +401,7 @@ else
 	questa-cmd += +jtag_rbb_enable=0
 endif
 
-flist ?= core/Flist.cva6
+flist ?= $(if $(filter cv32a6_rtos_v1,$(target)),core/Flist.cv32a6_rtos_v1,core/Flist.cva6)
 
 vcs_build: $(dpi-library)/ariane_dpi.so
 	mkdir -p $(vcs-library)

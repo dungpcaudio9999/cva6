@@ -28,7 +28,7 @@ module ariane_testharness #(
   //
   parameter int unsigned AXI_USER_WIDTH    = CVA6Cfg.AxiUserWidth,
   parameter int unsigned AXI_USER_EN       = CVA6Cfg.AXI_USER_EN,
-  parameter int unsigned AXI_ADDRESS_WIDTH = 64,
+  parameter int unsigned AXI_ADDRESS_WIDTH = CVA6Cfg.AxiAddrWidth,
   parameter int unsigned AXI_DATA_WIDTH    = 64,
   parameter bit          InclSimDTM        = 1'b1,
   parameter int unsigned NUM_WORDS         = 2**25,         // memory size
@@ -341,6 +341,62 @@ module ariane_testharness #(
   // ---------------
   // ROM
   // ---------------
+`ifdef CVA6_RTOS_MEM_MAP
+  // FU3 cv32a6_rtos: boot_addr_i below points at ROMBase (0x1_0000), which is
+  // also the base of the FU3 ISRAM. Core-level directed tests need to fetch
+  // and load directly into this window, so it must be writable RAM here
+  // instead of the fixed-content, read-only bootrom used by other targets.
+  logic                         rom_req;
+  logic                         rom_we;
+  logic [AXI_ADDRESS_WIDTH-1:0] rom_addr;
+  logic [AXI_DATA_WIDTH/8-1:0]  rom_be;
+  logic [AXI_USER_WIDTH-1:0]    rom_wuser;
+  logic [AXI_USER_WIDTH-1:0]    rom_ruser;
+  logic [AXI_DATA_WIDTH-1:0]    rom_wdata;
+  logic [AXI_DATA_WIDTH-1:0]    rom_rdata;
+
+  axi2mem #(
+    .AXI_ID_WIDTH   ( ariane_axi_soc::IdWidthSlave ),
+    .AXI_ADDR_WIDTH ( AXI_ADDRESS_WIDTH            ),
+    .AXI_DATA_WIDTH ( AXI_DATA_WIDTH               ),
+    .AXI_USER_WIDTH ( AXI_USER_WIDTH               )
+  ) i_axi2rom (
+    .clk_i  ( clk_i                   ),
+    .rst_ni ( ndmreset_n              ),
+    .slave  ( master[ariane_soc::ROM] ),
+    .req_o  ( rom_req                 ),
+    .we_o   ( rom_we                  ),
+    .addr_o ( rom_addr                ),
+    .be_o   ( rom_be                  ),
+    .user_o ( rom_wuser               ),
+    .data_o ( rom_wdata               ),
+    .user_i ( rom_ruser               ),
+    .data_i ( rom_rdata               )
+  );
+
+  sram #(
+    .DATA_WIDTH ( AXI_DATA_WIDTH ),
+    .USER_WIDTH ( AXI_USER_WIDTH ),
+    .USER_EN    ( AXI_USER_EN    ),
+`ifdef VERILATOR
+    .SIM_INIT   ( "none"         ),
+`else
+    .SIM_INIT   ( "zeros"        ),
+`endif
+    .NUM_WORDS  ( ariane_soc::ROMLength / (AXI_DATA_WIDTH/8) )
+  ) i_rom_sram (
+    .clk_i      ( clk_i                                                                                  ),
+    .rst_ni     ( rst_ni                                                                                 ),
+    .req_i      ( rom_req                                                                                ),
+    .we_i       ( rom_we                                                                                 ),
+    .addr_i     ( rom_addr[$clog2(ariane_soc::ROMLength/(AXI_DATA_WIDTH/8))-1+$clog2(AXI_DATA_WIDTH/8):$clog2(AXI_DATA_WIDTH/8)] ),
+    .wuser_i    ( rom_wuser                                                                               ),
+    .wdata_i    ( rom_wdata                                                                               ),
+    .be_i       ( rom_be                                                                                  ),
+    .ruser_o    ( rom_ruser                                                                               ),
+    .rdata_o    ( rom_rdata                                                                               )
+  );
+`else
   logic                         rom_req;
   logic [AXI_ADDRESS_WIDTH-1:0] rom_addr;
   logic [AXI_DATA_WIDTH-1:0]    rom_rdata;
@@ -370,6 +426,7 @@ module ariane_testharness #(
     .addr_i     ( rom_addr  ),
     .rdata_o    ( rom_rdata )
   );
+`endif
 
   // ------------------------------
   // GPIO
@@ -393,6 +450,78 @@ module ariane_testharness #(
     .slv_resp_o ( gpio_resp )
   );
 
+  // ------------------------------
+  // DSRAM (FU3 cv32a6_rtos data/bss/stack window)
+  // ------------------------------
+`ifdef CVA6_RTOS_MEM_MAP
+  logic                         dsram_req;
+  logic                         dsram_we;
+  logic [AXI_ADDRESS_WIDTH-1:0] dsram_addr;
+  logic [AXI_DATA_WIDTH/8-1:0]  dsram_be;
+  logic [AXI_USER_WIDTH-1:0]    dsram_wuser;
+  logic [AXI_USER_WIDTH-1:0]    dsram_ruser;
+  logic [AXI_DATA_WIDTH-1:0]    dsram_wdata;
+  logic [AXI_DATA_WIDTH-1:0]    dsram_rdata;
+
+  axi2mem #(
+    .AXI_ID_WIDTH   ( ariane_axi_soc::IdWidthSlave ),
+    .AXI_ADDR_WIDTH ( AXI_ADDRESS_WIDTH            ),
+    .AXI_DATA_WIDTH ( AXI_DATA_WIDTH               ),
+    .AXI_USER_WIDTH ( AXI_USER_WIDTH               )
+  ) i_axi2dsram (
+    .clk_i  ( clk_i                     ),
+    .rst_ni ( ndmreset_n                ),
+    .slave  ( master[ariane_soc::DSRAM] ),
+    .req_o  ( dsram_req                 ),
+    .we_o   ( dsram_we                  ),
+    .addr_o ( dsram_addr                ),
+    .be_o   ( dsram_be                  ),
+    .user_o ( dsram_wuser               ),
+    .data_o ( dsram_wdata               ),
+    .user_i ( dsram_ruser               ),
+    .data_i ( dsram_rdata               )
+  );
+
+  sram #(
+    .DATA_WIDTH ( AXI_DATA_WIDTH ),
+    .USER_WIDTH ( AXI_USER_WIDTH ),
+    .USER_EN    ( AXI_USER_EN    ),
+`ifdef VERILATOR
+    .SIM_INIT   ( "none"         ),
+`else
+    .SIM_INIT   ( "zeros"        ),
+`endif
+    .NUM_WORDS  ( ariane_soc::DSRAMLength / (AXI_DATA_WIDTH/8) )
+  ) i_dsram (
+    .clk_i      ( clk_i                                                                                    ),
+    .rst_ni     ( rst_ni                                                                                   ),
+    .req_i      ( dsram_req                                                                                ),
+    .we_i       ( dsram_we                                                                                 ),
+    .addr_i     ( dsram_addr[$clog2(ariane_soc::DSRAMLength/(AXI_DATA_WIDTH/8))-1+$clog2(AXI_DATA_WIDTH/8):$clog2(AXI_DATA_WIDTH/8)] ),
+    .wuser_i    ( dsram_wuser                                                                               ),
+    .wdata_i    ( dsram_wdata                                                                               ),
+    .be_i       ( dsram_be                                                                                  ),
+    .ruser_o    ( dsram_ruser                                                                               ),
+    .rdata_o    ( dsram_rdata                                                                               )
+  );
+`else
+  // Every other target: keep the port well-defined (DECERR) instead of X.
+  ariane_axi_soc::req_slv_t  dsram_req_s;
+  ariane_axi_soc::resp_slv_t dsram_resp_s;
+  `AXI_ASSIGN_TO_REQ(dsram_req_s, master[ariane_soc::DSRAM])
+  `AXI_ASSIGN_FROM_RESP(master[ariane_soc::DSRAM], dsram_resp_s)
+  axi_err_slv #(
+    .AxiIdWidth ( ariane_axi_soc::IdWidthSlave ),
+    .req_t      ( ariane_axi_soc::req_slv_t    ),
+    .resp_t     ( ariane_axi_soc::resp_slv_t   )
+  ) i_dsram_err_slv (
+    .clk_i      ( clk_i        ),
+    .rst_ni     ( ndmreset_n   ),
+    .test_i     ( test_en      ),
+    .slv_req_i  ( dsram_req_s  ),
+    .slv_resp_o ( dsram_resp_s )
+  );
+`endif
 
   // ------------------------------
   // Memory + Exclusive Access
@@ -419,7 +548,7 @@ module ariane_testharness #(
     .AXI_ID_WIDTH   ( ariane_axi_soc::IdWidthSlave ),
     .AXI_USER_WIDTH ( AXI_USER_WIDTH               ),
     .AXI_MAX_WRITE_TXNS ( 1  ),
-    .RISCV_WORD_WIDTH   ( 64 )
+    .RISCV_WORD_WIDTH   ( CVA6Cfg.XLEN )
   ) i_axi_riscv_atomics (
     .clk_i,
     .rst_ni ( ndmreset_n               ),
@@ -508,7 +637,8 @@ module ariane_testharness #(
     '{ idx: ariane_soc::SPI,      start_addr: ariane_soc::SPIBase,      end_addr: ariane_soc::SPIBase + ariane_soc::SPILength           },
     '{ idx: ariane_soc::Ethernet, start_addr: ariane_soc::EthernetBase, end_addr: ariane_soc::EthernetBase + ariane_soc::EthernetLength },
     '{ idx: ariane_soc::GPIO,     start_addr: ariane_soc::GPIOBase,     end_addr: ariane_soc::GPIOBase + ariane_soc::GPIOLength         },
-    '{ idx: ariane_soc::DRAM,     start_addr: ariane_soc::DRAMBase,     end_addr: ariane_soc::DRAMBase + ariane_soc::DRAMLength         }
+    '{ idx: ariane_soc::DRAM,     start_addr: ariane_soc::DRAMBase,     end_addr: ariane_soc::DRAMBase + ariane_soc::DRAMLength         },
+    '{ idx: ariane_soc::DSRAM,    start_addr: ariane_soc::DSRAMBase,    end_addr: ariane_soc::DSRAMBase + ariane_soc::DSRAMLength       }
   };
 
   localparam axi_pkg::xbar_cfg_t AXI_XBAR_CFG = '{
@@ -625,11 +755,111 @@ module ariane_testharness #(
   // ---------------
   ariane_axi::req_t    axi_ariane_req;
   ariane_axi::resp_t   axi_ariane_resp;
+  AXI_BUS #(
+    .AXI_ADDR_WIDTH ( CVA6Cfg.AxiAddrWidth ),
+    .AXI_DATA_WIDTH ( CVA6Cfg.AxiDataWidth ),
+    .AXI_ID_WIDTH   ( CVA6Cfg.AxiIdWidth   ),
+    .AXI_USER_WIDTH ( CVA6Cfg.AxiUserWidth )
+  ) core_axi();
   rvfi_probes_t rvfi_probes;
   rvfi_csr_t rvfi_csr;
   rvfi_instr_t [CVA6Cfg.NrCommitPorts-1:0]  rvfi_instr;
   rvfi_to_iti_t rvfi_to_iti;
   iti_to_encoder_t iti_to_encoder;
+
+`ifdef CVA6_RTOS_MEM_MAP
+  // FU3 directed debug-entry test support (verification only). Writing the
+  // magic value 0xFD0B_0001 to mscratch raises a debug request that is held
+  // until the core reports Debug Mode, then released. Writing any other value
+  // re-arms the trigger. This bypasses the JTAG-only DM, which +debug_disable
+  // gates off by default, so the test runs with the regular regression flags.
+  localparam logic [31:0] Fu3DebugReqMagic = 32'hFD0B_0001;
+  logic fu3_dbg_req_q, fu3_dbg_armed_q;
+  always_ff @(posedge clk_i or negedge ndmreset_n) begin : p_fu3_dbg_req
+    if (!ndmreset_n) begin
+      fu3_dbg_req_q   <= 1'b0;
+      fu3_dbg_armed_q <= 1'b1;
+    end else if (fu3_dbg_req_q) begin
+      if (i_ariane.i_cva6.debug_mode) fu3_dbg_req_q <= 1'b0;
+    end else if (i_ariane.i_cva6.csr_regfile_i.mscratch_q[31:0] == Fu3DebugReqMagic) begin
+      if (fu3_dbg_armed_q) begin
+        fu3_dbg_req_q   <= 1'b1;
+        fu3_dbg_armed_q <= 1'b0;
+      end
+    end else begin
+      fu3_dbg_armed_q <= 1'b1;
+    end
+  end
+
+  // FU3 non-idempotent (device) load checker (verification only). The device
+  // windows below are transcribed independently from the FU3 spec v2.0
+  // memory map. Each load the load unit commits to memory (pop_ld_o) must
+  // agree with the core PMA, and a device load must only be sent once it is
+  // the oldest instruction (commit time), i.e. never speculatively.
+  function automatic logic fu3_spec_device(logic [31:0] a);
+    return (a >= 32'h1A11_0000 && a < 32'h1A11_1000) ||  // Ibex Debug Module
+           (a >= 32'h3010_0000 && a < 32'h3011_0000) ||  // EDHOC OSCORE
+           (a >= 32'h4000_0000 && a < 32'h4001_0000) ||  // AES
+           (a >= 32'h4010_0000 && a < 32'h4011_0000) ||  // PLIC
+           (a >= 32'h4400_0000 && a < 32'h4410_0000) ||  // PERIBUS_0
+           (a >= 32'h5001_0000 && a < 32'h5011_0000);    // PERIBUS_1
+  endfunction
+
+  int unsigned fu3_ld_total, fu3_ld_dev, fu3_ld_ni_waits, fu3_ld_err;
+  logic [31:0] fu3_ld_page;
+  assign fu3_ld_page = 32'({i_ariane.i_cva6.ex_stage_i.lsu_i.i_load_unit.dtlb_ppn_i, 12'd0});
+
+  always_ff @(posedge clk_i or negedge ndmreset_n) begin : p_fu3_ni_check
+    if (!ndmreset_n) begin
+      fu3_ld_total    <= 0;
+      fu3_ld_dev      <= 0;
+      fu3_ld_ni_waits <= 0;
+      fu3_ld_err      <= 0;
+    end else begin
+      // Cycles a device load is presented to the load unit before it is the
+      // oldest instruction: shows the test really exercised the NI hold.
+      if (i_ariane.i_cva6.ex_stage_i.lsu_i.i_load_unit.valid_i &&
+          fu3_spec_device(fu3_ld_page) &&
+          i_ariane.i_cva6.ex_stage_i.lsu_i.i_load_unit.not_commit_time)
+        fu3_ld_ni_waits <= fu3_ld_ni_waits + 1;
+      if (i_ariane.i_cva6.ex_stage_i.lsu_i.i_load_unit.pop_ld_o) begin
+        fu3_ld_total <= fu3_ld_total + 1;
+        if (fu3_spec_device(fu3_ld_page)) fu3_ld_dev <= fu3_ld_dev + 1;
+        if (i_ariane.i_cva6.ex_stage_i.lsu_i.i_load_unit.paddr_ni != fu3_spec_device(fu3_ld_page)) begin
+          fu3_ld_err <= fu3_ld_err + 1;
+          $fatal(1, "[FU3_NI_CHECK] PMA mismatch for load page 0x%08h: core ni=%0d spec device=%0d",
+                 fu3_ld_page, i_ariane.i_cva6.ex_stage_i.lsu_i.i_load_unit.paddr_ni,
+                 fu3_spec_device(fu3_ld_page));
+        end
+        if (fu3_spec_device(fu3_ld_page) &&
+            i_ariane.i_cva6.ex_stage_i.lsu_i.i_load_unit.not_commit_time) begin
+          fu3_ld_err <= fu3_ld_err + 1;
+          $fatal(1, "[FU3_NI_CHECK] speculative device load to page 0x%08h", fu3_ld_page);
+        end
+      end
+    end
+  end
+
+  // Bus-level view: every read the core puts on AXI to a device window.
+  // A non-idempotent load must reach the bus exactly once.
+  // Each device read on AXI must be backed by a device load the load unit
+  // has committed to memory (counted in fu3_ld_dev above); a killed or
+  // retried load must not show up on the bus.
+  int unsigned fu3_dev_ar;
+  always_ff @(posedge clk_i or negedge ndmreset_n) begin : p_fu3_dev_ar
+    if (!ndmreset_n) fu3_dev_ar <= 0;
+    else if (axi_ariane_req.ar_valid && axi_ariane_resp.ar_ready &&
+             fu3_spec_device(32'(axi_ariane_req.ar.addr))) begin
+      fu3_dev_ar <= fu3_dev_ar + 1;
+      if (fu3_dev_ar >= fu3_ld_dev)
+        $fatal(1, "[FU3_NI_CHECK] device read 0x%08h on AXI without a committed device load",
+               32'(axi_ariane_req.ar.addr));
+    end
+  end
+
+  final $display("[FU3_NI_CHECK] loads=%0d device_loads=%0d ni_hold_cycles=%0d device_axi_reads=%0d errors=%0d",
+                 fu3_ld_total, fu3_ld_dev, fu3_ld_ni_waits, fu3_dev_ar, fu3_ld_err);
+`endif
 
   ariane #(
     .CVA6Cfg              ( CVA6Cfg             ),
@@ -650,6 +880,8 @@ module ariane_testharness #(
 // Disable Debug when simulating with Spike
 `ifdef SPIKE_TANDEM
     .debug_req_i          ( 1'b0                ),
+`elsif CVA6_RTOS_MEM_MAP
+    .debug_req_i          ( debug_req_core | fu3_dbg_req_q ),
 `else
     .debug_req_i          ( debug_req_core      ),
 `endif
@@ -657,8 +889,24 @@ module ariane_testharness #(
     .noc_resp_i           ( axi_ariane_resp     )
   );
 
-  `AXI_ASSIGN_FROM_REQ(slave[0], axi_ariane_req)
-  `AXI_ASSIGN_TO_RESP(axi_ariane_resp, slave[0])
+  `AXI_ASSIGN_FROM_REQ(core_axi, axi_ariane_req)
+  `AXI_ASSIGN_TO_RESP(axi_ariane_resp, core_axi)
+
+  // Keep the legacy 64-bit APU fabric/peripherals while honoring the AXI
+  // width selected by the core configuration (32 bits for cv32a6_rtos_v1).
+  axi_dw_converter_intf #(
+    .AXI_ID_WIDTH            ( CVA6Cfg.AxiIdWidth   ),
+    .AXI_ADDR_WIDTH          ( CVA6Cfg.AxiAddrWidth ),
+    .AXI_SLV_PORT_DATA_WIDTH ( CVA6Cfg.AxiDataWidth ),
+    .AXI_MST_PORT_DATA_WIDTH ( AXI_DATA_WIDTH       ),
+    .AXI_USER_WIDTH          ( CVA6Cfg.AxiUserWidth ),
+    .AXI_MAX_READS           ( 1                    )
+  ) i_core_axi_dw_converter (
+    .clk_i,
+    .rst_ni ( ndmreset_n ),
+    .slv    ( core_axi   ),
+    .mst    ( slave[0]   )
+  );
 
   // -------------
   // Simulation Helper Functions

@@ -1,0 +1,6 @@
+INPUT@@/home/dungpc/FU/shot1/cva6/spyglass/spyglass_results/cva6/cva6/lint/lint_rtl/spyglass_reports@@/home/dungpc/FU/shot1/cva6/spyglass/spyglass_results/cva6/html_reports/data_files/@@cva6@@lint-lint_rtl@@
+COPY@@/home/dungpc/FU/shot1/cva6/spyglass/spyglass_results/cva6/cva6/lint/lint_rtl/spyglass_reports/waiver.rpt@@data_files/cva6_lint-lint_rtl_waiver.rpt@@
+COPY@@/home/dungpc/FU/shot1/cva6/spyglass/spyglass_results/cva6/cva6/lint/lint_rtl/spyglass_reports/moresimple.rpt@@data_files/cva6_lint-lint_rtl_moresimple.rpt@@
+COPY@@/home/dungpc/FU/shot1/cva6/spyglass/spyglass_results/cva6/cva6/lint/lint_rtl/spyglass_reports/no_msg_reporting_rules.rpt@@data_files/cva6_lint-lint_rtl_no_msg_reporting_rules.rpt@@
+PROCESS@@morelint@@lint@@SpyGlass
+COPY@@/home/dungpc/FU/shot1/cva6/spyglass/spyglass_results/cva6/cva6/lint/lint_rtl/spyglass.log@@data_files/cva6_lint-lint_rtl_spyglass.log@@

@@ -1,0 +1,14 @@
+Date Created     : 28-09-2026 15:51:44
+SpyGlass Version : SpyGlass_vX-2025.06-SP2
+Project Name     : cva6
+Goal Name        : lint/lint_rtl
+Scenario Name    : default_scenario
+Top              : cva6
+
+Message Summary
+Severity   Non-Waived  Waived
+FATAL           0         0
+ERROR          14         2
+WARNING        75      1001
+INFO            2         2
+

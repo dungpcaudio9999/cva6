@@ -30,10 +30,15 @@ package ariane_soc;
     CLINT    = 7,
     ROM      = 8,
     Debug    = 9,
-    HPS      = 10
+    // FU3 cv32a6_rtos core-level verification: DSRAM data/bss/stack window.
+    // Only routed to real memory when compiled with +define+CVA6_RTOS_MEM_MAP;
+    // otherwise it is tied to an AXI error slave like any other unused port,
+    // so other targets keep their original behavior.
+    DSRAM    = 10,
+    HPS      = 11
   } axi_slaves_t;
 
-  localparam NB_PERIPHERALS = Debug + 1;
+  localparam NB_PERIPHERALS = DSRAM + 1;
 
   localparam logic[63:0] DebugLength    = 64'h1000;
   localparam logic[63:0] ROMLength      = 64'h10000;
@@ -45,6 +50,9 @@ package ariane_soc;
   localparam logic[63:0] EthernetLength = 64'h10000;
   localparam logic[63:0] GPIOLength     = 64'h1000;
   localparam logic[63:0] HPSLength      = 64'h800000;
+  // FU3 cv32a6_rtos DSRAM: 64 KiB, matches config/gen_from_riscv_config/
+  // cv32a6_rtos/linker/link.ld DSRAM region.
+  localparam logic[63:0] DSRAMLength    = 64'h10000;
 `ifdef NEXYS_VIDEO
   localparam logic[63:0] DRAMLength     = 64'h20000000; // 512MByte of DDR on Nexys video board
 `else
@@ -65,6 +73,8 @@ package ariane_soc;
     EthernetBase = 64'h3000_0000,
     GPIOBase     = 64'h4000_0000,
     DRAMBase     = 64'h8000_0000,
+    // FU3 cv32a6_rtos DSRAM, see DSRAMLength above.
+    DSRAMBase    = 64'h0100_0000,
     HPSBase      = 64'hFF80_0000
   } soc_bus_start_t;
 

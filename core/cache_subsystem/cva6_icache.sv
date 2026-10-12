@@ -64,6 +64,13 @@ module cva6_icache
 
   localparam ICACHE_OFFSET_WIDTH = $clog2(CVA6Cfg.ICACHE_LINE_WIDTH / 8);
   localparam ICACHE_NUM_WORDS = 2 ** (CVA6Cfg.ICACHE_INDEX_WIDTH - ICACHE_OFFSET_WIDTH);
+  // Non-cacheable instruction reads used to be unconditionally aligned to an
+  // 8-byte transfer. Derive the transfer granularity so a 32-bit AXI bus and a
+  // 32-bit cache line issue a legal 4-byte request instead.
+  localparam ICACHE_NC_WIDTH = (CVA6Cfg.AxiDataWidth < 64) ?
+      CVA6Cfg.AxiDataWidth :
+      ((CVA6Cfg.ICACHE_LINE_WIDTH < 64) ? CVA6Cfg.ICACHE_LINE_WIDTH : 64);
+  localparam ICACHE_NC_OFFSET_WIDTH = $clog2(ICACHE_NC_WIDTH / 8);
   localparam ICACHE_CL_IDX_WIDTH = $clog2(ICACHE_NUM_WORDS);  // excluding byte offset
 
   // functions
@@ -154,12 +161,13 @@ module cva6_icache
 
 
   if (CVA6Cfg.NOCType == config_pkg::NOC_TYPE_AXI4_ATOP) begin : gen_axi_offset
-    // if we generate a noncacheable access, the word will be at offset 0 or 4 in the cl coming from memory
-    assign cl_offset_d = ( dreq_o.ready & dreq_i.req)      ? (dreq_i.vaddr >> CVA6Cfg.FETCH_ALIGN_BITS) << CVA6Cfg.FETCH_ALIGN_BITS :
-                         ( paddr_is_nc  & mem_data_req_o ) ? {{ICACHE_OFFSET_WIDTH-1{1'b0}}, cl_offset_q[2]}<<2 : // needed since we transfer 32bit over a 64bit AXI bus in this case
+    // For a non-cacheable access, retain only the byte offset within the AXI
+    // transfer returned right-aligned by the memory adapter.
+    assign cl_offset_d = ( dreq_o.ready & dreq_i.req)      ? ICACHE_OFFSET_WIDTH'((dreq_i.vaddr >> CVA6Cfg.FETCH_ALIGN_BITS) << CVA6Cfg.FETCH_ALIGN_BITS) :
+                         ( paddr_is_nc  & mem_data_req_o ) ? {{ICACHE_OFFSET_WIDTH-ICACHE_NC_OFFSET_WIDTH{1'b0}}, cl_offset_q[ICACHE_NC_OFFSET_WIDTH-1:0]} :
         cl_offset_q;
     // request word address instead of cl address in case of NC access
-    assign mem_data_o.paddr = (paddr_is_nc) ? {cl_tag_d, vaddr_q[CVA6Cfg.ICACHE_INDEX_WIDTH-1:3], 3'b0} :                                         // align to 64bit
+    assign mem_data_o.paddr = (paddr_is_nc) ? {cl_tag_d, vaddr_q[CVA6Cfg.ICACHE_INDEX_WIDTH-1:ICACHE_NC_OFFSET_WIDTH], {ICACHE_NC_OFFSET_WIDTH{1'b0}}} :
         {cl_tag_d, vaddr_q[CVA6Cfg.ICACHE_INDEX_WIDTH-1:ICACHE_OFFSET_WIDTH], {ICACHE_OFFSET_WIDTH{1'b0}}}; // align to cl
   end else begin : gen_piton_offset
     // icache fills are either cachelines or 4byte fills, depending on whether they go to the Piton I/O space or not.

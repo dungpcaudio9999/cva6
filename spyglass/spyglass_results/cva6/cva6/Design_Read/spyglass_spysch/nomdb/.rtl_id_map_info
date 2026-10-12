@@ -1,0 +1,430 @@
+90
+1 WORK 0 cva6
+2 WORK 0 frontend
+3 WORK 0 instr_realign
+4 WORK 0 instr_queue
+5 WORK 0 cva6_fifo_v3
+6 WORK 0 unread
+7 WORK 0 lzc
+8 WORK 0 popcount
+9 WORK 0 ras
+10 WORK 0 btb
+11 WORK 0 bht
+12 WORK 0 instr_scan
+13 WORK 0 id_stage
+14 WORK 0 compressed_decoder
+15 WORK 0 decoder
+16 WORK 0 issue_stage
+17 WORK 0 scoreboard
+18 WORK 0 issue_read_operands
+19 WORK 0 cvxif_issue_register_commit_if_driver
+20 WORK 0 raw_checker
+21 WORK 0 ariane_regfile
+22 WORK 0 ex_stage
+23 WORK 0 alu_wrapper
+24 WORK 0 alu
+25 WORK 0 branch_unit
+26 WORK 0 csr_buffer
+27 WORK 0 mult
+28 WORK 0 multiplier
+29 WORK 0 serdiv
+30 WORK 0 load_store_unit
+31 WORK 0 pmp_data_if
+32 WORK 0 pmp
+33 WORK 0 pmp_entry
+34 WORK 0 store_unit
+35 WORK 0 store_buffer
+36 WORK 0 load_unit
+37 WORK 0 shift_reg
+38 WORK 0 lsu_bypass
+39 WORK 0 commit_stage
+40 WORK 0 csr_regfile
+41 WORK 0 trigger_module
+42 WORK 0 controller
+43 WORK 0 cva6_rvfi_probes
+44 WORK 0 cva6_hpdcache_subsystem
+45 WORK 0 cva6_icache
+46 WORK 0 lfsr
+47 WORK 0 sram_cache
+48 WORK 0 tc_sram_wrapper_cache_techno
+49 WORK 0 tc_sram
+50 WORK 0 cva6_hpdcache_wrapper
+51 WORK 0 hwpf_stride_wrapper
+52 WORK 0 hwpf_stride_arb
+53 WORK 0 hpdcache_rrarb
+54 WORK 0 hpdcache_prio_1hot_encoder
+55 WORK 0 hpdcache_mux
+56 WORK 0 hwpf_stride
+57 WORK 0 hpdcache
+58 WORK 0 hpdcache_core_arbiter
+59 WORK 0 hpdcache_fxarb
+60 WORK 0 hpdcache_ctrl
+61 WORK 0 hpdcache_ctrl_pe
+62 WORK 0 hpdcache_1hot_to_binary
+63 WORK 0 hpdcache_rtab
+64 WORK 0 hpdcache_memctrl
+65 WORK 0 hpdcache_victim_sel
+66 WORK 0 hpdcache_victim_random
+67 WORK 0 hpdcache_lfsr
+68 WORK 0 hpdcache_decoder
+69 WORK 0 hpdcache_sram
+70 WORK 0 hpdcache_sram_1rw
+71 WORK 0 hpdcache_sram_wbyteenable
+72 WORK 0 hpdcache_sram_wbyteenable_1rw
+73 WORK 0 hpdcache_miss_handler
+74 WORK 0 hpdcache_fifo_reg
+75 WORK 0 hpdcache_sync_buffer
+76 WORK 0 hpdcache_data_resize
+77 WORK 0 hpdcache_mshr
+78 WORK 0 hpdcache_regbank_wbyteenable_1rw
+79 WORK 0 hpdcache_uncached
+80 WORK 0 hpdcache_amo
+81 WORK 0 hpdcache_cmo
+82 WORK 0 hpdcache_mem_req_read_arbiter
+83 WORK 0 hpdcache_mem_req_write_arbiter
+84 WORK 0 hpdcache_wbuf
+85 WORK 0 cva6_hpdcache_if_adapter
+86 WORK 0 cva6_hpdcache_subsystem_axi_arbiter
+87 WORK 0 hpdcache_mem_resp_demux
+88 WORK 0 hpdcache_demux
+89 WORK 0 hpdcache_mem_to_axi_write
+90 WORK 0 hpdcache_mem_to_axi_read
+242
+./sg_setup/cva6/cva6.sgdc 1 -1 3 1 64770 873106 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/fpga-support/rtl/SyncDpRam.sv 2 182 2 1 64770 537624105 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/fpga-support/rtl/AsyncDpRam.sv 3 62 2 1 64770 537624092 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/fpga-support/rtl/AsyncThreePortRam.sv 4 66 2 1 64770 537624099 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/fpga-support/rtl/SyncThreePortRam.sv 5 65 2 1 64770 537624110 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/fpga-support/rtl/SyncDpRam_ind_r_w.sv 6 58 2 1 64770 537624106 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpnew_pkg.sv 7 512 2 1 64770 1618606528 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpnew_cast_multi.sv 8 852 2 1 64770 1618602886 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpnew_classifier.sv 9 74 2 1 64770 1618602889 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/clk/rtl/gated_clk_cell.v 10 50 2 1 64770 1618606537 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_ctrl.v 11 783 2 1 64770 537869523 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_ff1.v 12 163 2 1 64770 537869524 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_pack_single.v 13 275 2 1 64770 537869525 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_prepare.v 14 286 2 1 64770 537869526 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_round_single.v 15 540 2 1 64770 537869527 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_special.v 16 345 2 1 64770 537869528 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_srt_single.v 17 824 2 1 64770 537869530 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fdsu/rtl/pa_fdsu_top.v 18 461 2 1 64770 537869531 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fpu/rtl/pa_fpu_dp.v 19 299 2 1 64770 1618606539 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fpu/rtl/pa_fpu_frbus.v 20 90 2 1 64770 1618606540 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/opene906/E906_RTL_FACTORY/gen_rtl/fpu/rtl/pa_fpu_src_type.v 21 92 2 1 64770 1618606541 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_ctrl.v 22 535 2 1 64770 1080625817 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_double.v 23 399 2 1 64770 1080625819 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_ff1.v 24 99 2 1 64770 1080625820 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_pack.v 25 459 2 1 64770 1080625821 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_prepare.v 26 821 2 1 64770 1080625822 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_round.v 27 1158 2 1 64770 1080625823 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_scalar_dp.v 28 345 2 1 64770 1080625824 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_srt_radix16_bound_table.v 29 1168 2 1 64770 1080625827 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_srt_radix16_with_sqrt.v 30 1152 2 1 64770 1080625828 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_srt.v 31 755 2 1 64770 1080625826 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/vendor/openc910/C910_RTL_FACTORY/gen_rtl/vfdsu/rtl/ct_vfdsu_top.v 32 345 2 1 64770 1080625829 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpnew_divsqrt_th_32.sv 33 492 2 1 64770 1618602894 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpnew_divsqrt_th_64_multi.sv 34 458 2 1 64770 1618602896 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpnew_divsqrt_multi.sv 35 398 2 1 64770 1618602892 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpnew_fma_multi.sv 36 941 2 1 64770 1618602898 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpnew_fma.sv 37 717 2 1 64770 1618602897 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpnew_noncomp.sv 38 434 2 1 64770 1618602909 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpnew_opgroup_block.sv 39 256 2 1 64770 1618602910 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpnew_opgroup_fmt_slice.sv 40 305 2 1 64770 1618602911 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpnew_opgroup_multifmt_slice.sv 41 576 2 1 64770 1618602912 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpnew_rounding.sv 42 76 2 1 64770 1618606529 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpnew_top.sv 43 199 2 1 64770 1618606530 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpu_div_sqrt_mvp/hdl/defs_div_sqrt_mvp.sv 44 83 2 1 64770 1618606654 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv 45 3413 2 1 64770 1618606653 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpu_div_sqrt_mvp/hdl/div_sqrt_top_mvp.sv 46 180 2 1 64770 1618608000 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpu_div_sqrt_mvp/hdl/iteration_div_sqrt_mvp.sv 47 61 2 1 64770 1618608047 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpu_div_sqrt_mvp/hdl/norm_div_sqrt_mvp.sv 48 470 2 1 64770 1618608050 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpu_div_sqrt_mvp/hdl/nrbd_nrsc_mvp.sv 49 104 2 1 64770 1618608057 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvfpu/src/fpu_div_sqrt_mvp/hdl/preprocess_mvp.sv 50 425 2 1 64770 1618608058 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/include/config_pkg.sv 51 537 2 1 64770 1077242386 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/include/cv32a6_rtos_config_pkg.sv 52 194 2 1 64770 1076863290 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/include/riscv_pkg.sv 53 1025 2 1 64770 1077262349 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/include/ariane_pkg.sv 54 876 2 1 64770 1077240511 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/axi/src/axi_pkg.sv 55 423 2 1 64770 537624069 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/include/wt_cache_pkg.sv 56 92 2 1 64770 1077262364 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/include/std_cache_pkg.sv 57 60 2 1 64770 1077262358 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/include/instr_tracer_pkg.sv 58 202 2 1 64770 1077262346 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/include/build_config_pkg.sv 59 222 2 1 64770 1077242369 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/include/aes_pkg.sv 60 219 2 1 64770 1077240510 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/include/triggers_pkg.sv 61 146 2 1 64770 1077262359 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvxif_compressed_if_driver.sv 62 66 2 1 64770 747263 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvxif_issue_register_commit_if_driver.sv 63 66 1 1 64770 747477 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvxif_example/include/cvxif_instr_pkg.sv 64 154 2 1 64770 747471 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvxif_fu.sv 65 79 2 1 64770 747475 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvxif_example/cvxif_example_coprocessor.sv 66 152 2 1 64770 1618489793 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvxif_example/instr_decoder.sv 67 89 2 1 64770 1618489794 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvxif_example/compressed_instr_decoder.sv 68 49 2 1 64770 1618488383 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cvxif_example/copro_alu.sv 69 160 2 1 64770 1618489792 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/cf_math_pkg.sv 70 61 2 1 64770 1618521707 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/fifo_v3.sv 71 156 2 1 64770 1618522694 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/lfsr.sv 72 315 1 1 64770 1618523595 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/lfsr_8bit.sv 73 61 2 1 64770 1618523602 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/stream_arbiter.sv 74 49 2 1 64770 1618525916 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/stream_arbiter_flushable.sv 75 82 2 1 64770 1618525917 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/stream_mux.sv 76 46 2 1 64770 1618525926 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/stream_demux.sv 77 36 2 1 64770 1618525919 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/lzc.sv 78 112 1 1 64770 1618523609 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/rr_arb_tree.sv 79 348 2 1 64770 1618525909 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/shift_reg.sv 80 53 1 1 64770 1618525913 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/unread.sv 81 21 1 1 64770 1618525934 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/popcount.sv 82 57 1 1 64770 1618525908 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/exp_backoff.sv 83 98 2 1 64770 1618521726 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/counter.sv 84 43 2 1 64770 1618521717 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/delta_counter.sv 85 74 2 1 64770 1618521718 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cva6.sv 86 1977 1 1 64770 746737 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cva6_rvfi_probes.sv 87 145 1 1 64770 747242 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/alu.sv 88 413 1 1 64770 744905 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/alu_wrapper.sv 89 71 1 1 64770 744906 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/aes.sv 90 234 2 1 64770 744903 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/fpu_wrap.sv 91 576 2 1 64770 747495 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/branch_unit.sv 92 140 1 1 64770 744930 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/compressed_decoder.sv 93 948 1 1 64770 744944 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/macro_decoder.sv 94 783 2 1 64770 748616 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/controller.sv 95 277 1 1 64770 746531 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/zcmt_decoder.sv 96 134 2 1 64770 749951 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/csr_buffer.sv 97 83 1 1 64770 746539 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/csr_regfile.sv 98 3207 1 1 64770 746721 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/trigger_module.sv 99 1056 1 1 64770 749926 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/decoder.sv 100 2016 1 1 64770 747478 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/ex_stage.sv 101 792 1 1 64770 747485 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/instr_realign.sv 102 363 1 1 64770 747507 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/id_stage.sv 103 481 1 1 64770 747498 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/issue_read_operands.sv 104 1117 1 1 64770 747511 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/issue_stage.sv 105 318 1 1 64770 747996 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/load_unit.sv 106 698 1 1 64770 748613 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/load_store_unit.sv 107 922 1 1 64770 748007 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/lsu_bypass.sv 108 145 1 1 64770 748615 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/mult.sv 109 158 1 1 64770 748622 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/multiplier.sv 110 169 1 1 64770 748624 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/serdiv.sv 111 277 1 1 64770 749910 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/perf_counters.sv 112 217 2 1 64770 748625 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/ariane_regfile_ff.sv 113 83 1 1 64770 744909 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/ariane_regfile_fpga.sv 114 150 2 1 64770 744915 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/scoreboard.sv 115 356 1 1 64770 749902 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/raw_checker.sv 116 73 1 1 64770 749892 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/store_buffer.sv 117 320 1 1 64770 749921 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/amo_buffer.sv 118 83 2 1 64770 744908 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/store_unit.sv 119 423 1 1 64770 749925 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/commit_stage.sv 120 470 1 1 64770 744932 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/axi_shim.sv 121 310 2 1 64770 744928 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cva6_accel_first_pass_decoder_stub.sv 122 34 2 1 64770 746743 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/acc_dispatcher.sv 123 453 2 1 64770 742392 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cva6_fifo_v3.sv 124 231 1 1 64770 747204 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/frontend/btb.sv 125 193 1 1 64770 537614884 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/frontend/bht.sv 126 313 1 1 64770 537614882 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/frontend/bht2lvl.sv 127 131 2 1 64770 537614883 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/frontend/ras.sv 128 79 1 1 64770 537614888 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/frontend/instr_scan.sv 129 111 1 1 64770 537614887 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/frontend/instr_queue.sv 130 577 1 1 64770 537614886 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/frontend/frontend.sv 131 592 1 1 64770 537614885 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/wt_dcache_ctrl.sv 132 302 2 1 64770 537614865 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/wt_dcache_mem.sv 133 440 2 1 64770 537614867 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/wt_dcache_missunit.sv 134 672 2 1 64770 537614870 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/wt_dcache_wbuffer.sv 135 697 2 1 64770 537614871 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/wt_dcache.sv 136 391 2 1 64770 537614864 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/cva6_icache.sv 137 606 1 1 64770 537614856 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/wt_cache_subsystem.sv 138 291 2 1 64770 537614863 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/wt_axi_adapter.sv 139 784 2 1 64770 537614862 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/tag_cmp.sv 140 106 2 1 64770 537614861 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/axi_adapter.sv 141 521 2 1 64770 537614849 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/miss_handler.sv 142 855 2 1 64770 537614858 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/cache_ctrl.sv 143 489 2 1 64770 537614850 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/cva6_icache_axi_wrapper.sv 144 214 2 1 64770 537614857 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/std_cache_subsystem.sv 145 343 2 1 64770 537614859 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/std_nbdcache.sv 146 302 2 1 64770 537614860 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_pkg.sv 147 512 2 1 64770 537842304 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/hpdcache_mem_req_read_arbiter.sv 148 98 1 1 64770 537842320 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/hpdcache_mem_req_write_arbiter.sv 149 189 1 1 64770 537842321 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_demux.sv 150 72 1 1 64770 1080615400 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_lfsr.sv 151 95 1 1 64770 1080615414 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_sync_buffer.sv 152 93 1 1 64770 1080618618 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_fifo_reg.sv 153 180 1 1 64770 1080615401 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_fifo_reg_initialized.sv 154 147 2 1 64770 1080615402 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_fxarb.sv 155 85 1 1 64770 1080615403 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_rrarb.sv 156 121 1 1 64770 1080618611 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_mux.sv 157 84 1 1 64770 1080615415 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_decoder.sv 158 53 1 1 64770 1080615399 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_1hot_to_binary.sv 159 60 1 1 64770 1080615395 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_prio_1hot_encoder.sv 160 42 1 1 64770 1080618596 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_prio_bin_encoder.sv 161 36 2 1 64770 1080618606 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_sram.sv 162 77 1 1 64770 1080618615 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_sram_wbyteenable.sv 163 82 1 1 64770 1080618616 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_sram_wmask.sv 164 83 2 1 64770 1080618617 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_regbank_wbyteenable_1rw.sv 165 70 1 1 64770 1080618609 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_regbank_wmask_1rw.sv 166 66 2 1 64770 1080618610 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_data_downsize.sv 167 200 2 1 64770 1080615396 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_data_upsize.sv 168 189 2 1 64770 1080615398 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/hpdcache_data_resize.sv 169 129 1 1 64770 1080615397 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hwpf_stride/hwpf_stride_pkg.sv 170 68 2 1 64770 1080623043 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hwpf_stride/hwpf_stride.sv 171 380 1 1 64770 1080623041 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hwpf_stride/hwpf_stride_arb.sv 172 121 1 1 64770 1080623042 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hwpf_stride/hwpf_stride_wrapper.sv 173 289 1 1 64770 1080623044 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache.sv 174 1341 1 1 64770 537799995 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_amo.sv 175 68 1 1 64770 537799997 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_cmo.sv 176 494 1 1 64770 537799999 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_core_arbiter.sv 177 175 1 1 64770 537819521 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_ctrl.sv 178 1791 1 1 64770 537819523 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_ctrl_pe.sv 179 1368 1 1 64770 537819527 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_memctrl.sv 180 1143 1 1 64770 537819545 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_cbuf.sv 181 93 2 1 64770 537799998 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_miss_handler.sv 182 903 1 1 64770 537819546 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_mshr.sv 183 434 1 1 64770 537819567 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_rtab.sv 184 732 1 1 64770 537842305 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_uncached.sv 185 971 1 1 64770 537842306 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_victim_plru.sv 186 146 2 1 64770 537842307 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_victim_random.sv 187 126 1 1 64770 537842308 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_victim_sel.sv 188 122 1 1 64770 537842311 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_wbuf.sv 189 742 1 1 64770 537842312 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/hpdcache_flush.sv 190 394 2 1 64770 537819534 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/ecc/prim_secded_36_29_dec.sv 191 59 2 1 64770 1080623046 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/ecc/prim_secded_36_29_enc.sv 192 23 2 1 64770 1080623047 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/ecc/prim_secded_39_32_dec.sv 193 62 2 1 64770 1080623048 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/ecc/prim_secded_39_32_enc.sv 194 23 2 1 64770 1080623049 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/ecc/prim_secded_55_48_dec.sv 195 78 2 1 64770 1080623050 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/ecc/prim_secded_55_48_enc.sv 196 23 2 1 64770 1080623051 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/ecc/prim_secded_72_64_dec.sv 197 95 2 1 64770 1080623052 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/ecc/prim_secded_72_64_enc.sv 198 24 2 1 64770 1080623053 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/ecc/prim_secded_pkg.sv 199 466 2 1 64770 1080623055 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/hpdcache_mem_resp_demux.sv 200 108 1 1 64770 537842322 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/hpdcache_mem_to_axi_read.sv 201 95 1 1 64770 537842323 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/hpdcache_mem_to_axi_write.sv 202 148 1 1 64770 537842326 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/include/dummy_l15_pkg.sv 203 116 2 1 64770 1077262345 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/cva6_hpdcache_subsystem.sv 204 579 1 1 64770 537614852 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/cva6_hpdcache_subsystem_axi_arbiter.sv 205 442 1 1 64770 537614853 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/cva6_hpdcache_if_adapter.sv 206 382 1 1 64770 537614851 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/cva6_hpdcache_wrapper.sv 207 399 1 1 64770 537614855 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/macros/behav/hpdcache_sram_1rw.sv 208 70 1 1 64770 1003027 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/macros/behav/hpdcache_sram_wbyteenable_1rw.sv 209 75 1 1 64770 1005058 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/macros/behav/hpdcache_sram_wmask_1rw.sv 210 71 2 1 64770 1005061 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/macros/behav/hpdcache_sram_ecc_1rw.sv 211 90 2 1 64770 1003071 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/macros/behav/hpdcache_sram_wbyteenable_ecc_1rw.sv 212 126 2 1 64770 1005059 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/common/macros/behav/hpdcache_sram_wmask_ecc_1rw.sv 213 105 2 1 64770 1005067 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/pmp/src/pmp.sv 214 75 1 1 64770 1077262367 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/pmp/src/pmp_entry.sv 215 127 1 1 64770 1077262371 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/pmp/src/pmp_data_if.sv 216 210 1 1 64770 1077262370 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/common/local/util/instr_tracer.sv 217 314 2 1 64770 537614826 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/common/local/util/tc_sram_wrapper.sv 218 60 2 1 64770 537614830 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/common/local/util/tc_sram_wrapper_cache_techno.sv 219 64 1 1 64770 537614831 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/tech_cells_generic/src/rtl/tc_sram.sv 220 248 1 1 64770 537624124 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/common/local/util/sram.sv 221 117 2 1 64770 537614827 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/common/local/util/sram_cache.sv 222 126 1 1 64770 537614828 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cva6_mmu/cva6_mmu.sv 223 812 2 1 64770 1618488378 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cva6_mmu/cva6_ptw.sv 224 712 2 1 64770 1618488379 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cva6_mmu/cva6_tlb.sv 225 537 2 1 64770 1618488381 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cva6_mmu/cva6_shared_tlb.sv 226 843 2 1 64770 1618488380 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/include/ 227 -1 12 1 64770 1077240509 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/include/ 228 -1 12 1 64770 537624075 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/src/ 229 -1 12 1 64770 1618521697 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/axi/include/ 230 -1 12 1 64770 1618521683 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/common/local/util/ 231 -1 12 1 64770 537614820 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/ecc 232 -1 12 1 64770 1080623045 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/include 233 -1 12 1 64770 1618600338 0 0 0 0 0 0 0 0 N.A.
+../core/cvxif_example 234 -1 12 1 64770 1618488382 0 0 0 0 0 0 0 0 N.A.
+../core/cache_subsystem/hpdcache/rtl 235 -1 12 1 64770 988185 0 0 0 0 0 0 0 0 N.A.
+./spyglass_results/cva6/cva6/WORK 236 -1 12 1 64770 538804794 0 0 0 0 0 0 0 0 N.A.
+/home/dungpc/FU/shot1/cva6/vendor/pulp-platform/common_cells/include//common_cells/registers.svh 237 221 2 1 64770 1078264309 0 0 0 0 0 0 1 0 N.A.
+/home/dungpc/FU/shot1/cva6/core/include//rvfi_types.svh 238 185 8 1 64770 1077262357 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/include//cvxif_types.svh 239 73 8 1 64770 1077262343 0 0 0 0 1 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/include/hpdcache_typedef.svh 240 107 8 1 64770 1618600339 0 0 0 0 0 0 1 1 N.A.
+/home/dungpc/FU/shot1/cva6/core/cache_subsystem/hpdcache//rtl/src/utils/ecc/prim_secded_inc.svh 241 81 2 1 64770 1080623054 0 0 0 0 0 0 1 0 N.A.
+./spyglass_results/cva6/cva6/Design_Read/spyglass_spysch/constraint/spg_autogenerated_waivers.sgdc 242 -1 7 1 64770 538804796 0 0 0 0 0 0 1 0 N.A.
+63 1 66 19
+72 1 315 46
+78 1 112 7
+80 2 53 37
+81 1 21 6
+82 1 57 8
+86 1 1977 1
+87 1 144 43
+88 1 413 24
+89 1 71 23
+92 1 140 25
+93 1 947 14
+95 1 277 42
+97 1 83 26
+98 1 3207 40
+99 1 1056 41
+100 1 2016 15
+101 2 792 22
+102 1 363 3
+103 1 481 13
+104 1 1117 18
+105 1 318 16
+106 1 698 36
+107 1 922 30
+108 1 144 38
+109 3 158 27
+110 1 169 28
+111 1 277 29
+113 1 83 21
+115 1 356 17
+116 1 73 20
+117 1 317 35
+119 1 423 34
+120 1 470 39
+124 1 231 5
+125 1 193 10
+126 1 313 11
+128 1 79 9
+129 1 111 12
+130 1 577 4
+131 1 592 2
+137 1 606 45
+148 1 98 82
+149 1 189 83
+150 1 72 88
+151 1 95 67
+152 1 93 75
+153 1 180 74
+155 1 85 59
+156 1 121 53
+157 1 84 55
+158 1 53 68
+159 1 60 62
+160 1 42 54
+162 1 77 69
+163 1 82 71
+165 1 70 78
+169 1 129 76
+171 1 380 56
+172 1 121 52
+173 1 289 51
+174 1 1341 57
+175 1 68 80
+176 1 494 81
+177 1 175 58
+178 1 1791 60
+179 1 1368 61
+180 1 1143 64
+182 1 903 73
+183 1 434 77
+184 1 732 63
+185 1 971 79
+187 1 126 66
+188 1 122 65
+189 1 742 84
+200 1 108 87
+201 1 95 90
+202 1 148 89
+204 1 579 44
+205 1 442 86
+206 1 382 85
+207 1 399 50
+208 1 70 70
+209 1 75 72
+214 1 75 32
+215 1 127 33
+216 1 210 31
+219 1 64 48
+220 1 248 49
+222 1 126 47
+238 4 185 1
+239 4 73 1
+240 1 107 44
+240 1 107 50
+240 1 107 51
+240 1 107 57

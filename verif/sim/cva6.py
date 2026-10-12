@@ -848,11 +848,18 @@ def load_config(args, cwd):
 
   if args.debug:
     args.debug = open(args.debug, "w")
+  # [dungpc] Original: yaml/ does not exist next to cva6.py; the files live under dv/yaml/.
+  #if not args.csr_yaml:
+  #  args.csr_yaml = cwd + "/yaml/csr_template.yaml"
+  #
+  #if not args.iss_yaml:
+  #  args.iss_yaml = cwd + "/yaml/iss.yaml"
   if not args.csr_yaml:
-    args.csr_yaml = cwd + "/yaml/csr_template.yaml"
+    args.csr_yaml = cwd + "/dv/yaml/csr_template.yaml"
 
+  # [dungpc] ISS definitions (vcs-testharness, ...) are in cva6.yaml, not dv/yaml/iss.yaml.
   if not args.iss_yaml:
-    args.iss_yaml = cwd + "/yaml/iss.yaml"
+    args.iss_yaml = cwd + "/cva6.yaml"
 
   if not args.simulator_yaml:
     args.simulator_yaml = cwd + "/cva6-simulator.yaml"
@@ -917,6 +924,12 @@ def load_config(args, cwd):
     elif base == "cv32a6_imafc_sv32":
       args.mabi = "ilp32f"
       args.isa  = "rv32imafc"
+    elif base in ("cv32a6_rtos", "cv32a6_rtos_v1"):
+      # FU3 core-level config: RV32IMC + Zb*, M-mode only, no MMU/F/D/A/V.
+      # v1 preserves this software-visible configuration while removing the
+      # complete L1 cache subsystem from the RTL data path.
+      args.mabi = "ilp32"
+      args.isa  = "rv32imc_zba_zbb_zbc_zbs"
     elif base == "rv32imc":
       args.mabi = "ilp32"
       args.isa  = "rv32imc"
@@ -984,12 +997,17 @@ def check_cc_version():
 
   cc_path = get_env_var("RISCV_CC")
   cc_version = run_cmd(f"{cc_path} --version")
-  cc_version_string = cc_version.split("\n")[0].split(" ")[2]
-  cc_version_number = re.split(r'\D+', cc_version_string)
+  cc_version_banner = cc_version.split("\n")[0]
+  cc_version_match = re.search(r'(?<![A-Za-z0-9_])(\d+)\.(\d+)(?:\.\d+)?',
+                               cc_version_banner)
+  if cc_version_match is None:
+    logging.error("Cannot parse GCC version from: %s", cc_version_banner)
+    sys.exit(RET_FAIL)
+  cc_version_string = cc_version_match.group(0)
 
   logging.info(f"GCC Version: {cc_version_string}")
 
-  if int(cc_version_number[0]) < REQUIRED_GCC_VERSION:
+  if int(cc_version_match.group(1)) < REQUIRED_GCC_VERSION:
     incorrect_version_exit("GCC", cc_version_string, f">={REQUIRED_GCC_VERSION}")
 
 
@@ -1048,10 +1066,15 @@ def check_verilator_version():
     incorrect_version_exit("Verilator", verilator_version, REQUIRED_VERILATOR_VERSION)
 
 
-def check_tools_version():
+def check_tools_version(iss):
   check_cc_version()
-  check_spike_version()
-  check_verilator_version()
+  iss_list = iss.split(',') if iss else []
+  # UVM flows load the Spike DPI reference-model libraries even when tandem
+  # comparison is disabled. Testharness-only flows do not need them.
+  if "spike" in iss_list or any("uvm" in simulator for simulator in iss_list):
+    check_spike_version()
+  if any(simulator.startswith("veri-") for simulator in iss_list):
+    check_verilator_version()
 
 
 def openhw_process_regression_list(testlist, test, iterations, matched_list,
@@ -1144,7 +1167,7 @@ def main():
         # Join the list back into a string
         args.iss = ','.join(args_list)
 
-    check_tools_version()
+    check_tools_version(args.iss)
 
     # create file handler which logs even debug messages13.1.1
     fh = logging.FileHandler('logfile.log')
@@ -1256,12 +1279,13 @@ def main():
       if args.steps == "all" or re.match(".*gen.*", args.steps):
         # Run any handcoded/directed tests specified in YAML format
         if len(directed_tests_list) != 0:
-          for test_entry in asm_directed_list:
+          for test_entry in asm_directed_list + c_directed_list:
             gcc_opts = args.gcc_opts
             gcc_opts += test_entry.get('gcc_opts', '')
-            path_test = os.path.expanduser(test_entry.get('asm_tests'))
+            path_test = os.path.expanduser(
+                test_entry.get('asm_tests') or test_entry.get('c_tests'))
             if path_test:
-              # path_test is an assembly file
+              # path_test is an assembly or C file
               if os.path.isfile(path_test):
                 run_test(path_test, args.iss_yaml, args.isa, args.target, args.mabi, gcc_opts,
                              args.iss, output_dir, args.core_setting_dir, args.debug, args.linker,

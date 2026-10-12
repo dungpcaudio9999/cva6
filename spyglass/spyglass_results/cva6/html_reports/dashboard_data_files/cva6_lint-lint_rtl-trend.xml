@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<severity_lines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///Dashboard/GoalQualityGraph.xsd">
+<!-- This file schema is internal to SpyGlass DashBoard and subject to change in future without notice --> 
+	  <severity name="Fatal" color="11350115" line_type="solid">
+		<data_point date_time="09/28/2026 (15:47)" value="0" />
+		<data_point date_time="09/28/2026 (15:51)" value="0" />
+		<data_point date_time="09/28/2026 (22:18)" value="0" />
+	  </severity> 
+	  <severity name="Error" color="16711680" line_type="solid">
+		<data_point date_time="09/28/2026 (15:47)" value="16" />
+		<data_point date_time="09/28/2026 (15:51)" value="14" />
+		<data_point date_time="09/28/2026 (22:18)" value="14" />
+	  </severity> 
+	  <severity name="Warning" color="15696483" line_type="solid">
+		<data_point date_time="09/28/2026 (15:47)" value="72" />
+		<data_point date_time="09/28/2026 (15:51)" value="75" />
+		<data_point date_time="09/28/2026 (22:18)" value="75" />
+	  </severity> 
+	  <severity name="Waived-Error" color="0" line_type="dotted">
+		<data_point date_time="09/28/2026 (15:47)" value="6" />
+		<data_point date_time="09/28/2026 (15:51)" value="2" />
+		<data_point date_time="09/28/2026 (22:18)" value="2" />
+	  </severity> 
+	  <severity name="Waived-Warning" color="0" line_type="dotted">
+		<data_point date_time="09/28/2026 (15:47)" value="1000" />
+		<data_point date_time="09/28/2026 (15:51)" value="1001" />
+		<data_point date_time="09/28/2026 (22:18)" value="1001" />
+	  </severity> 
+	<title>Module:cva6     Goal: lint/lint_rtl </title>
+	<xaxis_label>Date</xaxis_label>
+	<yaxis_label>Violation Count</yaxis_label>
+	</severity_lines>

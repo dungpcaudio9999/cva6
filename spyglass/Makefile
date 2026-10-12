@@ -41,15 +41,29 @@ EXPORT_LIST= CVA6_REPO_DIR=$(CVA6_REPO_DIR) TARGET_CFG=$(DV_TARGET) HPDCACHE_TAR
 
 # Use Spyglass design_read and lint_check commands, other commands could be added to check cdc, sdc and dft
 
+# design_read: run_checkvar
+# 	@echo "Building for $(DV_TARGET)"
+# 	@export ${EXPORT_LIST}; aipk_read -top=$(TOP) -srcfile=$(FLIST_CVA6)
+
+# lint_check: run_checkvar
+# 	@export ${EXPORT_LIST}; aipk_run -top=$(TOP) -goals=lint_rtl
+
+# gui: run_checkvar
+# 	aipk_run -top=$(TOP) -gui&
+
 design_read: run_checkvar
 	@echo "Building for $(DV_TARGET)"
-	@export ${EXPORT_LIST}; aipk_read -top=$(TOP) -srcfile=$(FLIST_CVA6)
+	@export ${EXPORT_LIST}; \
+		spyglass -project cva6.prj -batch -designread
 
 lint_check: run_checkvar
-	@export ${EXPORT_LIST}; aipk_run -top=$(TOP) -goals=lint_rtl
+	@export ${EXPORT_LIST}; \
+		spyglass -project cva6.prj -batch \
+		-goals "lint/lint_rtl"
 
 gui: run_checkvar
-	aipk_run -top=$(TOP) -gui&
+	@export ${EXPORT_LIST}; \
+		spyglass -project cva6.prj
 
 show_goals:
 	aipk_run -showgoals -top=$(TOP) | tee showgoals.log

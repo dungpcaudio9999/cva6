@@ -1,0 +1,37 @@
+##Data Import Section
+
+read_file -type sourcelist ../core/Flist.cva6
+#BackRefFile:/home/dungpc/FU/shot1/cva6/spyglass/cva6.prj #LineNumber:5
+read_file -type sgdc ./sg_setup/cva6/cva6.sgdc
+read_file -type awl ./sg_setup/cva6/cva6_waiver.awl
+
+##Common Options Section
+
+set_option projectwdir ./spyglass_results
+set_option language_mode mixed
+set_option designread_enable_synthesis yes
+set_option designread_disable_flatten no
+set_option enableSV no
+set_option enableSV09 yes
+set_option top cva6
+set_option report_incr_messages yes
+set_option mthresh 65536
+set_option incdir { ../core/include }
+set_option incdir { ../common/local/util }
+set_option incdir { ../core/cvxif_example }
+set_option incdir { ../vendor/pulp-platform/axi/include }
+set_option incdir { ../vendor/pulp-platform/common_cells/src }
+set_option incdir { ../vendor/pulp-platform/common_cells/include }
+set_option incdir { ../core/cache_subsystem/hpdcache/rtl }
+set_option active_methodology /opt/synopsys/spyglass/X-2025.06-SP2/SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+
+
+##Goal Setup Section
+
+current_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+
+
+current_goal lint/lint_rtl -top cva6
+set_parameter ignore_bitwiseor_assignment yes
+set_parameter ignore_if_case_statement yes
+

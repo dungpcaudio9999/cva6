@@ -1,0 +1,11 @@
+##Header_Start
+##Spyglass_Version:SpyGlass_vX-2025.06-SP2
+##Header_End
+
+##File_ID::1
+
+##File_Name::./sg_setup/cva6/cva6.sgdc@@Design_Unit::cva6
+##Line_no::20@@port@@cva6.clk_i
+##Line_no::27@@port@@cva6.rst_ni
+##Line_no::34@@port@@cva6.rst_ni
+

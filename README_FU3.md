@@ -4,6 +4,10 @@ This document describes the CVA6 development source used to create the clean
 FU3 RTL delivery, the active cacheless `cv32a6_rtos_v1` configuration, and the
 local changes relative to the upstream CVA6 baseline.
 
+Reference specification: `FU3_Hardware_Architecture_Specification_v2.0.docx`
+(10/10/2026). In v2.0 CVA6 is the application CPU; Ibex is the boot CPU and
+is the only CPU that executes the boot ROM.
+
 ## Source identity
 
 - Upstream repository: `https://github.com/openhwfoundation/cva6.git`
@@ -76,26 +80,57 @@ while the FU3 AXI boundary is explicitly 32 bits.
 
 ## FU3 PMA and execution map
 
+The PMA follows the shared memory map of spec v2.0.
+
 Executable regions configured in the core are:
 
 | Region | Base | Length | End |
 |---|---:|---:|---:|
-| Boot ROM | `0x0000_0000` | `0x0000_1000` | `0x0000_0FFF` |
-| Debug execution | `0x0000_1000` | `0x0000_1000` | `0x0000_1FFF` |
-| ISRAM | `0x0001_0000` | `0x0001_0000` | `0x0001_FFFF` |
+| CVA6_ISRAM (60 KiB image + 4 KiB debug code) | `0x0001_0000` | `0x0001_0000` | `0x0001_FFFF` |
 | QSPI XIP | `0x3000_0000` | `0x0002_0000` | `0x3001_FFFF` |
+
+The Ibex-only boot ROM (`0x0000_0000`), IBEX_ISRAM, DSRAM and the HyperRAM
+window (`0x6000_0000`, data only) are not executable by CVA6. A fetch outside
+the regions above raises an instruction access fault (`mcause` 1) before any
+bus access.
 
 Device/non-idempotent regions are:
 
 | Region | Base | Length | End |
 |---|---:|---:|---:|
-| AES and PLIC window | `0x4000_0000` | `0x0002_0000` | `0x4001_FFFF` |
-| Peripheral bus 0 | `0x4400_0000` | `0x0011_0000` | `0x4410_FFFF` |
-| Peripheral bus 1 | `0x5000_0000` | `0x0011_0000` | `0x5010_FFFF` |
+| Ibex Debug Module | `0x1A11_0000` | `0x0000_1000` | `0x1A11_0FFF` |
+| EDHOC OSCORE | `0x3010_0000` | `0x0001_0000` | `0x3010_FFFF` |
+| AES-256 | `0x4000_0000` | `0x0001_0000` | `0x4000_FFFF` |
+| PLIC | `0x4010_0000` | `0x0001_0000` | `0x4010_FFFF` |
+| PERIBUS_0 | `0x4400_0000` | `0x0010_0000` | `0x440F_FFFF` |
+| PERIBUS_1 | `0x5001_0000` | `0x0010_0000` | `0x5010_FFFF` |
 
-The Debug Module base is `0x0000_1000`; the halt and exception offsets are
-`0x800` and `0x808`, producing entry addresses `0x0000_1800` and
-`0x0000_1808`.
+No region is cacheable (`NrCachedRegionRules=0`).
+
+CVA6 debug code lives in the top 4 KiB of CVA6_ISRAM. `DmBaseAddress` is
+`0x0001_F000`; the halt and exception offsets are `0x0` and `0x8`, producing
+entry addresses `0x0001_F000` (halt) and `0x0001_F008` (exception in Debug
+Mode). The former debug window `0x0000_1000-0x0000_1FFF` is reserved in v2.0.
+
+### Integration requirements outside this core
+
+These spec v2.0 items are not implemented by the CVA6 RTL and must be provided
+by the FU3 top/bus:
+
+- CVA6 `boot_addr_i = 0x0001_0000`.
+- CVA6 reset is held by Ibex until its image is staged and DEBUG_EN is low.
+- The bus denies CVA6 access to the boot ROM; only Ibex writes CVA6_ISRAM
+  while staging the image.
+- Debug code at `0x0001_F000` must be loaded by the debugger (JTAG-to-AXI)
+  before asserting `debug_req_i`.
+
+### Software-visible error reporting
+
+- A load that receives an AXI error (SLVERR/DECERR) traps with `mcause` 19
+  (`HARDWARE_ERROR`), not 5.
+- A store that receives an AXI error completes silently; no exception is
+  raised (same as the upstream write-through cache).
+- A fetch that receives an AXI error traps with `mcause` 1.
 
 ## Production RTL changes from the upstream base
 
@@ -112,6 +147,21 @@ and LSU requests directly to the 32-bit AXI boundary. Reads are serialized and
 stores are acknowledged to the core only after the AXI write response, which
 preserves store/load ordering without cache machinery.
 
+The bridge follows the two-phase CVA6 data-cache request protocol. When the
+load unit kills a granted request instead of sending its tag (a device load
+that is not yet at commit time, a PMP/misaligned exception, or a flush), the
+bridge closes the request with `data_rvalid` in the same cycle and issues no
+AXI read, matching the upstream `wt_dcache_ctrl`.
+
+Fix 2026-10-12 (`RD_D_TAG`): the bridge previously ignored `kill_req` and
+issued every killed load on AXI. Consequences, both reproduced in simulation
+and present in delivery `rtl1`:
+
+- Device (non-idempotent) loads were read several times while waiting for
+  commit (12 loads produced 48 AXI reads), breaking read-to-clear registers.
+- The PMP/misaligned exception of a killed load was lost: a load to a
+  PMP-locked page returned memory data without a trap.
+
 `core/cva6.sv`, `Bender.yml`, the Makefiles and the dedicated v1 filelist select
 this subsystem when building `cv32a6_rtos_v1`. No source below
 `core/cache_subsystem/` is part of the clean v1 delivery. The unchanged CVA6
@@ -126,9 +176,17 @@ production delivery.
 
 The working tree also contains changes outside the production RTL closure for:
 
-- the focused config/PMA smoke test under `verif/rtos_config`;
+- the focused config/PMA smoke test under `verif/rtos_config` (spec v2.0 map);
+- FU3 directed tests in `verif/tests/testlist_fu3.yaml`, including
+  `fu3_fetch_fault`, `fu3_device_load`, `fu3_load_fault` and
+  `fu3_debug_entry` under `verif/tests/custom/fu3/`;
+- `CVA6_RTOS_MEM_MAP` testharness support: a debug request raised when
+  `mscratch` holds `0xFD0B_0001`, and a device-access checker that compares
+  the core PMA with the spec device map, rejects speculative device loads,
+  and rejects device AXI reads without a committed load (`$fatal`);
 - generated linker and Spike configuration under
-  `config/gen_from_riscv_config/cv32a6_rtos_v1`;
+  `config/gen_from_riscv_config/cv32a6_rtos_v1` (60 KiB image region and a
+  4 KiB `DBG` region at `0x0001_F000` for `.debug_code`);
 - UVM environment and testbench selection for `cv32a6_rtos_v1`;
 - AXI assertions and RVFI tracing used by FU3 regressions;
 - custom-test runtime/tohost handling;
@@ -145,10 +203,30 @@ The active clean RTL delivery is:
 ../cva6-fu3-delivery/rtl/cva6_rtos_v1_20261003_81245a47_rtl1/
 ```
 
+`rtl1` predates spec v2.0 (old PMA/debug map) and contains the bridge
+`kill_req` defect described above. The next delivery (`rtl2`) carries the
+spec v2.0 PMA/debug configuration and the bridge fix.
+
 The earlier cached clean delivery and previous source closures remain under
 `../cva6-fu3-delivery/rtl/` and `../cva6-fu3-delivery/snapshots/` for audit and
 rollback. Do not edit a delivery in place; create a new revision after source
 changes pass verification.
+
+## Verification status (2026-10-12)
+
+Target `cv32a6_rtos_v1`, `vcs-testharness`, `+define+CVA6_RTOS_MEM_MAP`:
+
+| Test | Result |
+|---|---|
+| `cv32a6_rtos_v1_pma_smoke` | PASS |
+| `boot_smoke`, `nocache_mem_smoke`, `lsu_false_4k_alias`, `hello_world_fu3` | PASS |
+| `fu3_fetch_fault`, `fu3_device_load`, `fu3_load_fault`, `fu3_debug_entry` | PASS |
+| `interrupt_jump_to_zero` | FAIL (timeout, known since 2026-10-06, unrelated) |
+
+SpyGlass `lint/lint_rtl` on `m_fpt_cpu_wrap` with these sources: 0 Fatal,
+0 Error, 0 Warning reported. The previously waived `W240` on the bridge input
+`kill_req` (the symptom of the defect) is gone; two `W415a` of the kind already
+waived in the bridge were added.
 
 ## FU3 build commands
 

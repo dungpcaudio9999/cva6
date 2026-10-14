@@ -66,3 +66,8 @@ testlist:
     iterations: 1
     <<: *common_test_config
     asm_tests: <path_var>/custom/fu3/debug/debug_entry.S
+
+  - test: fu3_load_fault
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/custom/fu3/pma/load_fault.S

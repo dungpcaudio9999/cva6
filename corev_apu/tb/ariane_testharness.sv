@@ -857,8 +857,17 @@ module ariane_testharness #(
     end
   end
 
-  final $display("[FU3_NI_CHECK] loads=%0d device_loads=%0d ni_hold_cycles=%0d device_axi_reads=%0d errors=%0d",
-                 fu3_ld_total, fu3_ld_dev, fu3_ld_ni_waits, fu3_dev_ar, fu3_ld_err);
+  // Device writes reaching AXI (reported only; stores have no kill path).
+  int unsigned fu3_dev_aw;
+  always_ff @(posedge clk_i or negedge ndmreset_n) begin : p_fu3_dev_aw
+    if (!ndmreset_n) fu3_dev_aw <= 0;
+    else if (axi_ariane_req.aw_valid && axi_ariane_resp.aw_ready &&
+             fu3_spec_device(32'(axi_ariane_req.aw.addr)))
+      fu3_dev_aw <= fu3_dev_aw + 1;
+  end
+
+  final $display("[FU3_NI_CHECK] loads=%0d device_loads=%0d ni_hold_cycles=%0d device_axi_reads=%0d device_axi_writes=%0d errors=%0d",
+                 fu3_ld_total, fu3_ld_dev, fu3_ld_ni_waits, fu3_dev_ar, fu3_dev_aw, fu3_ld_err);
 `endif
 
   ariane #(

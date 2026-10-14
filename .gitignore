@@ -57,3 +57,52 @@ Bender.lock
 /verif/sim/encaps.traces
 /verif/sim/iti.traces
 /verif/sim/verilator.fst.hier
+
+# Local editor, OS and Python cache files
+.DS_Store
+Thumbs.db
+*~
+*.bak
+*.tmp
+*.py[cod]
+.idea/
+.vscode/
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Compiled simulation outputs (VCS, DVE, Verdi, Xcelium, XSim, Verilator)
+simv
+simv.daidir/
+csrc/
+DVEfiles/
+vcs_results/
+xcelium.d/
+INCA_libs/
+xsim.dir/
+obj_dir/
+waves.shm/
+verdiLog/
+fsdb2vcdLog/
+*.vpd
+*.fst
+*.shm
+ucli.key
+novas.conf
+novas.rc
+novas_dump.log
+opendatabase.log
+
+# Timestamped and local verification runs
+/verif/sim/out_*/
+/verif/sim/trace_hart_*.log
+/verif/sim/trace_rvfi_*.dasm
+
+# SpyGlass generated databases and reports. Keep source setup under spyglass/.
+/spyglass/cva6/
+/spyglass/spyglass_results/
+/spyglass/*.out
+/spyglass/*.log

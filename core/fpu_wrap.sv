@@ -529,9 +529,16 @@ module fpu_wrap
     // FPU instance
     //---------------
 
+    // FP32-only configurations (RVF without RVD/XF16/XF8/XF16ALT) use the
+    // E906 FP32 div/sqrt unit; the default C910 unit assumes a 64-bit datapath.
+    localparam fpnew_pkg::divsqrt_unit_t DIVSQRT_SEL =
+        (CVA6Cfg.RVF && !(CVA6Cfg.RVD || CVA6Cfg.XF16 || CVA6Cfg.XF8 || CVA6Cfg.XF16ALT || CVA6Cfg.XFVec))
+        ? fpnew_pkg::TH32 : fpnew_pkg::THMULTI;
+
     fpnew_top #(
         .Features      (FPU_FEATURES),
         .Implementation(FPU_IMPLEMENTATION),
+        .DivSqrtSel    (DIVSQRT_SEL),
         .TagType       (logic [CVA6Cfg.TRANS_ID_BITS-1:0])
     ) i_fpnew_bulk (
         .clk_i,

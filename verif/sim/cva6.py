@@ -924,12 +924,14 @@ def load_config(args, cwd):
     elif base == "cv32a6_imafc_sv32":
       args.mabi = "ilp32f"
       args.isa  = "rv32imafc"
-    elif base in ("cv32a6_rtos", "cv32a6_rtos_v1"):
+    elif base == "cv32a6_rtos":
       # FU3 core-level config: RV32IMC + Zb*, M-mode only, no MMU/F/D/A/V.
-      # v1 preserves this software-visible configuration while removing the
-      # complete L1 cache subsystem from the RTL data path.
       args.mabi = "ilp32"
       args.isa  = "rv32imc_zba_zbb_zbc_zbs"
+    elif base == "cv32a6_rtos_v1":
+      # v1: cacheless RTL data path plus single-precision F (no D/A/V).
+      args.mabi = "ilp32f"
+      args.isa  = "rv32imfc_zba_zbb_zbc_zbs"
     elif base == "rv32imc":
       args.mabi = "ilp32"
       args.isa  = "rv32imc"

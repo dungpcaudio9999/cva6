@@ -8,10 +8,10 @@ spike_param_tree:
   generic_core_config: false
   max_steps: 200000
   max_steps_enabled: false
-  isa: rv32imczicsr_zba_zbb_zbc_zbs
+  isa: rv32imfczicsr_zba_zbb_zbc_zbs
   priv: M
   core_configs:
-    - isa: rv32imczicsr_zba_zbb_zbc_zbs
+    - isa: rv32imfczicsr_zba_zbb_zbc_zbs
       extensions: cv32a60x
       boot_addr: 65536
       marchid_override_mask: 0xFFFFFFFF
@@ -23,11 +23,11 @@ spike_param_tree:
       pmpregions_max: 8
       pmpregions_writable: 8
       priv: M
-      status_fs_field_we: false
-      status_fs_field_we_enable: false
+      status_fs_field_we: true
+      status_fs_field_we_enable: true
       status_vs_field_we: false
       status_vs_field_we_enable: false
-      mstatus_write_mask: 136
+      mstatus_write_mask: 24712  # MIE|MPIE|FS[14:13]
       mstatus_override_mask: 6144
       mie_write_mask: 0x00000888
       mie_override_mask: 0xfffff777

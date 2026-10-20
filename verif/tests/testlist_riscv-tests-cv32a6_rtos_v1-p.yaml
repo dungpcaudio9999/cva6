@@ -1,0 +1,75 @@
+# FU3 cv32a6_rtos_v1 riscv-tests list: rv32uf (single-precision F), physical
+# (p) environment.  cv32a6_rtos_v1 enables RVF=1/RVD=0, so only rv32uf applies.
+#
+# Install the tests first (from the cva6 root):
+#   bash verif/regress/install-riscv-tests.sh
+#
+# Run with (from verif/sim):
+#   python3 cva6.py --target cv32a6_rtos_v1 --iss=vcs-testharness \
+#     --iss_yaml=cva6.yaml --testlist ../tests/testlist_riscv-tests-cv32a6_rtos_v1-p.yaml \
+#     --isscomp_opts '+define+CVA6_RTOS_MEM_MAP' \
+#     --isspostrun_opts 0x0000000000010000
+#
+# The target linker script (config/gen_from_riscv_config/cv32a6_rtos_v1/
+# linker/link.ld) places .text.init in CVA6_ISRAM and .tohost in DSRAM.
+
+common_test_config: &common_test_config
+  path_var: TESTS_PATH
+  gcc_opts: "-static -mcmodel=medany -fvisibility=hidden -nostdlib -nostartfiles -I<path_var>/riscv-tests/isa/macros/scalar/ -I<path_var>/riscv-tests/env/p/ -I<path_var>/riscv-tests/riscv-target/spike/"
+
+testlist:
+  - test: rv32uf-p-fadd
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/riscv-tests/isa/rv32uf/fadd.S
+
+  - test: rv32uf-p-fclass
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/riscv-tests/isa/rv32uf/fclass.S
+
+  - test: rv32uf-p-fcmp
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/riscv-tests/isa/rv32uf/fcmp.S
+
+  - test: rv32uf-p-fcvt
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/riscv-tests/isa/rv32uf/fcvt.S
+
+  - test: rv32uf-p-fcvt_w
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/riscv-tests/isa/rv32uf/fcvt_w.S
+
+  - test: rv32uf-p-fdiv
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/riscv-tests/isa/rv32uf/fdiv.S
+
+  - test: rv32uf-p-fmadd
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/riscv-tests/isa/rv32uf/fmadd.S
+
+  - test: rv32uf-p-fmin
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/riscv-tests/isa/rv32uf/fmin.S
+
+  - test: rv32uf-p-ldst
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/riscv-tests/isa/rv32uf/ldst.S
+
+  - test: rv32uf-p-move
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/riscv-tests/isa/rv32uf/move.S
+
+  - test: rv32uf-p-recoding
+    iterations: 1
+    <<: *common_test_config
+    asm_tests: <path_var>/riscv-tests/isa/rv32uf/recoding.S
+

@@ -74,11 +74,18 @@ module fpu_wrap
         }
     };
 
+    // FP32-only configurations (cv32a6_rtos_v1): deeper FMA/convert pipelines
+    // to meet timing at the FU3 corner. Other configs keep ariane_pkg values.
+    localparam bit FP32_ONLY = CVA6Cfg.RVF &&
+        !(CVA6Cfg.RVD || CVA6Cfg.XF16 || CVA6Cfg.XF8 || CVA6Cfg.XF16ALT || CVA6Cfg.XFVec);
+    localparam int unsigned LAT_ADDMUL_FP32 = FP32_ONLY ? 4 : LAT_COMP_FP32;
+    localparam int unsigned LAT_CONV_SEL    = FP32_ONLY ? 3 : LAT_CONV;
+
     // Implementation (number of registers etc)
     localparam fpnew_pkg::fpu_implementation_t FPU_IMPLEMENTATION = '{
         PipeRegs: '{  // FP32, FP64, FP16, FP8, FP16alt
             '{
-                unsigned'(LAT_COMP_FP32),
+                unsigned'(LAT_ADDMUL_FP32),
                 unsigned'(LAT_COMP_FP64),
                 unsigned'(LAT_COMP_FP16),
                 unsigned'(LAT_COMP_FP8),
@@ -86,7 +93,7 @@ module fpu_wrap
             },  // ADDMUL
             '{default: unsigned'(LAT_DIVSQRT)},  // DIVSQRT
             '{default: unsigned'(LAT_NONCOMP)},  // NONCOMP
-            '{default: unsigned'(LAT_CONV)}
+            '{default: unsigned'(LAT_CONV_SEL)}
         },  // CONV
         UnitTypes: '{
             '{default: fpnew_pkg::PARALLEL},  // ADDMUL
@@ -532,8 +539,8 @@ module fpu_wrap
     // FP32-only configurations (RVF without RVD/XF16/XF8/XF16ALT) use the
     // E906 FP32 div/sqrt unit; the default C910 unit assumes a 64-bit datapath.
     localparam fpnew_pkg::divsqrt_unit_t DIVSQRT_SEL =
-        (CVA6Cfg.RVF && !(CVA6Cfg.RVD || CVA6Cfg.XF16 || CVA6Cfg.XF8 || CVA6Cfg.XF16ALT || CVA6Cfg.XFVec))
-        ? fpnew_pkg::TH32 : fpnew_pkg::THMULTI;
+    FP32_ONLY ? fpnew_pkg::TH32 : fpnew_pkg::THMULTI;
+
 
     fpnew_top #(
         .Features      (FPU_FEATURES),

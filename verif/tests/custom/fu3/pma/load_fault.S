@@ -9,7 +9,7 @@
 #  1. Locked PMP entry 0 (applies to M-mode) denies R/W/X on the 4 KiB device
 #     page 0x4000_0000 (AES window). lw must trap with mcause 5 and must not
 #     write its destination register; sw must trap with mcause 7.
-#  2. Locked PMP entry 1 denies the unused CVA6_ISRAM page 0x0001_E000, which
+#  2. Locked PMP entry 1 denies the unused CVA6_ISRAM page 0x0003_E000, which
 #     answers with AXI OKAY: lw must still trap with mcause 5 (the bridge must
 #     not return the memory data as a successful load).
 #  3. A misaligned lw on DSRAM must trap with mcause 4.
@@ -30,8 +30,8 @@ main:
   # pmpaddr0: NAPOT 4 KiB at 0x4000_0000; pmpcfg0[7:0] = L | NAPOT, no RWX.
   li t0, 0x100001FF
   csrw pmpaddr0, t0
-  # pmpaddr1: NAPOT 4 KiB at 0x0001_E000 (unused top of the 60 KiB image).
-  li t0, 0x000079FF
+  # pmpaddr1: NAPOT 4 KiB at 0x0003_E000 (unused top of the 192 KiB image).
+  li t0, 0x0000F9FF
   csrw pmpaddr1, t0
   li t0, 0x9898
   csrw pmpcfg0, t0
@@ -62,7 +62,7 @@ main:
   # 2. PMP-denied load on memory that would answer OKAY.
   li s2, 0
   li s3, 5
-  li t0, 0x0001E000
+  li t0, 0x0003E000
   li t1, 0x5A5A5A5A
   .option push
   .option norvc

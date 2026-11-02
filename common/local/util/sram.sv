@@ -103,6 +103,7 @@ end
         );
       end else begin : gen_mem_user
           assign ruser_aligned[k*64 +: 64] = '0;
+`ifndef FPT_SIGNOFF
           // synthesis translate_off
           begin: i_tc_sram_wrapper_user
             begin: i_tc_sram
@@ -112,6 +113,7 @@ end
             end
           end
           // synthesis translate_on
+`endif
       end
   end
 endmodule : sram

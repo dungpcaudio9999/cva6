@@ -1,14 +1,15 @@
 OUTPUT_ARCH("riscv")
 ENTRY(_start)
 
-/* FU3 CVA6 RTOS v1 core-level verification map (cacheless), spec v2.0:
- * CVA6_ISRAM 0x0001_0000-0x0001_FFFF holds a 60 KiB program image and, in its
- * top 4 KiB, the CVA6 debug code (halt 0x0001_F000, exception 0x0001_F008). */
+/* FU3 CVA6 RTOS v1 core-level verification map (cacheless), spec v2.1:
+ * CVA6_ISRAM 0x0001_0000-0x0004_0FFF holds a 192 KiB program image and, in its
+ * last 4 KiB, the CVA6 debug code (halt 0x0004_0000, exception 0x0004_0008).
+ * DSRAM is 256 KiB at 0x0100_0000. */
 MEMORY
 {
-  ISRAM (rwx) : ORIGIN = 0x00010000, LENGTH = 60K
-  DBG   (rx)  : ORIGIN = 0x0001F000, LENGTH = 4K
-  DSRAM (rw)  : ORIGIN = 0x01000000, LENGTH = 64K
+  ISRAM (rwx) : ORIGIN = 0x00010000, LENGTH = 192K
+  DBG   (rx)  : ORIGIN = 0x00040000, LENGTH = 4K
+  DSRAM (rw)  : ORIGIN = 0x01000000, LENGTH = 256K
 }
 
 SECTIONS

@@ -1,6 +1,3 @@
-//------------------------------------------------------------------------------
-// Copyright (c) 2026 FPT Telecom. All rights reserved.
-//
 // Direct CVA6-to-AXI bridge for cacheless FU3 configurations.
 //
 // The bridge intentionally contains no tag/data arrays, refill machinery,
@@ -8,7 +5,6 @@
 // fetches and data loads use one serialized AXI read channel.  Data stores are
 // acknowledged only after the AXI write response so a younger load cannot
 // pass a store in the absence of cache/write-buffer forwarding.
-//------------------------------------------------------------------------------
 
 module cva6_nocache_subsystem
   import ariane_pkg::*;

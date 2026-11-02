@@ -4,7 +4,7 @@ spike_param_tree:
   # Spike has no cache timing model; software-visible settings remain the same
   # as cv32a6_rtos while RTL accesses memory through the no-cache AXI bridge.
   dram_base: 65536
-  dram_size: 16842752
+  dram_size: 16973824
   generic_core_config: false
   max_steps: 200000
   max_steps_enabled: false

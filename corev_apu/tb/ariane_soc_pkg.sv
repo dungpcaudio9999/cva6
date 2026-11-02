@@ -41,7 +41,13 @@ package ariane_soc;
   localparam NB_PERIPHERALS = DSRAM + 1;
 
   localparam logic[63:0] DebugLength    = 64'h1000;
+`ifdef CVA6_RTOS_MEM_MAP
+  // FU3 spec v2.1: the ROM port models CVA6_ISRAM 0x0001_0000-0x0004_0FFF
+  // (192 KiB image + 4 KiB debug code), rounded up to a power of two.
+  localparam logic[63:0] ROMLength      = 64'h40000;
+`else
   localparam logic[63:0] ROMLength      = 64'h10000;
+`endif
   localparam logic[63:0] CLINTLength    = 64'hC0000;
   localparam logic[63:0] PLICLength     = 64'h3FF_FFFF;
   localparam logic[63:0] UARTLength     = 64'h1000;
@@ -50,9 +56,9 @@ package ariane_soc;
   localparam logic[63:0] EthernetLength = 64'h10000;
   localparam logic[63:0] GPIOLength     = 64'h1000;
   localparam logic[63:0] HPSLength      = 64'h800000;
-  // FU3 cv32a6_rtos DSRAM: 64 KiB, matches config/gen_from_riscv_config/
-  // cv32a6_rtos/linker/link.ld DSRAM region.
-  localparam logic[63:0] DSRAMLength    = 64'h10000;
+  // FU3 cv32a6_rtos_v1 DSRAM: 256 KiB (spec v2.1), matches
+  // config/gen_from_riscv_config/cv32a6_rtos_v1/linker/link.ld DSRAM region.
+  localparam logic[63:0] DSRAMLength    = 64'h40000;
 `ifdef NEXYS_VIDEO
   localparam logic[63:0] DRAMLength     = 64'h20000000; // 512MByte of DDR on Nexys video board
 `else

@@ -1,4 +1,4 @@
-# FU3 CVA6 PMA directed test: loads to the spec v2.0 device windows.
+# FU3 CVA6 PMA directed test: loads to the spec v2.2 device windows.
 #
 # Each device load is issued right behind a long-latency divide, so it is
 # not yet the oldest instruction when it reaches the load unit. Device
@@ -72,16 +72,19 @@ trap_bad:
 dev_addrs:
   .word 0x1A110000         # Ibex Debug Module
   .word 0x1A110FFC
-  .word 0x30100000         # EDHOC OSCORE
-  .word 0x3010FFFC
+  .word 0x31010000         # EDHOC OSCORE
+  .word 0x3101FFFC
   .word 0x40000000         # AES
   .word 0x4000FFFC
-  .word 0x40100000         # PLIC
-  .word 0x4010FFFC
   .word 0x44000000         # PERIBUS_0 first window (AP_QSPIC)
-  .word 0x440F0000         # PERIBUS_0 last window (GPIOC)
+  .word 0x440F0000         # PERIBUS_0 GPIOC
+  .word 0x44100000         # PERIBUS_0 PWM0
+  .word 0x4411FFFC         # PERIBUS_0 last window (CAN)
   .word 0x50010000         # PERIBUS_1 first window (CRM)
-  .word 0x50100000         # PERIBUS_1 last window
+  .word 0x5010FFFC         # PERIBUS_1 PWM1
+  .word 0x50110000         # PERIBUS_1 AP_DMA1
+  .word 0x50120000         # PERIBUS_1 AP_PLIC
+  .word 0x5012FFFC         # PERIBUS_1 last window (AP_PLIC)
 dev_addrs_end:
 
   .section .data

@@ -354,6 +354,10 @@ module ariane_testharness #(
   logic [AXI_USER_WIDTH-1:0]    rom_ruser;
   logic [AXI_DATA_WIDTH-1:0]    rom_wdata;
   logic [AXI_DATA_WIDTH-1:0]    rom_rdata;
+  // CVA6_ISRAM (ROMBase 0x1_0000) is not aligned to its 256 KiB model size,
+  // so index the array with the offset from ROMBase.
+  logic [AXI_ADDRESS_WIDTH-1:0] rom_offset;
+  assign rom_offset = rom_addr - ariane_soc::ROMBase;
 
   axi2mem #(
     .AXI_ID_WIDTH   ( ariane_axi_soc::IdWidthSlave ),
@@ -389,7 +393,7 @@ module ariane_testharness #(
     .rst_ni     ( rst_ni                                                                                 ),
     .req_i      ( rom_req                                                                                ),
     .we_i       ( rom_we                                                                                 ),
-    .addr_i     ( rom_addr[$clog2(ariane_soc::ROMLength/(AXI_DATA_WIDTH/8))-1+$clog2(AXI_DATA_WIDTH/8):$clog2(AXI_DATA_WIDTH/8)] ),
+    .addr_i     ( rom_offset[$clog2(ariane_soc::ROMLength/(AXI_DATA_WIDTH/8))-1+$clog2(AXI_DATA_WIDTH/8):$clog2(AXI_DATA_WIDTH/8)] ),
     .wuser_i    ( rom_wuser                                                                               ),
     .wdata_i    ( rom_wdata                                                                               ),
     .be_i       ( rom_be                                                                                  ),
@@ -792,17 +796,16 @@ module ariane_testharness #(
   end
 
   // FU3 non-idempotent (device) load checker (verification only). The device
-  // windows below are transcribed independently from the FU3 spec v2.0
+  // windows below are transcribed independently from the FU3 spec v2.2
   // memory map. Each load the load unit commits to memory (pop_ld_o) must
   // agree with the core PMA, and a device load must only be sent once it is
   // the oldest instruction (commit time), i.e. never speculatively.
   function automatic logic fu3_spec_device(logic [31:0] a);
     return (a >= 32'h1A11_0000 && a < 32'h1A11_1000) ||  // Ibex Debug Module
-           (a >= 32'h3010_0000 && a < 32'h3011_0000) ||  // EDHOC OSCORE
+           (a >= 32'h3101_0000 && a < 32'h3102_0000) ||  // EDHOC OSCORE
            (a >= 32'h4000_0000 && a < 32'h4001_0000) ||  // AES
-           (a >= 32'h4010_0000 && a < 32'h4011_0000) ||  // PLIC
-           (a >= 32'h4400_0000 && a < 32'h4410_0000) ||  // PERIBUS_0
-           (a >= 32'h5001_0000 && a < 32'h5011_0000);    // PERIBUS_1
+           (a >= 32'h4400_0000 && a < 32'h4412_0000) ||  // PERIBUS_0 (to CAN)
+           (a >= 32'h5001_0000 && a < 32'h5013_0000);    // PERIBUS_1 (to AP_PLIC)
   endfunction
 
   int unsigned fu3_ld_total, fu3_ld_dev, fu3_ld_ni_waits, fu3_ld_err;

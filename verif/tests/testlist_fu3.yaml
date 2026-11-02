@@ -51,7 +51,7 @@ testlist:
     <<: *common_test_config
     c_tests: <path_var>/custom/hello_world/hello_world.c
 
-  # FU3 spec v2.0 CVA6 memory-map checks (debug entry, PMA execute/device).
+  # FU3 spec v2.1 CVA6 memory-map checks (debug entry, PMA execute/device).
   - test: fu3_fetch_fault
     iterations: 1
     <<: *common_test_config

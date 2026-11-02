@@ -1,17 +1,6 @@
-//------------------------------------------------------------------------------
-// Copyright (c) 2026 FPT Telecom. All rights reserved.
-//
-
-// This RTL source code and the associated design are the proprietary
-// and confidential information of FPT Telecom.
-// Any unauthorized use, reproduction, or disclosure is strictly prohibited.
-//------------------------------------------------------------------------------
-// Author : DungPC9
-// Email : dungpc9@fpt.com
-// Created Date : 2026-09-26
-// Description: CVA6 RTOS configuration, derived from cv32a60x and adjusted per
-// the official FU3 configuration in "CVA6_Info.docx" and the memory map in
-// "FU3_Hardware_Architecture_Specification_v2.0.docx".
+// CVA6 RTOS configuration, derived from cv32a60x and adjusted per the official
+// FU3 configuration in "CVA6_Info.docx" and the memory map in
+// "FU3_Hardware_Architecture_Specification_v2.2.docx".
 //
 // Notes / assumptions:
 // 1. The base cv32a6_rtos target keeps its original HPDcache configuration.
@@ -24,21 +13,16 @@
 // 3. Cache geometry fields are retained for structural compatibility with the
 //    shared CVA6 configuration record. They do not instantiate cache memories
 //    or cache control logic when CVA6_RTOS_NOCACHE is defined.
-// 4. FU3 spec v2.0 reserves the top 4 KiB of CVA6_ISRAM
-//    (0x0001_F000-0x0001_FFFF) for CVA6 debug code. DmBaseAddress points
+// 4. FU3 spec v2.2 reserves the last 4 KiB of CVA6_ISRAM
+//    (0x0004_0000-0x0004_0FFF) for CVA6 debug code. DmBaseAddress points
 //    there; HaltAddress and ExceptionAddress are offsets from it, producing
-//    the absolute entry addresses 0x0001_F000 and 0x0001_F008.
-// 5. CVA6 executes only from CVA6_ISRAM and QSPI XIP 0x3000_0000-0x3001_FFFF.
+//    the absolute entry addresses 0x0004_0000 and 0x0004_0008.
+// 5. CVA6 executes only from CVA6_ISRAM 0x0001_0000-0x0004_0FFF and QSPI XIP
+//    0x3000_0000-0x30FF_FFFF.
 //    The boot ROM is Ibex-only, DSRAM is non-executable and HyperRAM is
 //    data-only. QSPI remains uncacheable. Peripheral interrupts are
 //    aggregated by the FU3 PLIC; this CVA6 revision does not implement local
 //    fast-interrupt or NMI input ports.
-//
-// Evolution History:
-// Date Version Author Description
-// 2026-10-12 2.0 DungPC9 Align debug address, executable and non-idempotent
-//                        regions with FU3 spec v2.0 memory map.
-//------------------------------------------------------------------------------
 
 
 package cva6_config_pkg;
@@ -99,8 +83,8 @@ package cva6_config_pkg;
       RVS: bit'(0),
       RVU: bit'(0),
       SoftwareInterruptEn: bit'(1),
-      // Offsets from DmBaseAddress: absolute 0x0001_F000 (halt) and
-      // 0x0001_F008 (exception in Debug Mode), FU3 spec v2.0.
+      // Offsets from DmBaseAddress: absolute 0x0004_0000 (halt) and
+      // 0x0004_0008 (exception in Debug Mode), FU3 spec v2.2.
       HaltAddress: 64'h0,
       ExceptionAddress: 64'h8,
       RASDepth: unsigned'(2),
@@ -108,8 +92,8 @@ package cva6_config_pkg;
       BPType: config_pkg::BHT,
       BHTEntries: unsigned'(32),
       BHTHist: unsigned'(3),
-      // CVA6 debug code lives in the top 4 KiB of CVA6_ISRAM.
-      DmBaseAddress: 64'h0001_F000,
+      // CVA6 debug code lives in the last 4 KiB of CVA6_ISRAM.
+      DmBaseAddress: 64'h0004_0000,
       TvalEn: bit'(0),
       DirectVecOnly: bit'(1),
       NrPMPEntries: unsigned'(8),
@@ -118,34 +102,35 @@ package cva6_config_pkg;
       PMPEntryReadOnly: 64'd0,
       PMPNapotEn: bit'(1),
       NOCType: config_pkg::NOC_TYPE_AXI4_ATOP,
-      // Device/non-idempotent apertures from the FU3 spec v2.0 memory map:
-      // Ibex Debug Module, EDHOC OSCORE, AES, PLIC, PERIBUS_0
-      // (0x4400_0000-0x440F_FFFF) and PERIBUS_1 (0x5001_0000-0x5010_FFFF).
+      // Device/non-idempotent apertures from the FU3 spec v2.2 memory map:
+      // Ibex Debug Module, EDHOC OSCORE, AES, PERIBUS_0
+      // (0x4400_0000-0x4411_FFFF), PERIBUS_1 (0x5001_0000-0x5010_FFFF) and
+      // AP_DMA1/AP_PLIC (0x5011_0000-0x5012_FFFF).
       // Reserved address ranges are not PMA device rules; the SoC
       // interconnect is responsible for decode errors.
       NrNonIdempotentRules: unsigned'(6),
       NonIdempotentAddrBase: 1024'({
         64'h1A11_0000,
-        64'h3010_0000,
+        64'h3101_0000,
         64'h4000_0000,
-        64'h4010_0000,
         64'h4400_0000,
-        64'h5001_0000
+        64'h5001_0000,
+        64'h5011_0000
       }),
       NonIdempotentLength: 1024'({
         64'h0000_1000,
         64'h0001_0000,
         64'h0001_0000,
-        64'h0001_0000,
+        64'h0012_0000,
         64'h0010_0000,
-        64'h0010_0000
+        64'h0002_0000
       }),
       // Executable regions: CVA6_ISRAM (program image and debug code) and
       // QSPI XIP. The Ibex-only boot ROM, DSRAM and HyperRAM (data only) are
       // not executable by CVA6.
       NrExecuteRegionRules: unsigned'(2),
       ExecuteRegionAddrBase: 1024'({64'h0001_0000, 64'h3000_0000}),
-      ExecuteRegionLength: 1024'({64'h0001_0000, 64'h0002_0000}),
+      ExecuteRegionLength: 1024'({64'h0003_1000, 64'h0100_0000}),
       // No region is cacheable until ISRAM/QSPI controller behavior is signed
       // off. The arrays retain a zero placeholder because the config structure
       // has a fixed maximum size; NrCachedRegionRules controls their use.

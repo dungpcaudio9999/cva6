@@ -127,6 +127,7 @@ module branch_unit #(
     branch_exception_o.tval2 = {CVA6Cfg.GPLEN{1'b0}};
     branch_exception_o.tinst = '0;
     branch_exception_o.gva   = CVA6Cfg.RVH ? v_i : 1'b0;
+    branch_exception_o.timing = 1'b0;
     // Only throw instruction address misaligned exception if this is indeed a `taken` conditional branch or
     // an unconditional jump
     if (!CVA6Cfg.RVC) begin

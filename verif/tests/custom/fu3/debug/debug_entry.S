@@ -1,8 +1,8 @@
-# FU3 CVA6 debug-entry directed test (spec v2.0).
+# FU3 CVA6 debug-entry directed test (spec v2.1).
 #
-# CVA6 debug code lives in the top 4 KiB of CVA6_ISRAM:
-#   halt entry      = 0x0001_F000 (DmBaseAddress + HaltAddress)
-#   exception entry = 0x0001_F008 (DmBaseAddress + ExceptionAddress)
+# CVA6 debug code lives in the last 4 KiB of CVA6_ISRAM:
+#   halt entry      = 0x0004_0000 (DmBaseAddress + HaltAddress)
+#   exception entry = 0x0004_0008 (DmBaseAddress + ExceptionAddress)
 #
 # The FU3 testharness raises debug_req when mscratch holds 0xFD0B_0001
 # (see CVA6_RTOS_MEM_MAP in ariane_testharness.sv). The halt handler logs its
@@ -23,10 +23,10 @@ main:
 
   # The linker must place the handlers at the spec entry addresses.
   la t0, dbg_halt_entry
-  li t1, 0x0001F000
+  li t1, 0x00040000
   bne t0, t1, bad_link
   la t0, dbg_exc_entry
-  li t1, 0x0001F008
+  li t1, 0x00040008
   bne t0, t1, bad_link
 
   la s0, dbg_log
@@ -97,17 +97,17 @@ fail:
   jal exit
 
 # ---------------------------------------------------------------------------
-# Debug-mode code, linked into the DBG region (0x0001_F000) by link.ld.
+# Debug-mode code, linked into the DBG region (0x0004_0000) by link.ld.
 # ---------------------------------------------------------------------------
   .section .debug_code,"ax",@progbits
   .option push
   .option norvc
   .globl dbg_halt_entry
-dbg_halt_entry:            # 0x0001_F000
+dbg_halt_entry:            # 0x0004_0000
   j dbg_halt
   nop
   .globl dbg_exc_entry
-dbg_exc_entry:             # 0x0001_F008
+dbg_exc_entry:             # 0x0004_0008
   j dbg_exc
 
 dbg_halt:

@@ -17,10 +17,9 @@
 //    (0x0004_0000-0x0004_0FFF) for CVA6 debug code. DmBaseAddress points
 //    there; HaltAddress and ExceptionAddress are offsets from it, producing
 //    the absolute entry addresses 0x0004_0000 and 0x0004_0008.
-// 5. CVA6 executes only from CVA6_ISRAM 0x0001_0000-0x0004_0FFF and QSPI XIP
-//    0x3000_0000-0x30FF_FFFF.
-//    The boot ROM is Ibex-only, DSRAM is non-executable and HyperRAM is
-//    data-only. QSPI remains uncacheable. Peripheral interrupts are
+// 5. CVA6 executes only from CVA6_ISRAM 0x0001_0000-0x0004_0FFF.
+//    The boot ROM is Ibex-only; QSPI XIP, DSRAM and HyperRAM are
+//    non-executable. QSPI remains uncacheable. Peripheral interrupts are
 //    aggregated by the FU3 PLIC; this CVA6 revision does not implement local
 //    fast-interrupt or NMI input ports.
 
@@ -125,12 +124,12 @@ package cva6_config_pkg;
         64'h0010_0000,
         64'h0002_0000
       }),
-      // Executable regions: CVA6_ISRAM (program image and debug code) and
-      // QSPI XIP. The Ibex-only boot ROM, DSRAM and HyperRAM (data only) are
-      // not executable by CVA6.
-      NrExecuteRegionRules: unsigned'(2),
-      ExecuteRegionAddrBase: 1024'({64'h0001_0000, 64'h3000_0000}),
-      ExecuteRegionLength: 1024'({64'h0003_1000, 64'h0100_0000}),
+      // Executable region: CVA6_ISRAM (program image and debug code) only.
+      // The Ibex-only boot ROM, QSPI XIP, DSRAM and HyperRAM are not
+      // executable by CVA6.
+      NrExecuteRegionRules: unsigned'(1),
+      ExecuteRegionAddrBase: 1024'({64'h0001_0000}),
+      ExecuteRegionLength: 1024'({64'h0003_1000}),
       // No region is cacheable until ISRAM/QSPI controller behavior is signed
       // off. The arrays retain a zero placeholder because the config structure
       // has a fixed maximum size; NrCachedRegionRules controls their use.

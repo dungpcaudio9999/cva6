@@ -23,7 +23,7 @@ module cv32a6_rtos_v1_pma_smoke;
             !Cfg.MmuPresent && !Cfg.CvxifEn)
     else $fatal(1, "unexpected ISA/privilege configuration");
 
-    assert (Cfg.NrExecuteRegionRules == 2 &&
+    assert (Cfg.NrExecuteRegionRules == 1 &&
             Cfg.NrNonIdempotentRules == 6 &&
             Cfg.NrCachedRegionRules == 0)
     else $fatal(1, "unexpected PMA rule counts");
@@ -33,13 +33,13 @@ module cv32a6_rtos_v1_pma_smoke;
             Cfg.DmBaseAddress + Cfg.ExceptionAddress == 64'h0004_0008)
     else $fatal(1, "unexpected debug halt/exception address");
 
-    // Executable: CVA6_ISRAM (192 KiB image + 4 KiB debug) and QSPI XIP (16 MiB).
+    // Executable: CVA6_ISRAM (192 KiB image + 4 KiB debug).
     assert (config_pkg::is_inside_execute_regions(Cfg, 64'h0001_0000));
     assert (config_pkg::is_inside_execute_regions(Cfg, 64'h0003_FFFC));
     assert (config_pkg::is_inside_execute_regions(Cfg, 64'h0004_0000));
     assert (config_pkg::is_inside_execute_regions(Cfg, 64'h0004_0FFC));
-    assert (config_pkg::is_inside_execute_regions(Cfg, 64'h3000_0000));
-    assert (config_pkg::is_inside_execute_regions(Cfg, 64'h30FF_FFFC));
+    assert (!config_pkg::is_inside_execute_regions(Cfg, 64'h3000_0000));
+    assert (!config_pkg::is_inside_execute_regions(Cfg, 64'h30FF_FFFC));
     // Not executable: Ibex-only ROM, reserved gaps, IBEX_ISRAM, DSRAM, past
     // the XIP window, EDHOC and data-only HyperRAM.
     assert (!config_pkg::is_inside_execute_regions(Cfg, 64'h0000_0000));

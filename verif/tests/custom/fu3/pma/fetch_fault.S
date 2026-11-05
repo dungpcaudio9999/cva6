@@ -1,9 +1,9 @@
 # FU3 CVA6 PMA directed test: instruction fetch outside the executable regions.
 #
-# FU3 spec v2.1 allows CVA6 to execute only from CVA6_ISRAM
-# (0x0001_0000-0x0004_0FFF) and QSPI XIP (0x3000_0000-0x30FF_FFFF). Every
-# target below must raise an instruction access fault (mcause = 1) with
-# mepc equal to the target, before any bus access is made.
+# FU3 spec v2.3 allows CVA6 to execute only from CVA6_ISRAM
+# (0x0001_0000-0x0004_0FFF). Every target below must raise an instruction
+# access fault (mcause = 1) with mepc equal to the target,
+# before any bus access is made.
 #
 # Positive controls: code linked in ISRAM runs, and code written at the end of
 # the 192 KiB program image and at the end of the 4 KiB debug-code area runs.
@@ -102,7 +102,9 @@ targets:
   .word 0x01000000        # DSRAM (non-executable)
   .word 0x0103FFFC        # DSRAM, last word
   .word 0x1A110000        # Ibex Debug Module aperture
-  .word 0x31000000        # just past the QSPI XIP window
+  .word 0x30000000        # QSPI XIP base (not executable)
+  .word 0x30FFFFFC        # QSPI XIP, last word
+  .word 0x31000000        # reserved gap
   .word 0x31010000        # EDHOC OSCORE
   .word 0x40100000        # PLIC
   .word 0x44000000        # PERIBUS_0

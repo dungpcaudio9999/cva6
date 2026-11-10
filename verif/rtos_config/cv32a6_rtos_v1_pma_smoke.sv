@@ -24,11 +24,11 @@ module cv32a6_rtos_v1_pma_smoke;
     else $fatal(1, "unexpected ISA/privilege configuration");
 
     assert (Cfg.NrExecuteRegionRules == 1 &&
-            Cfg.NrNonIdempotentRules == 6 &&
+            Cfg.NrNonIdempotentRules == 5 &&
             Cfg.NrCachedRegionRules == 0)
     else $fatal(1, "unexpected PMA rule counts");
 
-    // FU3 spec v2.2: CVA6 debug code in the last 4 KiB of CVA6_ISRAM.
+    // FU3 spec v2.4: CVA6 debug code in the last 4 KiB of CVA6_ISRAM.
     assert (Cfg.DmBaseAddress + Cfg.HaltAddress == 64'h0004_0000 &&
             Cfg.DmBaseAddress + Cfg.ExceptionAddress == 64'h0004_0008)
     else $fatal(1, "unexpected debug halt/exception address");
@@ -60,26 +60,32 @@ module cv32a6_rtos_v1_pma_smoke;
     assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h1A11_0FFC));
     assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h3101_0000));
     assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h3101_FFFC));
+    assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h3102_0000));
+    assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h3103_FFFC));
     assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h4000_0000));
     assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h4400_0000));
     assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h4410_0000));
     assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h4411_FFFC));
+    assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h4412_0000));
+    assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h4412_FFFC));
     assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h5001_0000));
     assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h5010_FFFC));
     assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h5011_0000));
     assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h5012_0000));
     assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h5012_FFFC));
+    assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h5013_0000));
+    assert (config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h5013_FFFC));
     // Memories and reserved holes are idempotent.
     assert (!config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h0001_0000));
     assert (!config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h0100_0000));
     assert (!config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h3000_0000));
     assert (!config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h3010_0000));
-    assert (!config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h3102_0000));
+    assert (!config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h3104_0000));
     assert (!config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h4001_0000));
     assert (!config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h4010_0000));
-    assert (!config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h4412_0000));
+    assert (!config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h4413_0000));
     assert (!config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h5000_0000));
-    assert (!config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h5013_0000));
+    assert (!config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h5014_0000));
     assert (!config_pkg::is_inside_nonidempotent_regions(Cfg, 64'h6000_0000));
 
     $display("PASS: cv32a6_rtos_v1 cacheless config/PMA smoke");

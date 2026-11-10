@@ -1,6 +1,6 @@
 // CVA6 RTOS configuration, derived from cv32a60x and adjusted per the official
 // FU3 configuration in "CVA6_Info.docx" and the memory map in
-// "FU3_Hardware_Architecture_Specification_v2.2.docx".
+// "FU3_Hardware_Architecture_Specification_v2.4.docx".
 //
 // Notes / assumptions:
 // 1. The base cv32a6_rtos target keeps its original HPDcache configuration.
@@ -13,7 +13,7 @@
 // 3. Cache geometry fields are retained for structural compatibility with the
 //    shared CVA6 configuration record. They do not instantiate cache memories
 //    or cache control logic when CVA6_RTOS_NOCACHE is defined.
-// 4. FU3 spec v2.2 reserves the last 4 KiB of CVA6_ISRAM
+// 4. FU3 spec v2.4 reserves the last 4 KiB of CVA6_ISRAM
 //    (0x0004_0000-0x0004_0FFF) for CVA6 debug code. DmBaseAddress points
 //    there; HaltAddress and ExceptionAddress are offsets from it, producing
 //    the absolute entry addresses 0x0004_0000 and 0x0004_0008.
@@ -101,28 +101,27 @@ package cva6_config_pkg;
       PMPEntryReadOnly: 64'd0,
       PMPNapotEn: bit'(1),
       NOCType: config_pkg::NOC_TYPE_AXI4_ATOP,
-      // Device/non-idempotent apertures from the FU3 spec v2.2 memory map:
-      // Ibex Debug Module, EDHOC OSCORE, AES, PERIBUS_0
-      // (0x4400_0000-0x4411_FFFF), PERIBUS_1 (0x5001_0000-0x5010_FFFF) and
-      // AP_DMA1/AP_PLIC (0x5011_0000-0x5012_FFFF).
+      // Device/non-idempotent apertures from the FU3 spec v2.4 memory map:
+      // Ibex Debug Module, EDHOC OSCORE/AES/OFDM/MKV AXI targets
+      // (0x3101_0000-0x3103_FFFF), PERIBUS_0 incl. AP_MKV
+      // (0x4400_0000-0x4412_FFFF) and PERIBUS_1 incl. AP_DMA1/AP_PLIC/AP_OFDMI
+      // (0x5001_0000-0x5013_FFFF).
       // Reserved address ranges are not PMA device rules; the SoC
       // interconnect is responsible for decode errors.
-      NrNonIdempotentRules: unsigned'(6),
+      NrNonIdempotentRules: unsigned'(5),
       NonIdempotentAddrBase: 1024'({
         64'h1A11_0000,
         64'h3101_0000,
         64'h4000_0000,
         64'h4400_0000,
-        64'h5001_0000,
-        64'h5011_0000
+        64'h5001_0000
       }),
       NonIdempotentLength: 1024'({
         64'h0000_1000,
+        64'h0003_0000,
         64'h0001_0000,
-        64'h0001_0000,
-        64'h0012_0000,
-        64'h0010_0000,
-        64'h0002_0000
+        64'h0013_0000,
+        64'h0013_0000
       }),
       // Executable region: CVA6_ISRAM (program image and debug code) only.
       // The Ibex-only boot ROM, QSPI XIP, DSRAM and HyperRAM are not
